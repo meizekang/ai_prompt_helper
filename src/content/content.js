@@ -332,6 +332,10 @@ function selectPrompt(prompt) {
 }
 
 function showAddPromptModal(initialContent) {
+  // Clean up any existing modal to prevent duplicates
+  const existingBackdrop = document.querySelector('.ai-helper-backdrop');
+  if (existingBackdrop) existingBackdrop.remove();
+
   const backdrop = document.createElement('div');
   backdrop.className = 'ai-helper-backdrop';
   
@@ -414,6 +418,10 @@ function showNotification(message) {
 }
 
 function showPlaceholderModal(prompt) {
+  // Clean up any existing modal
+  const existingBackdrop = document.querySelector('.ai-helper-backdrop');
+  if (existingBackdrop) existingBackdrop.remove();
+
   const backdrop = document.createElement('div');
   backdrop.className = 'ai-helper-backdrop';
   
