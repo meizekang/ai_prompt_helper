@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt Helper - Settings</title>
+  <title data-i18n="optionsTitle">AI Prompt Helper - Settings</title>
   <style>
     :root {
       /* Light Theme (Default) */
@@ -347,14 +347,14 @@
     <div class="sidebar">
       <div class="sidebar-header">
         <div class="logo-icon">AI</div>
-        <span>Prompt Helper</span>
+        <span data-i18n="sidebarHeader">Prompt Helper</span>
       </div>
       <nav class="nav-menu">
         <div class="nav-item active" data-target="prompts">
-          <span style="font-size: 18px;">📝</span> 提示词库
+          <span style="font-size: 18px;">📝</span> <span data-i18n="navPrompts">提示词库</span>
         </div>
         <div class="nav-item" data-target="settings">
-          <span style="font-size: 18px;">⚙️</span> 偏好设置
+          <span style="font-size: 18px;">⚙️</span> <span data-i18n="navSettings">偏好设置</span>
         </div>
       </nav>
     </div>
@@ -363,21 +363,21 @@
       
       <!-- Prompts Section -->
       <div id="section-prompts" class="page-section active">
-        <h1>提示词库</h1>
-        <div class="subtitle">管理您的常用提示词，随时在网页中快速调用。</div>
+        <h1 data-i18n="promptsTitle">提示词库</h1>
+        <div class="subtitle" data-i18n="promptsSubtitle">管理您的常用提示词，随时在网页中快速调用。</div>
         
         <div class="card">
           <div class="input-group">
-            <label>新建提示词</label>
-            <input type="text" id="newTitle" placeholder="标题（例如：英文翻译）" style="margin-bottom: 12px; font-weight: 600;">
-            <textarea id="newContent" placeholder="输入提示词内容... 使用 {{text}} 作为选中文本占位符"></textarea>
+            <label data-i18n="newPromptLabel">新建提示词</label>
+            <input type="text" id="newTitle" data-i18n-placeholder="promptTitlePlaceholder" placeholder="标题（例如：英文翻译）" style="margin-bottom: 12px; font-weight: 600;">
+            <textarea id="newContent" data-i18n-placeholder="promptContentPlaceholder" placeholder="输入提示词内容... 使用 {{text}} 作为选中文本占位符"></textarea>
             <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
-              <button id="addPrompt" class="btn btn-primary">添加至库</button>
+              <button id="addPrompt" class="btn btn-primary" data-i18n="addPromptBtn">添加至库</button>
             </div>
           </div>
         </div>
 
-        <h2>我的收藏</h2>
+        <h2 data-i18n="myPromptsTitle">我的收藏</h2>
         <div id="promptList" class="list-container">
           <!-- Populated by JS -->
         </div>
@@ -385,34 +385,46 @@
 
       <!-- Settings Section -->
       <div id="section-settings" class="page-section">
-        <h1>偏好设置</h1>
-        <div class="subtitle">管理扩展的生效范围和全局开关。</div>
+        <h1 data-i18n="settingsTitle">偏好设置</h1>
+        <div class="subtitle" data-i18n="settingsSubtitle">管理扩展的生效范围和全局开关。</div>
         
         <div class="card" style="padding: 0 24px;">
           <div class="switch-row">
             <div>
-              <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">全局启用</div>
-              <div style="font-size: 13px; color: var(--text-secondary);">一键开启或关闭扩展的所有功能</div>
+              <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;" data-i18n="globalEnableLabel">全局启用</div>
+              <div style="font-size: 13px; color: var(--text-secondary);" data-i18n="globalEnableDesc">一键开启或关闭扩展的所有功能</div>
             </div>
             <label class="switch">
               <input type="checkbox" id="globalSwitch">
               <span class="slider"></span>
             </label>
           </div>
-        </div>
 
-        <h2>网站管理</h2>
-        <div class="card">
-          <div class="input-group">
-            <label>添加生效网站</label>
-            <div class="flex-row">
-              <input type="text" id="newDomain" placeholder="输入域名 (例如: chatgpt.com)" class="flex-1">
-              <button id="addDomain" class="btn btn-primary" style="white-space: nowrap;">添加</button>
+          <div class="switch-row">
+            <div>
+              <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;" data-i18n="languageLabel">界面语言</div>
+              <div style="font-size: 13px; color: var(--text-secondary);" data-i18n="languageDesc">选择您偏好的显示语言</div>
             </div>
-            <div class="hint">仅在白名单列表中的网站显示提示词助手弹窗。</div>
+            <select id="languageSelect" style="padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 14px; background: var(--bg-input); color: var(--text-primary);">
+              <option value="zh_CN">简体中文</option>
+              <option value="en">English</option>
+            </select>
           </div>
         </div>
 
+        <h2 data-i18n="siteManagementTitle">网站管理</h2>
+        <div class="card">
+          <div class="input-group">
+            <label data-i18n="addSiteLabel">添加生效网站</label>
+            <div class="flex-row">
+              <input type="text" id="newDomain" data-i18n-placeholder="domainPlaceholder" placeholder="输入域名 (例如: chatgpt.com)" class="flex-1">
+              <button id="addDomain" class="btn btn-primary" style="white-space: nowrap;" data-i18n="addSiteBtn">添加</button>
+            </div>
+            <div class="hint" data-i18n="addSiteHint">仅在白名单列表中的网站显示提示词助手弹窗。</div>
+          </div>
+        </div>
+
+        <h2 data-i18n="configuredSitesTitle">已配置网站</h2>
         <div id="domainList" class="list-container">
           <!-- Populated by JS -->
         </div>
@@ -421,6 +433,7 @@
     </div>
   </div>
 
+  <script src="../utils/i18n.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

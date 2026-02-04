@@ -1,0 +1,104 @@
+{
+  "extName": {
+    "message": "AI 提示词助手"
+  },
+  "extDesc": {
+    "message": "一个帮助管理和插入带占位符的 AI 提示词的 Chrome 扩展。"
+  },
+  "optionsTitle": {
+    "message": "AI 提示词助手 - 设置"
+  },
+  "sidebarHeader": {
+    "message": "提示词助手"
+  },
+  "navPrompts": {
+    "message": "提示词库"
+  },
+  "navSettings": {
+    "message": "偏好设置"
+  },
+  "promptsTitle": {
+    "message": "提示词库"
+  },
+  "promptsSubtitle": {
+    "message": "管理您的常用提示词，随时快速调用。"
+  },
+  "newPromptLabel": {
+    "message": "新建提示词"
+  },
+  "promptTitlePlaceholder": {
+    "message": "标题（例如：翻译为英文）"
+  },
+  "promptContentPlaceholder": {
+    "message": "输入提示词内容... 使用 {{text}} 作为选中文本占位符"
+  },
+  "addPromptBtn": {
+    "message": "添加至库"
+  },
+  "myPromptsTitle": {
+    "message": "我的收藏"
+  },
+  "emptyPrompts": {
+    "message": "暂无提示词，请在上方添加"
+  },
+  "settingsTitle": {
+    "message": "偏好设置"
+  },
+  "settingsSubtitle": {
+    "message": "管理扩展的生效范围和全局开关。"
+  },
+  "globalEnableLabel": {
+    "message": "全局启用"
+  },
+  "globalEnableDesc": {
+    "message": "一键开启或关闭扩展的所有功能"
+  },
+  "siteManagementTitle": {
+    "message": "网站管理"
+  },
+  "addSiteLabel": {
+    "message": "添加生效网站"
+  },
+  "domainPlaceholder": {
+    "message": "输入域名 (例如: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "添加"
+  },
+  "addSiteHint": {
+    "message": "仅在白名单列表中的网站显示提示词助手弹窗。"
+  },
+  "configuredSitesTitle": {
+    "message": "已配置网站"
+  },
+  "emptySites": {
+    "message": "暂无配置网站"
+  },
+  "alertFillTitleContent": {
+    "message": "请填写标题和内容"
+  },
+  "alertAdded": {
+    "message": "添加成功"
+  },
+  "confirmDeletePrompt": {
+    "message": "确定要删除这个提示词吗？"
+  },
+  "alertDomainExists": {
+    "message": "该域名已存在"
+  },
+  "confirmDeleteDomain": {
+    "message": "确定要删除这个域名吗？"
+  },
+  "overlayHeader": {
+    "message": "提示词匹配"
+  },
+  "modalCancel": {
+    "message": "取消"
+  },
+  "modalConfirm": {
+    "message": "确定并插入"
+  },
+  "modalInputPlaceholder": {
+    "message": "请输入"
+  }
+}

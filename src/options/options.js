@@ -1,3 +1,28 @@
+// Localization
+async function localize() {
+  await I18n.init(); // Initialize I18n first
+  
+  // Set dropdown value
+  const langSelect = document.getElementById('languageSelect');
+  if (langSelect) {
+    langSelect.value = I18n.locale;
+  }
+
+  updatePageText();
+}
+
+function updatePageText() {
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    element.textContent = I18n.getMessage(key);
+  });
+  
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    element.placeholder = I18n.getMessage(key);
+  });
+}
+
 // Navigation
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => {
@@ -24,7 +49,7 @@ function loadPrompts() {
       promptList.innerHTML = `
         <div class="empty-state">
           <span class="empty-icon">📝</span>
-          <div>暂无提示词，请在上方添加</div>
+          <div>${I18n.getMessage('emptyPrompts')}</div>
         </div>`;
     } else {
       prompts.forEach((p, index) => {
@@ -35,7 +60,7 @@ function loadPrompts() {
             <span class="item-title">${p.title}</span>
             <span class="item-desc">${p.content.substring(0, 80)}${p.content.length > 80 ? '...' : ''}</span>
           </div>
-          <button class="btn btn-icon delete-prompt" data-index="${index}" title="删除">
+          <button class="btn btn-icon delete-prompt" data-index="${index}" title="${I18n.getMessage('modalCancel') /* Reusing or use specific 'delete' tooltip */ }">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
           </button>
         `;
@@ -82,7 +107,7 @@ function loadSettings() {
       domainList.innerHTML = `
         <div class="empty-state">
           <span class="empty-icon">🌐</span>
-          <div>暂无配置网站</div>
+          <div>${I18n.getMessage('emptySites')}</div>
         </div>`;
     } else {
       settings.domains.forEach((domain, index) => {
@@ -102,7 +127,7 @@ function loadSettings() {
               <input type="checkbox" class="domain-toggle" data-index="${index}" ${domain.enabled ? 'checked' : ''}>
               <span class="slider"></span>
             </label>
-            <button class="btn btn-icon delete-domain" data-index="${index}" title="删除">
+            <button class="btn btn-icon delete-domain" data-index="${index}" title="${I18n.getMessage('modalCancel') /* Reusing or specific */ }">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
@@ -118,7 +143,7 @@ document.getElementById('addPrompt').addEventListener('click', () => {
   const title = document.getElementById('newTitle').value;
   const content = document.getElementById('newContent').value;
   if (!title || !content) {
-    alert('请填写标题和内容');
+    alert(I18n.getMessage('alertFillTitleContent'));
     return;
   }
 
@@ -139,7 +164,7 @@ document.getElementById('addPrompt').addEventListener('click', () => {
 document.getElementById('promptList').addEventListener('click', (e) => {
   const btn = e.target.closest('.delete-prompt');
   if (btn) {
-    if(confirm('确定要删除这个提示词吗？')) {
+    if(confirm(I18n.getMessage('confirmDeletePrompt'))) {
       const index = parseInt(btn.dataset.index);
       chrome.storage.local.get(['prompts'], (result) => {
         const prompts = result.prompts || [];
@@ -166,7 +191,7 @@ document.getElementById('addDomain').addEventListener('click', () => {
     
     // Check duplicates
     if (settings.domains.some(d => d.url === url)) {
-      alert('该域名已存在');
+      alert(I18n.getMessage('alertDomainExists'));
       return;
     }
 
@@ -193,6 +218,23 @@ document.getElementById('globalSwitch').addEventListener('change', (e) => {
   });
 });
 
+// Language Switch
+document.getElementById('languageSelect').addEventListener('change', (e) => {
+  const newLang = e.target.value;
+  
+  chrome.storage.local.get(['settings'], (result) => {
+    const settings = result.settings || { domains: [] };
+    settings.language = newLang;
+    chrome.storage.local.set({ settings }, () => {
+      I18n.setLocale(newLang);
+      updatePageText();
+      // Reload prompts and settings to refresh dynamic content text if needed (e.g. empty states)
+      loadPrompts();
+      loadSettings();
+    });
+  });
+});
+
 // Domain List Actions (Toggle & Delete)
 document.getElementById('domainList').addEventListener('click', (e) => {
   // Handle Toggle
@@ -214,7 +256,7 @@ document.getElementById('domainList').addEventListener('click', (e) => {
   const delBtn = e.target.closest('.delete-domain');
   if (delBtn) {
     const index = parseInt(delBtn.dataset.index);
-    if(confirm('确定要删除这个域名吗？')) {
+    if(confirm(I18n.getMessage('confirmDeleteDomain'))) {
       chrome.storage.local.get(['settings'], (result) => {
         const settings = result.settings || { domains: [] };
         settings.domains.splice(index, 1);
@@ -225,5 +267,7 @@ document.getElementById('domainList').addEventListener('click', (e) => {
 });
 
 // Initial load
-loadPrompts();
-loadSettings();
+localize().then(() => {
+  loadPrompts();
+  loadSettings();
+});

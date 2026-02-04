@@ -3,26 +3,40 @@ let activeElement = null;
 let prompts = [];
 let settings = {};
 
-// Load data
-chrome.storage.local.get(['prompts', 'settings'], (result) => {
-  prompts = result.prompts || [];
-  settings = result.settings || { globalEnabled: true, domains: [] };
+// Load data and init I18n
+async function initialize() {
+  await I18n.init(); // Wait for language load
   
-  // Check global switch
-  if (settings.globalEnabled === false) return;
+  chrome.storage.local.get(['prompts', 'settings'], (result) => {
+    prompts = result.prompts || [];
+    settings = result.settings || { globalEnabled: true, domains: [] };
+    
+    // Check global switch
+    if (settings.globalEnabled === false) return;
 
-  const currentDomain = window.location.hostname;
-  
-  // Find matching domain config
-  const domainConfig = settings.domains.find(d => currentDomain.includes(d.url));
-  
-  // Only init if domain is found and enabled
-  if (domainConfig && domainConfig.enabled) {
-    init();
+    const currentDomain = window.location.hostname;
+    
+    // Find matching domain config
+    const domainConfig = settings.domains.find(d => currentDomain.includes(d.url));
+    
+    // Only init if domain is found and enabled
+    if (domainConfig && domainConfig.enabled) {
+      initListeners();
+    }
+  });
+}
+
+// Listen for storage changes to update language on the fly
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === 'local' && changes.settings) {
+    const newSettings = changes.settings.newValue;
+    if (newSettings && newSettings.language && newSettings.language !== I18n.locale) {
+      I18n.setLocale(newSettings.language);
+    }
   }
 });
 
-function init() {
+function initListeners() {
   document.addEventListener('input', handleInput);
   document.addEventListener('click', (e) => {
     if (currentOverlay && !currentOverlay.contains(e.target) && e.target !== activeElement) {
@@ -64,7 +78,7 @@ function showOverlay(target, matches) {
 
   const header = document.createElement('div');
   header.className = 'ai-helper-header';
-  header.innerHTML = `<span>提示词匹配</span><span class="ai-helper-close">&times;</span>`;
+  header.innerHTML = `<span>${I18n.getMessage('overlayHeader')}</span><span class="ai-helper-close">&times;</span>`;
   header.querySelector('.ai-helper-close').onclick = () => {
     disableForThisSite();
     removeOverlay();
@@ -136,7 +150,7 @@ function showPlaceholderModal(prompt) {
     modal.appendChild(label);
 
     const input = document.createElement('input');
-    input.placeholder = `请输入 ${ph}...`;
+    input.placeholder = `${I18n.getMessage('modalInputPlaceholder')} ${ph}...`;
     modal.appendChild(input);
     inputs[ph] = input;
   });
@@ -146,12 +160,12 @@ function showPlaceholderModal(prompt) {
 
   const cancelBtn = document.createElement('button');
   cancelBtn.className = 'ai-helper-btn ai-helper-btn-secondary';
-  cancelBtn.innerText = '取消';
+  cancelBtn.innerText = I18n.getMessage('modalCancel');
   cancelBtn.onclick = () => backdrop.remove();
 
   const okBtn = document.createElement('button');
   okBtn.className = 'ai-helper-btn ai-helper-btn-primary';
-  okBtn.innerText = '确定并插入';
+  okBtn.innerText = I18n.getMessage('modalConfirm');
   okBtn.onclick = () => {
     let finalContent = prompt.content;
     for (const ph in inputs) {
@@ -184,3 +198,6 @@ function insertText(text) {
   // Trigger input event for frameworks like React/Vue
   activeElement.dispatchEvent(new Event('input', { bubbles: true }));
 }
+
+// Start
+initialize();

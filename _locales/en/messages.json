@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "AI Prompt Helper",
+    "description": "Extension name"
+  },
+  "extDesc": {
+    "message": "A Chrome extension to help manage and insert AI prompts with placeholders.",
+    "description": "Extension description"
+  },
+  "optionsTitle": {
+    "message": "AI Prompt Helper - Settings"
+  },
+  "sidebarHeader": {
+    "message": "Prompt Helper"
+  },
+  "navPrompts": {
+    "message": "Prompt Library"
+  },
+  "navSettings": {
+    "message": "Preferences"
+  },
+  "promptsTitle": {
+    "message": "Prompt Library"
+  },
+  "promptsSubtitle": {
+    "message": "Manage your favorite prompts for quick access."
+  },
+  "newPromptLabel": {
+    "message": "New Prompt"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Title (e.g. Translate to English)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Content... Use {{text}} for selected text placeholder"
+  },
+  "addPromptBtn": {
+    "message": "Add to Library"
+  },
+  "myPromptsTitle": {
+    "message": "My Favorites"
+  },
+  "emptyPrompts": {
+    "message": "No prompts yet. Add one above."
+  },
+  "settingsTitle": {
+    "message": "Preferences"
+  },
+  "settingsSubtitle": {
+    "message": "Manage extension scope and global settings."
+  },
+  "globalEnableLabel": {
+    "message": "Global Enable"
+  },
+  "globalEnableDesc": {
+    "message": "Toggle all extension features"
+  },
+  "siteManagementTitle": {
+    "message": "Site Management"
+  },
+  "addSiteLabel": {
+    "message": "Add Allowed Site"
+  },
+  "domainPlaceholder": {
+    "message": "Enter domain (e.g. chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Add"
+  },
+  "addSiteHint": {
+    "message": "Show prompt helper only on whitelisted sites."
+  },
+  "configuredSitesTitle": {
+    "message": "Configured Sites"
+  },
+  "emptySites": {
+    "message": "No sites configured."
+  },
+  "alertFillTitleContent": {
+    "message": "Please fill in title and content."
+  },
+  "alertAdded": {
+    "message": "Added successfully."
+  },
+  "confirmDeletePrompt": {
+    "message": "Are you sure you want to delete this prompt?"
+  },
+  "alertDomainExists": {
+    "message": "Domain already exists."
+  },
+  "confirmDeleteDomain": {
+    "message": "Are you sure you want to delete this domain?"
+  },
+  "overlayHeader": {
+    "message": "Prompt Match"
+  },
+  "modalCancel": {
+    "message": "Cancel"
+  },
+  "modalConfirm": {
+    "message": "Confirm and Insert"
+  },
+  "modalInputPlaceholder": {
+    "message": "Enter value for"
+  }
+}
