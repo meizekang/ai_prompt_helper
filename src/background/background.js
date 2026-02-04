@@ -49,4 +49,21 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.storage.local.set({ settings: defaultSettings });
     }
   });
+
+  chrome.contextMenus.removeAll(() => {
+    chrome.contextMenus.create({
+      id: "save-prompt",
+      title: chrome.i18n.getMessage("saveAsPrompt"),
+      contexts: ["selection"]
+    });
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "save-prompt") {
+    chrome.tabs.sendMessage(tab.id, {
+      action: "open_save_prompt_modal",
+      text: info.selectionText
+    });
+  }
 });

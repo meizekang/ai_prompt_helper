@@ -43,6 +43,13 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
 });
 
+// Listen for messages from background script
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "open_save_prompt_modal") {
+    showAddPromptModal(request.text);
+  }
+});
+
 function initListeners() {
   document.addEventListener('input', handleInput);
   document.addEventListener('click', onDocumentClick);
@@ -171,6 +178,88 @@ function selectPrompt(prompt) {
   }
 }
 
+function showAddPromptModal(initialContent) {
+  const backdrop = document.createElement('div');
+  backdrop.className = 'ai-helper-backdrop';
+  
+  const modal = document.createElement('div');
+  modal.className = 'ai-helper-modal';
+  modal.style.width = '500px'; // Wider for editing
+  
+  modal.innerHTML = `
+    <h3>${I18n.getMessage('newPromptLabel') || '新建提示词'}</h3>
+    
+    <label class="ai-helper-modal-label">${I18n.getMessage('promptTitlePlaceholder') || '标题'}</label>
+    <input type="text" id="ai-helper-new-title" placeholder="${I18n.getMessage('promptTitlePlaceholder') || '标题'}" class="ai-helper-input">
+    
+    <label class="ai-helper-modal-label">${I18n.getMessage('promptContentPlaceholder') || '内容'}</label>
+    <textarea id="ai-helper-new-content" placeholder="${I18n.getMessage('promptContentPlaceholder') || '内容'}" class="ai-helper-textarea" style="height: 150px; width: 100%; box-sizing: border-box; margin-bottom: 16px; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 14px; resize: vertical;"></textarea>
+    
+    <div class="ai-helper-modal-buttons">
+      <button class="ai-helper-btn ai-helper-btn-secondary" id="ai-helper-cancel-btn">${I18n.getMessage('modalCancel')}</button>
+      <button class="ai-helper-btn ai-helper-btn-primary" id="ai-helper-save-btn">${I18n.getMessage('addPromptBtn') || '保存'}</button>
+    </div>
+  `;
+
+  const titleInput = modal.querySelector('#ai-helper-new-title');
+  const contentInput = modal.querySelector('#ai-helper-new-content');
+  const cancelBtn = modal.querySelector('#ai-helper-cancel-btn');
+  const saveBtn = modal.querySelector('#ai-helper-save-btn');
+
+  contentInput.value = initialContent || '';
+  
+  cancelBtn.onclick = () => backdrop.remove();
+  
+  saveBtn.onclick = () => {
+    const title = titleInput.value.trim();
+    const content = contentInput.value.trim();
+    
+    if (!title || !content) {
+      alert(I18n.getMessage('alertFillTitleContent') || '请填写标题和内容');
+      return;
+    }
+
+    const placeholders = [...content.matchAll(/\{\{(.+?)\}\}/g)].map(m => m[1]);
+
+    chrome.storage.local.get(['prompts'], (result) => {
+      let prompts = result.prompts || [];
+      prompts.push({ 
+        id: Date.now().toString(), 
+        title, 
+        content, 
+        placeholders, 
+        enabled: true 
+      });
+
+      chrome.storage.local.set({ prompts }, () => {
+        backdrop.remove();
+        showNotification(I18n.getMessage('alertAdded') || '添加成功');
+      });
+    });
+  };
+
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+  
+  setTimeout(() => titleInput.focus(), 100);
+}
+
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'ai-helper-notification';
+  notification.innerText = message;
+  document.body.appendChild(notification);
+
+  // Trigger reflow
+  notification.offsetHeight;
+  notification.classList.add('show');
+
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 2000);
+}
+
 function showPlaceholderModal(prompt) {
   const backdrop = document.createElement('div');
   backdrop.className = 'ai-helper-backdrop';
@@ -188,6 +277,7 @@ function showPlaceholderModal(prompt) {
 
     const input = document.createElement('input');
     input.placeholder = `${I18n.getMessage('modalInputPlaceholder')} ${ph}...`;
+    input.className = 'ai-helper-input'; // Unified class
     modal.appendChild(input);
     inputs[ph] = input;
   });

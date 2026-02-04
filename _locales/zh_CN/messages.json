@@ -130,5 +130,8 @@
   },
   "popupSubtitle": {
     "message": "您的智能写作助手"
+  },
+  "saveAsPrompt": {
+    "message": "保存为提示词"
   }
 }
