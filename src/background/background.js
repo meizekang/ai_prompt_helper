@@ -20,14 +20,24 @@ const defaultPrompts = [
 ];
 
 const defaultSettings = {
-  enabledDomains: [
-    'chatgpt.com',
-    'claude.ai',
-    'gemini.google.com',
-    'poe.com',
-    'deepseek.com'
-  ],
-  disabledDomains: []
+  globalEnabled: true,
+  domains: [
+    { id: 1, url: 'chatgpt.com', enabled: true },
+    { id: 2, url: 'claude.ai', enabled: true },
+    { id: 3, url: 'gemini.google.com', enabled: true },
+    { id: 4, url: 'poe.com', enabled: true },
+    { id: 5, url: 'deepseek.com', enabled: true },
+    { id: 6, url: 'copilot.microsoft.com', enabled: true },
+    { id: 7, url: 'perplexity.ai', enabled: true },
+    { id: 8, url: 'chat.mistral.ai', enabled: true },
+    { id: 9, url: 'doubao.com', enabled: true },
+    { id: 10, url: 'kimi.moonshot.cn', enabled: true },
+    { id: 11, url: 'tongyi.aliyun.com', enabled: true },
+    { id: 12, url: 'yiyan.baidu.com', enabled: true },
+    { id: 13, url: 'hunyuan.tencent.com', enabled: true },
+    { id: 14, url: 'chatglm.cn', enabled: true },
+    { id: 15, url: 'hailuoai.com', enabled: true }
+  ]
 };
 
 chrome.runtime.onInstalled.addListener(() => {
