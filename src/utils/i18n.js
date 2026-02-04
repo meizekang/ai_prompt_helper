@@ -43,7 +43,9 @@ const I18nData = {
     "popupUsage2": "Select a prompt template from the popup",
     "popupUsage3": "Auto-fill and replace placeholders",
     "managePromptsBtn": "Manage Prompts & Settings",
-    "popupSubtitle": "Your smart writing assistant"
+    "popupSubtitle": "Your smart writing assistant",
+    "disableSite": "Disable for this site",
+    "disableSiteHint": "Disable on this site. To re-enable later, visit the extension options page."
   },
   "zh_CN": {
     "extName": "AI 提示词助手",
@@ -89,7 +91,9 @@ const I18nData = {
     "popupUsage2": "选择弹出的提示词模板",
     "popupUsage3": "自动填充并替换占位符",
     "managePromptsBtn": "管理提示词 & 设置",
-    "popupSubtitle": "您的智能写作助手"
+    "popupSubtitle": "您的智能写作助手",
+    "disableSite": "在此网站禁用",
+    "disableSiteHint": "在此网站禁用，后续如需开启请前往扩展管理页。"
   }
 };
 

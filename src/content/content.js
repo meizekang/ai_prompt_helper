@@ -2,6 +2,7 @@ let currentOverlay = null;
 let activeElement = null;
 let prompts = [];
 let settings = {};
+let isInserting = false;
 
 // Load data and init I18n
 async function initialize() {
@@ -44,15 +45,26 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 
 function initListeners() {
   document.addEventListener('input', handleInput);
-  document.addEventListener('click', (e) => {
-    if (currentOverlay && !currentOverlay.contains(e.target) && e.target !== activeElement) {
-      removeOverlay();
-    }
-  });
+  document.addEventListener('click', onDocumentClick);
+}
+
+function removeListeners() {
+  document.removeEventListener('input', handleInput);
+  document.removeEventListener('click', onDocumentClick);
+}
+
+function onDocumentClick(e) {
+  if (currentOverlay && !currentOverlay.contains(e.target) && e.target !== activeElement) {
+    removeOverlay();
+  }
 }
 
 function handleInput(e) {
+  if (isInserting) return;
   const target = e.target;
+  // Ignore inputs inside our own UI
+  if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay')) return;
+
   if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
 
   activeElement = target;
@@ -84,9 +96,29 @@ function showOverlay(target, matches) {
 
   const header = document.createElement('div');
   header.className = 'ai-helper-header';
-  header.innerHTML = `<span>${I18n.getMessage('overlayHeader')}</span><span class="ai-helper-close">&times;</span>`;
+  header.innerHTML = `
+    <span>${I18n.getMessage('overlayHeader')}</span>
+    <div class="ai-helper-actions">
+      <div class="ai-helper-switch-container">
+        <label class="ai-helper-switch">
+          <input type="checkbox" checked>
+          <span class="ai-helper-slider"></span>
+          <div class="ai-helper-tooltip">${I18n.getMessage('disableSiteHint')}</div>
+        </label>
+      </div>
+      <span class="ai-helper-close">&times;</span>
+    </div>
+  `;
+
+  const toggle = header.querySelector('input[type="checkbox"]');
+  toggle.onchange = (e) => {
+    if (!e.target.checked) {
+      disableForThisSite();
+      removeOverlay();
+    }
+  };
+
   header.querySelector('.ai-helper-close').onclick = () => {
-    disableForThisSite();
     removeOverlay();
   };
   overlay.appendChild(header);
@@ -125,8 +157,7 @@ function disableForThisSite() {
     if (domainConfig) {
       domainConfig.enabled = false;
       chrome.storage.local.set({ settings: s });
-      // Optionally reload to stop listening
-      // location.reload(); 
+      removeListeners();
     }
   });
 }
@@ -195,6 +226,7 @@ function showPlaceholderModal(prompt) {
 function insertText(text) {
   if (!activeElement) return;
   
+  isInserting = true;
   if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
     activeElement.value = text;
   } else if (activeElement.isContentEditable) {
@@ -203,6 +235,7 @@ function insertText(text) {
   
   // Trigger input event for frameworks like React/Vue
   activeElement.dispatchEvent(new Event('input', { bubbles: true }));
+  isInserting = false;
 }
 
 // Start
