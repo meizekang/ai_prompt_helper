@@ -79,6 +79,38 @@ function onDocumentClick(e) {
   }
 }
 
+// Helper to find the true editable root
+function findEditableRoot(element) {
+  if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') return element;
+  
+  let root = element;
+  // Walk up until we find an element that is explicitly contenteditable="true" or we hit body
+  while (root && root.parentElement && root.tagName !== 'BODY') {
+    if (root.getAttribute('contenteditable') === 'true' || root.getAttribute('role') === 'textbox' || root.getAttribute('g_editable') === 'true') {
+      return root;
+    }
+    // Check parent
+    if (root.parentElement.isContentEditable || root.parentElement.getAttribute('contenteditable') === 'true') {
+      // Keep going up
+      root = root.parentElement;
+    } else {
+      break; 
+    }
+  }
+  return root;
+}
+
+// Helper to get text from an element (handling inputs and contenteditables)
+function getElementText(element) {
+  if (!element) return '';
+  if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+    return element.value;
+  }
+  // For contenteditable, innerText is usually best for "visible" text
+  // Some editors might use textContent if innerText is empty/hidden?
+  return element.innerText || element.textContent;
+}
+
 function handleKeyDown(e) {
   if ((e.key !== 'Enter' && e.keyCode !== 13) || e.shiftKey) return;
   
@@ -92,23 +124,20 @@ function handleKeyDown(e) {
   // Ignore inputs inside our own UI
   if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay') || target.closest('.ai-helper-save-confirm')) return;
 
-  if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
+  // Expanded check for editable elements (some custom editors don't set isContentEditable on the target immediately)
+  // We use findEditableRoot to determine if we are in an editor context
+  const root = findEditableRoot(target);
+  
+  // If no root found, or root is body (and target isn't explicitly editable), ignore
+  if (!root) return;
+  if (root.tagName === 'BODY' && target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
 
-  let value = '';
-  if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
-    value = target.value;
-  } else {
-    // Find root contenteditable for full text
-    let root = target;
-    while (root.parentElement && root.parentElement.isContentEditable && root.parentElement.tagName !== 'BODY') {
-      root = root.parentElement;
-    }
-    value = root.innerText;
-  }
+  let value = getElementText(root);
 
   // Fallback to history if current value is empty (e.g. site cleared it immediately)
-  if ((!value || value.trim().length === 0) && inputHistory.has(target)) {
-     value = inputHistory.get(target);
+  // We check history for the root element
+  if ((!value || value.trim().length === 0) && inputHistory.has(root)) {
+     value = inputHistory.get(root);
   }
 
   // Simple validation: must have content
@@ -171,22 +200,39 @@ function handleInput(e) {
   // Ignore inputs inside our own UI
   if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay')) return;
 
-  if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
+  const root = findEditableRoot(target);
+  if (!root) return;
+  // If root is body, and target isn't explicitly editable, ignore
+  if (root.tagName === 'BODY' && target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
 
   activeElement = target;
-  const value = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' ? target.value : target.innerText;
+  
+  // Get text from the root editable container
+  const value = getElementText(root);
 
-  // Update history
+  // Update history for the root element
   if (value) {
-    inputHistory.set(target, value);
+    inputHistory.set(root, value);
   }
 
-  if (!value) {
+  // Use the specific value for matching prompts (current word/partial)
+  // For prompt matching, we might want the cursor position context, but current logic uses full text inclusion?
+  // Current logic: prompts.filter(p => p.title...includes(value) || p.content...includes(value))
+  // The 'value' used for matching was originally target.value/innerText.
+  // If we are in a <p>, innerText is the paragraph. That's probably what we want for matching?
+  // Or do we want the whole text?
+  // The original code used `target.value` or `target.innerText`.
+  // If target is <p>, it used <p>'s text.
+  // Let's stick to using the specific target's text for matching to avoid matching against huge text blocks,
+  // but use root for history tracking.
+  const matchValue = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' ? target.value : target.innerText;
+
+  if (!matchValue) {
     removeOverlay();
     return;
   }
 
-  const matches = prompts.filter(p => p.title.toLowerCase().includes(value.toLowerCase()) || p.content.toLowerCase().includes(value.toLowerCase()));
+  const matches = prompts.filter(p => p.title.toLowerCase().includes(matchValue.toLowerCase()) || p.content.toLowerCase().includes(matchValue.toLowerCase()));
   
   if (matches.length > 0) {
     showOverlay(target, matches);
@@ -263,10 +309,13 @@ function disableForThisSite() {
   const currentDomain = window.location.hostname;
   chrome.storage.local.get(['settings'], (result) => {
     const s = result.settings || { domains: [] };
-    const domainConfig = s.domains.find(d => currentDomain.includes(d.url));
+    const domains = s.domains || [];
+    const domainConfig = domains.find(d => currentDomain.includes(d.url));
     
     if (domainConfig) {
       domainConfig.enabled = false;
+      // We must save the full structure back
+      if (!s.domains) s.domains = domains;
       chrome.storage.local.set({ settings: s });
       removeListeners();
     }

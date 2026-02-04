@@ -61,10 +61,16 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "save-prompt") {
+  if (info.menuItemId === "save-prompt" && tab && tab.id) {
     chrome.tabs.sendMessage(tab.id, {
       action: "open_save_prompt_modal",
       text: info.selectionText
+    }, () => {
+      // Check for lastError to prevent "Uncaught (in promise)" or similar errors
+      // caused by "Receiving end does not exist" when content script is missing
+      if (chrome.runtime.lastError) {
+        // console.log('Message failed:', chrome.runtime.lastError.message);
+      }
     });
   }
 });
