@@ -3,6 +3,8 @@ let activeElement = null;
 let prompts = [];
 let settings = {};
 let isInserting = false;
+// Track input values to handle cases where input is cleared before we read it
+const inputHistory = new WeakMap();
 
 // Load data and init I18n
 async function initialize() {
@@ -10,7 +12,7 @@ async function initialize() {
   
   chrome.storage.local.get(['prompts', 'settings'], (result) => {
     prompts = (result.prompts || []).filter(p => p.enabled !== false);
-    settings = result.settings || { globalEnabled: true, domains: [] };
+    settings = result.settings || { globalEnabled: true, domains: [], autoSavePromptOnEnter: true };
     
     // Check global switch
     if (settings.globalEnabled === false) return;
@@ -35,6 +37,10 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
       if (newSettings && newSettings.language && newSettings.language !== I18n.locale) {
         I18n.setLocale(newSettings.language);
       }
+      // Update local settings object
+      if (newSettings) {
+        settings = newSettings;
+      }
     }
     
     if (changes.prompts) {
@@ -53,17 +59,110 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 function initListeners() {
   document.addEventListener('input', handleInput);
   document.addEventListener('click', onDocumentClick);
+  document.addEventListener('keydown', handleKeyDown, true); // Use capture to ensure we see it
 }
 
 function removeListeners() {
   document.removeEventListener('input', handleInput);
   document.removeEventListener('click', onDocumentClick);
+  document.removeEventListener('keydown', handleKeyDown, true);
 }
 
 function onDocumentClick(e) {
   if (currentOverlay && !currentOverlay.contains(e.target) && e.target !== activeElement) {
     removeOverlay();
   }
+  // Also remove save confirmation if clicked outside
+  const saveConfirm = document.querySelector('.ai-helper-save-confirm');
+  if (saveConfirm && !saveConfirm.contains(e.target)) {
+    saveConfirm.remove();
+  }
+}
+
+function handleKeyDown(e) {
+  if ((e.key !== 'Enter' && e.keyCode !== 13) || e.shiftKey) return;
+  
+  // Ignore if user is composing text (IME)
+  if (e.isComposing || e.keyCode === 229) return;
+  
+  // Check setting (default true if undefined for existing users, but we set default above)
+  if (settings.autoSavePromptOnEnter === false) return;
+
+  const target = e.target;
+  // Ignore inputs inside our own UI
+  if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay') || target.closest('.ai-helper-save-confirm')) return;
+
+  if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
+
+  let value = '';
+  if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+    value = target.value;
+  } else {
+    // Find root contenteditable for full text
+    let root = target;
+    while (root.parentElement && root.parentElement.isContentEditable && root.parentElement.tagName !== 'BODY') {
+      root = root.parentElement;
+    }
+    value = root.innerText;
+  }
+
+  // Fallback to history if current value is empty (e.g. site cleared it immediately)
+  if ((!value || value.trim().length === 0) && inputHistory.has(target)) {
+     value = inputHistory.get(target);
+  }
+
+  // Simple validation: must have content
+  if (value && value.trim().length > 0) {
+    // Show confirmation
+    showSaveConfirmation(value.trim(), target);
+  }
+}
+
+function showSaveConfirmation(text, target) {
+  // Remove existing confirmation if any
+  const existing = document.querySelector('.ai-helper-save-confirm');
+  if (existing) existing.remove();
+
+  const confirmEl = document.createElement('div');
+  confirmEl.className = 'ai-helper-save-confirm';
+  
+  const rect = target.getBoundingClientRect();
+  
+  // Calculate position (above input, centered) - Fixed position, relative to viewport
+  let top = rect.top - 50;
+  let left = rect.left + (rect.width / 2) - 100; // Center roughly
+  
+  // Adjust if out of bounds (viewport)
+  if (top < 10) top = rect.bottom + 10; // Show below if no space above
+  if (left < 10) left = 10;
+  if (left + 200 > window.innerWidth) left = window.innerWidth - 210;
+
+  confirmEl.style.top = `${top}px`;
+  confirmEl.style.left = `${left}px`;
+
+  confirmEl.innerHTML = `
+    <span>${I18n.getMessage('savePromptConfirm')}</span>
+    <button class="ai-helper-btn-xs ai-helper-btn-primary" id="ai-confirm-save">${I18n.getMessage('modalConfirm')}</button>
+    <button class="ai-helper-close-icon" id="ai-cancel-save">&times;</button>
+  `;
+
+  document.body.appendChild(confirmEl);
+  
+  // Auto remove after 10 seconds if no interaction
+  const timer = setTimeout(() => {
+    if (confirmEl.isConnected) confirmEl.remove();
+  }, 10000);
+
+  confirmEl.querySelector('#ai-confirm-save').onclick = () => {
+    clearTimeout(timer);
+    confirmEl.remove();
+    showAddPromptModal(text);
+  };
+
+  confirmEl.querySelector('#ai-cancel-save').onclick = () => {
+    clearTimeout(timer);
+    confirmEl.remove();
+  };
 }
 
 function handleInput(e) {
@@ -76,6 +175,11 @@ function handleInput(e) {
 
   activeElement = target;
   const value = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' ? target.value : target.innerText;
+
+  // Update history
+  if (value) {
+    inputHistory.set(target, value);
+  }
 
   if (!value) {
     removeOverlay();
@@ -110,7 +214,7 @@ function showOverlay(target, matches) {
         <label class="ai-helper-switch">
           <input type="checkbox" checked>
           <span class="ai-helper-slider"></span>
-          <div class="ai-helper-tooltip">${I18n.getMessage('disableSiteHint')}</div>
+          <div class="ai-helper-tooltip">${I18n.getMessage('disableSite')}</div>
         </label>
       </div>
       <span class="ai-helper-close">&times;</span>

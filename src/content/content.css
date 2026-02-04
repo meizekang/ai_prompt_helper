@@ -303,3 +303,48 @@ input:checked + .ai-helper-slider:before {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
+
+/* Save Confirmation Toast */
+.ai-helper-save-confirm {
+  position: fixed;
+  z-index: 2147483647; /* Max Z-Index to ensure visibility */
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #374151;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  animation: ai-helper-fadeIn 0.2s ease-out;
+}
+
+.ai-helper-btn-xs {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.ai-helper-close-icon {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.ai-helper-close-icon:hover {
+  color: #4b5563;
+}

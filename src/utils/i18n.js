@@ -44,8 +44,11 @@ const I18nData = {
     "popupUsage3": "Auto-fill and replace placeholders",
     "managePromptsBtn": "Manage Prompts & Settings",
     "popupSubtitle": "Your smart writing assistant",
-    "disableSite": "Disable for this site",
-    "disableSiteHint": "Disable on this site. To re-enable later, visit the extension options page."
+    "disableSite": "Disable for this site (enable in settings)",
+    "saveAsPrompt": "Save as Prompt",
+    "autoSavePromptTitle": "Auto Save Prompt on Enter",
+    "autoSavePromptDesc": "Ask to save prompt when pressing Enter in input boxes",
+    "savePromptConfirm": "Do you want to save this as a prompt?"
   },
   "zh_CN": {
     "extName": "AI 提示词助手",
@@ -92,8 +95,11 @@ const I18nData = {
     "popupUsage3": "自动填充并替换占位符",
     "managePromptsBtn": "管理提示词 & 设置",
     "popupSubtitle": "您的智能写作助手",
-    "disableSite": "在此网站禁用",
-    "disableSiteHint": "在此网站禁用，后续如需开启请前往扩展管理页。"
+    "disableSite": "在此网站禁用，后续请在管理页面开启",
+    "saveAsPrompt": "保存为提示词",
+    "autoSavePromptTitle": "回车自动保存提示词",
+    "autoSavePromptDesc": "在输入框按下回车键时询问是否保存提示词",
+    "savePromptConfirm": "是否将此内容保存为提示词？"
   }
 };
 

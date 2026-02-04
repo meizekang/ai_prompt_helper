@@ -21,6 +21,7 @@ const defaultPrompts = [
 
 const defaultSettings = {
   globalEnabled: true,
+  autoSavePromptOnEnter: true,
   domains: [
     { id: 1, url: 'chatgpt.com', enabled: true },
     { id: 2, url: 'claude.ai', enabled: true },

@@ -205,6 +205,13 @@ function loadSettings() {
     const globalSwitch = document.getElementById('globalSwitch');
     globalSwitch.checked = settings.globalEnabled !== false;
 
+    // Render Auto Save Prompt Switch
+    const autoSavePromptSwitch = document.getElementById('autoSavePromptSwitch');
+    if (autoSavePromptSwitch) {
+      // Default to true if undefined
+      autoSavePromptSwitch.checked = settings.autoSavePromptOnEnter !== false;
+    }
+
     // Render Domain List
     const domainList = document.getElementById('domainList');
     domainList.innerHTML = '';
@@ -401,6 +408,19 @@ document.getElementById('globalSwitch').addEventListener('change', (e) => {
     chrome.storage.local.set({ settings });
   });
 });
+
+// Auto Save Prompt Switch Toggle
+const autoSavePromptSwitch = document.getElementById('autoSavePromptSwitch');
+if (autoSavePromptSwitch) {
+  autoSavePromptSwitch.addEventListener('change', (e) => {
+    const isEnabled = e.target.checked;
+    chrome.storage.local.get(['settings'], (result) => {
+      const settings = result.settings || { domains: [] };
+      settings.autoSavePromptOnEnter = isEnabled;
+      chrome.storage.local.set({ settings });
+    });
+  });
+}
 
 // Language Switch
 document.getElementById('languageSelect').addEventListener('change', (e) => {

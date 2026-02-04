@@ -23,7 +23,8 @@
     {
       "matches": ["<all_urls>"],
       "js": ["src/utils/i18n.js", "src/content/content.js"],
-      "css": ["src/content/content.css"]
+      "css": ["src/content/content.css"],
+      "run_at": "document_start"
     }
   ],
   "icons": {
