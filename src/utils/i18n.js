@@ -1,4 +1,5 @@
-const I18nData = {
+if (!window.I18n) {
+  var I18nData = {
   "en": {
     "extName": "AI Prompt Helper",
     "extDesc": "A Chrome extension to help manage and insert AI prompts with placeholders.",
@@ -144,4 +145,6 @@ class I18nManager {
 }
 
 // Global instance
-const I18n = new I18nManager();
+  var I18n = new I18nManager();
+  window.I18n = I18n;
+}

@@ -1,4 +1,7 @@
-let currentOverlay = null;
+if (!window.aiHelperContentScriptLoaded) {
+  window.aiHelperContentScriptLoaded = true;
+
+  let currentOverlay = null;
 let activeElement = null;
 let prompts = [];
 let settings = {};
@@ -489,5 +492,10 @@ function insertText(text) {
   isInserting = false;
 }
 
-// Start
-initialize();
+  // Start
+  window.aiHelperInitialize = initialize;
+}
+
+if (window.aiHelperInitialize) {
+  window.aiHelperInitialize();
+}
