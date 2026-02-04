@@ -118,27 +118,20 @@
       
       <!-- Prompts Section -->
       <div id="section-prompts" class="page-section active">
-        <h1 data-i18n="promptsTitle">提示词库</h1>
-        <div class="subtitle" data-i18n="promptsSubtitle">管理您的常用提示词，随时在网页中快速调用。</div>
-        
-        <div class="card">
-          <div class="input-group">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <label data-i18n="newPromptLabel" id="formTitleLabel">新建提示词</label>
-                <button id="cancelEdit" class="btn btn-secondary" style="display:none; padding:4px 8px; font-size:12px;" data-i18n="cancelEditBtn">取消编辑</button>
-            </div>
-            <!-- Hidden input to store editing ID -->
-            <input type="hidden" id="editPromptId" value="">
-            
-            <input type="text" id="newTitle" data-i18n-placeholder="promptTitlePlaceholder" placeholder="标题（例如：英文翻译）" style="margin-bottom: 12px; font-weight: 600;">
-            <textarea id="newContent" data-i18n-placeholder="promptContentPlaceholder" placeholder="输入提示词内容... 使用 {{text}} 作为选中文本占位符"></textarea>
-            <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
-              <button id="addPrompt" class="btn btn-primary" data-i18n="addPromptBtn">添加至库</button>
-            </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+          <div>
+            <h1 style="display: flex; align-items: baseline; gap: 12px;">
+              <span data-i18n="promptsTitle">提示词库</span>
+              <span id="promptStats" style="font-size: 14px; color: var(--text-secondary); font-weight: normal;"></span>
+            </h1>
+            <div class="subtitle" data-i18n="promptsSubtitle" style="margin-bottom: 0;">管理您的常用提示词，随时在网页中快速调用。</div>
           </div>
+          <button id="openAddModalBtn" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span data-i18n="newPromptLabel">新建提示词</span>
+          </button>
         </div>
-
-        <h2 data-i18n="myPromptsTitle">我的收藏</h2>
+        
         <div id="promptList" class="list-container">
           <!-- Populated by JS -->
         </div>
@@ -191,6 +184,35 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Edit Prompt Modal -->
+  <div id="promptModal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">新建提示词</h3>
+        <button class="close-modal" id="closeModalTop">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editPromptId" value="">
+        
+        <div class="input-group">
+          <label data-i18n="promptTitlePlaceholder">标题</label>
+          <input type="text" id="newTitle" data-i18n-placeholder="promptTitlePlaceholder" placeholder="标题（例如：英文翻译）" style="font-weight: 600;">
+        </div>
+        
+        <div class="input-group" style="margin-bottom: 0;">
+          <label data-i18n="promptContentPlaceholder">内容</label>
+          <textarea id="newContent" data-i18n-placeholder="promptContentPlaceholder" placeholder="输入提示词内容... 使用 {{text}} 作为选中文本占位符" style="height: 200px;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelModalBtn" data-i18n="modalCancel">取消</button>
+        <button class="btn btn-primary" id="savePromptBtn" data-i18n="addPromptBtn">保存</button>
+      </div>
     </div>
   </div>
 

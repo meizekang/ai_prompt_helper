@@ -8,7 +8,7 @@ async function initialize() {
   await I18n.init(); // Wait for language load
   
   chrome.storage.local.get(['prompts', 'settings'], (result) => {
-    prompts = result.prompts || [];
+    prompts = (result.prompts || []).filter(p => p.enabled !== false);
     settings = result.settings || { globalEnabled: true, domains: [] };
     
     // Check global switch
@@ -28,10 +28,16 @@ async function initialize() {
 
 // Listen for storage changes to update language on the fly
 chrome.storage.onChanged.addListener((changes, namespace) => {
-  if (namespace === 'local' && changes.settings) {
-    const newSettings = changes.settings.newValue;
-    if (newSettings && newSettings.language && newSettings.language !== I18n.locale) {
-      I18n.setLocale(newSettings.language);
+  if (namespace === 'local') {
+    if (changes.settings) {
+      const newSettings = changes.settings.newValue;
+      if (newSettings && newSettings.language && newSettings.language !== I18n.locale) {
+        I18n.setLocale(newSettings.language);
+      }
+    }
+    
+    if (changes.prompts) {
+      prompts = (changes.prompts.newValue || []).filter(p => p.enabled !== false);
     }
   }
 });

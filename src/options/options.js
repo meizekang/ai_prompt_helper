@@ -21,21 +21,6 @@ function updatePageText() {
     const key = element.getAttribute('data-i18n-placeholder');
     element.placeholder = I18n.getMessage(key);
   });
-  
-  // Dynamic button text based on edit mode
-  updateButtonText();
-}
-
-function updateButtonText() {
-    const isEdit = document.getElementById('editPromptId').value !== '';
-    const btn = document.getElementById('addPrompt');
-    if(btn) {
-        if(isEdit) {
-           btn.textContent = I18n.getMessage('updatePromptBtn') || '更新提示词';
-        } else {
-           btn.textContent = I18n.getMessage('addPromptBtn');
-        }
-    }
 }
 
 // Navigation
@@ -60,6 +45,15 @@ function loadPrompts() {
     promptList.innerHTML = '';
     const prompts = result.prompts || [];
     
+    // Update stats
+    const total = prompts.length;
+    const enabled = prompts.filter(p => p.enabled !== false).length;
+    const statsEl = document.getElementById('promptStats');
+    if (statsEl) {
+      statsEl.textContent = `(${enabled}/${total})`;
+      statsEl.title = `${I18n.getMessage('statsTitle') || 'Enabled / Total'}`;
+    }
+
     if (prompts.length === 0) {
       promptList.innerHTML = `
         <div class="empty-state">
@@ -70,12 +64,18 @@ function loadPrompts() {
       prompts.forEach((p, index) => {
         const div = document.createElement('div');
         div.className = 'list-item';
+        div.dataset.index = index; // Store index for event handling
+
         div.innerHTML = `
           <div class="item-info">
             <span class="item-title">${p.title}</span>
             <span class="item-desc">${p.content.substring(0, 80)}${p.content.length > 80 ? '...' : ''}</span>
           </div>
-          <div style="display:flex; gap:8px;">
+          <div style="display:flex; gap:8px; align-items: center;">
+            <label class="switch" style="transform: scale(0.8); margin-right: 4px;">
+              <input type="checkbox" class="prompt-toggle" data-index="${index}" ${p.enabled !== false ? 'checked' : ''}>
+              <span class="slider"></span>
+            </label>
             <button class="btn btn-icon edit-prompt" data-index="${index}" title="${I18n.getMessage('editPrompt') || '编辑'}">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             </button>
@@ -86,7 +86,93 @@ function loadPrompts() {
         `;
         promptList.appendChild(div);
       });
+      
+      // Re-attach listeners to new list items
+      attachTooltipListeners();
     }
+  });
+}
+
+// Tooltip Logic
+let tooltipTimer = null;
+const tooltipEl = document.createElement('div');
+tooltipEl.className = 'custom-tooltip';
+document.body.appendChild(tooltipEl);
+
+tooltipEl.addEventListener('mouseenter', () => {
+  if (tooltipTimer) {
+    clearTimeout(tooltipTimer);
+    tooltipTimer = null;
+  }
+});
+
+tooltipEl.addEventListener('mouseleave', () => {
+  tooltipTimer = setTimeout(() => {
+    tooltipEl.classList.remove('active');
+  }, 200);
+});
+
+function attachTooltipListeners() {
+  const items = document.querySelectorAll('.list-item .item-info');
+  
+  items.forEach(item => {
+    item.addEventListener('mouseenter', (e) => {
+      // Clear any pending hide timer
+      if (tooltipTimer) {
+        clearTimeout(tooltipTimer);
+        tooltipTimer = null;
+      }
+      
+      const listItem = item.closest('.list-item');
+      if (!listItem) return;
+      
+      const index = parseInt(listItem.dataset.index);
+      
+      chrome.storage.local.get(['prompts'], (result) => {
+        const prompts = result.prompts || [];
+        const p = prompts[index];
+        
+        if (p) {
+          // Set content
+          tooltipEl.innerHTML = `
+            <span class="custom-tooltip-title">${p.title.replace(/</g, "&lt;")}</span>
+            <span class="custom-tooltip-content">${p.content.replace(/</g, "&lt;")}</span>
+          `;
+          
+          // Position and show
+          const rect = item.getBoundingClientRect();
+          // Prefer bottom, if not enough space flip to top? For now just bottom-left aligned
+          // Or align to the right of the item if side-bar
+          // Let's float it below the title
+          
+          let top = rect.bottom + 5;
+          let left = rect.left;
+          
+          // Check bounds
+          tooltipEl.style.display = 'block'; // Ensure it has dim to measure
+          tooltipEl.classList.add('active'); // Visually show
+          
+          const tooltipRect = tooltipEl.getBoundingClientRect();
+          if (top + tooltipRect.height > window.innerHeight) {
+            top = rect.top - tooltipRect.height - 5;
+          }
+
+          // Check right edge
+          if (left + tooltipRect.width > window.innerWidth) {
+             left = window.innerWidth - tooltipRect.width - 20; // 20px padding from edge
+          }
+          
+          tooltipEl.style.top = `${top}px`;
+          tooltipEl.style.left = `${left}px`;
+        }
+      });
+    });
+
+    item.addEventListener('mouseleave', () => {
+       tooltipTimer = setTimeout(() => {
+         tooltipEl.classList.remove('active');
+       }, 300); // 300ms delay to allow moving to tooltip
+    });
   });
 }
 
@@ -158,8 +244,42 @@ function loadSettings() {
   });
 }
 
-// Add/Update Prompt
-document.getElementById('addPrompt').addEventListener('click', () => {
+// Modal Logic
+const modal = document.getElementById('promptModal');
+const modalTitle = document.getElementById('modalTitle');
+const saveBtn = document.getElementById('savePromptBtn');
+
+function openModal(isEdit = false) {
+    modal.classList.add('active');
+    if (isEdit) {
+        modalTitle.textContent = I18n.getMessage('editPrompt') || '编辑提示词';
+        saveBtn.textContent = I18n.getMessage('updatePromptBtn') || '更新';
+    } else {
+        modalTitle.textContent = I18n.getMessage('newPromptLabel') || '新建提示词';
+        saveBtn.textContent = I18n.getMessage('addPromptBtn') || '添加';
+        // Clear fields for new prompt
+        document.getElementById('editPromptId').value = '';
+        document.getElementById('newTitle').value = '';
+        document.getElementById('newContent').value = '';
+    }
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+}
+
+// Bind Modal Events
+document.getElementById('openAddModalBtn').addEventListener('click', () => openModal(false));
+document.getElementById('closeModalTop').addEventListener('click', closeModal);
+document.getElementById('cancelModalBtn').addEventListener('click', closeModal);
+
+// Close on click outside
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+});
+
+// Save Prompt
+saveBtn.addEventListener('click', () => {
   const title = document.getElementById('newTitle').value;
   const content = document.getElementById('newContent').value;
   const editId = document.getElementById('editPromptId').value;
@@ -180,35 +300,35 @@ document.getElementById('addPrompt').addEventListener('click', () => {
         if (index !== -1) {
             prompts[index] = { ...prompts[index], title, content, placeholders };
         }
-        resetEditMode();
     } else {
         // Add new
-        prompts.push({ id: Date.now().toString(), title, content, placeholders });
-        // Clear inputs only on add
-        document.getElementById('newTitle').value = '';
-        document.getElementById('newContent').value = '';
+        prompts.push({ id: Date.now().toString(), title, content, placeholders, enabled: true });
     }
 
     chrome.storage.local.set({ prompts }, () => {
       loadPrompts();
+      closeModal();
     });
   });
 });
 
-function resetEditMode() {
-    document.getElementById('editPromptId').value = '';
-    document.getElementById('newTitle').value = '';
-    document.getElementById('newContent').value = '';
-    document.getElementById('cancelEdit').style.display = 'none';
-    document.getElementById('formTitleLabel').textContent = I18n.getMessage('newPromptLabel');
-    updateButtonText();
-}
-
-// Cancel Edit
-document.getElementById('cancelEdit').addEventListener('click', resetEditMode);
-
 // Handle Edit & Delete in List
 document.getElementById('promptList').addEventListener('click', (e) => {
+  // Handle Toggle
+  if (e.target.classList.contains('prompt-toggle')) {
+    const index = parseInt(e.target.dataset.index);
+    const isEnabled = e.target.checked;
+    
+    chrome.storage.local.get(['prompts'], (result) => {
+      const prompts = result.prompts || [];
+      if (prompts[index]) {
+        prompts[index].enabled = isEnabled;
+        chrome.storage.local.set({ prompts }, loadPrompts);
+      }
+    });
+    return;
+  }
+
   const delBtn = e.target.closest('.delete-prompt');
   const editBtn = e.target.closest('.edit-prompt');
 
@@ -217,12 +337,6 @@ document.getElementById('promptList').addEventListener('click', (e) => {
       const index = parseInt(delBtn.dataset.index);
       chrome.storage.local.get(['prompts'], (result) => {
         const prompts = result.prompts || [];
-        // Check if we are editing this one
-        const deletedId = prompts[index].id;
-        if(document.getElementById('editPromptId').value === deletedId) {
-            resetEditMode();
-        }
-        
         prompts.splice(index, 1);
         chrome.storage.local.set({ prompts }, loadPrompts);
       });
@@ -239,12 +353,7 @@ document.getElementById('promptList').addEventListener('click', (e) => {
             document.getElementById('newTitle').value = prompt.title;
             document.getElementById('newContent').value = prompt.content;
             document.getElementById('editPromptId').value = prompt.id;
-            
-            // Show cancel button and scroll to top
-            document.getElementById('cancelEdit').style.display = 'inline-block';
-            document.getElementById('formTitleLabel').textContent = I18n.getMessage('editPrompt') || '编辑提示词';
-            updateButtonText();
-            document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
+            openModal(true);
         }
     });
   }
