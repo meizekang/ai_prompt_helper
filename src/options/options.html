@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Helper - Settings</title>
+  <style>
+    :root {
+      /* Light Theme (Default) */
+      --bg-body: #ffffff;
+      --bg-sidebar: #f5f5f7;
+      --bg-card: #ffffff;
+      --bg-input: #ffffff;
+      --bg-hover: #f0f0f2;
+      
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      
+      --border-color: #d2d2d7;
+      --border-light: #e5e5e5;
+      
+      --accent-color: #007aff; /* Apple Blue */
+      --accent-hover: #0062cc;
+      --danger-color: #ff3b30;
+      
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Dark Theme */
+        --bg-body: #1c1c1e;
+        --bg-sidebar: #2c2c2e;
+        --bg-card: #2c2c2e;
+        --bg-input: #1c1c1e;
+        --bg-hover: #3a3a3c;
+        
+        --text-primary: #f5f5f7;
+        --text-secondary: #aeaeb2;
+        
+        --border-color: #48484a;
+        --border-light: #38383a;
+        
+        --accent-color: #0a84ff;
+        --accent-hover: #409cff;
+        --danger-color: #ff453a;
+
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      margin: 0; 
+      padding: 0; 
+      line-height: 1.5;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    /* Layout */
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar {
+      width: 260px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      padding: 30px 16px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .sidebar-header {
+      padding: 0 12px 24px;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+    }
+    
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent-color), #5ac8fa);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-secondary);
+    }
+
+    .nav-item:hover {
+      background-color: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background-color: var(--bg-card); /* White/Dark Gray */
+      color: var(--accent-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Typography */
+    h1 { 
+      font-size: 28px; 
+      font-weight: 700; 
+      margin: 0 0 10px 0; 
+      color: var(--text-primary); 
+      letter-spacing: -0.5px;
+    }
+    
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+    
+    h2 { 
+      font-size: 13px; 
+      font-weight: 600; 
+      margin: 32px 0 16px 0; 
+      color: var(--text-secondary); 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Cards & Inputs */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .input-group { margin-bottom: 20px; }
+    .input-group:last-child { margin-bottom: 0; }
+    
+    label { 
+      display: block; 
+      font-size: 14px; 
+      font-weight: 500; 
+      margin-bottom: 8px; 
+      color: var(--text-primary); 
+    }
+    
+    input[type="text"], textarea { 
+      width: 100%; 
+      padding: 12px; 
+      border: 1px solid var(--border-color); 
+      border-radius: var(--radius-sm); 
+      font-size: 15px; 
+      background: var(--bg-input);
+      color: var(--text-primary);
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+    }
+    
+    textarea { min-height: 100px; resize: vertical; line-height: 1.6; }
+
+    /* Buttons */
+    .btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .btn-primary { 
+      background-color: var(--accent-color); 
+      color: white; 
+    }
+    .btn-primary:hover { background-color: var(--accent-hover); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    
+    .btn-secondary {
+      background-color: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover { background-color: var(--border-color); }
+
+    .btn-icon {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: 50%;
+      color: var(--text-secondary);
+      background: transparent;
+    }
+    .btn-icon:hover {
+      background-color: var(--bg-hover);
+      color: var(--danger-color);
+    }
+
+    .hint { font-size: 13px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; }
+
+    /* List Items */
+    .list-container {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      overflow: hidden;
+    }
+
+    .list-item { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 16px 20px; 
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.2s;
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-item:hover { background-color: var(--bg-hover); }
+    
+    .item-info { flex: 1; padding-right: 16px; }
+    .item-title { display: block; font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+    .item-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+    /* Empty State */
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    .empty-icon { font-size: 32px; margin-bottom: 12px; display: block; opacity: 0.5; }
+
+    /* Toggle Switch */
+    .switch-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .switch-row:last-child { border-bottom: none; }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input { display: none; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--border-color);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    input:checked + .slider { background-color: var(--accent-color); }
+    input:checked + .slider:before { transform: translateX(20px); }
+
+    /* Utilities */
+    .page-section { display: none; animation: fadeIn 0.2s ease-out; }
+    .page-section.active { display: block; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .flex-row { display: flex; gap: 12px; }
+    .flex-1 { flex: 1; }
+  </style>
+</head>
+<body>
+  
+  <div class="app-container">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">AI</div>
+        <span>Prompt Helper</span>
+      </div>
+      <nav class="nav-menu">
+        <div class="nav-item active" data-target="prompts">
+          <span style="font-size: 18px;">📝</span> 提示词库
+        </div>
+        <div class="nav-item" data-target="settings">
+          <span style="font-size: 18px;">⚙️</span> 偏好设置
+        </div>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      
+      <!-- Prompts Section -->
+      <div id="section-prompts" class="page-section active">
+        <h1>提示词库</h1>
+        <div class="subtitle">管理您的常用提示词，随时在网页中快速调用。</div>
+        
+        <div class="card">
+          <div class="input-group">
+            <label>新建提示词</label>
+            <input type="text" id="newTitle" placeholder="标题（例如：英文翻译）" style="margin-bottom: 12px; font-weight: 600;">
+            <textarea id="newContent" placeholder="输入提示词内容... 使用 {{text}} 作为选中文本占位符"></textarea>
+            <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
+              <button id="addPrompt" class="btn btn-primary">添加至库</button>
+            </div>
+          </div>
+        </div>
+
+        <h2>我的收藏</h2>
+        <div id="promptList" class="list-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div id="section-settings" class="page-section">
+        <h1>偏好设置</h1>
+        <div class="subtitle">管理扩展的生效范围和全局开关。</div>
+        
+        <div class="card" style="padding: 0 24px;">
+          <div class="switch-row">
+            <div>
+              <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">全局启用</div>
+              <div style="font-size: 13px; color: var(--text-secondary);">一键开启或关闭扩展的所有功能</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="globalSwitch">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <h2>网站管理</h2>
+        <div class="card">
+          <div class="input-group">
+            <label>添加生效网站</label>
+            <div class="flex-row">
+              <input type="text" id="newDomain" placeholder="输入域名 (例如: chatgpt.com)" class="flex-1">
+              <button id="addDomain" class="btn btn-primary" style="white-space: nowrap;">添加</button>
+            </div>
+            <div class="hint">仅在白名单列表中的网站显示提示词助手弹窗。</div>
+          </div>
+        </div>
+
+        <div id="domainList" class="list-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
