@@ -37,6 +37,15 @@
   "addPromptBtn": {
     "message": "Add to Library"
   },
+  "updatePromptBtn": {
+    "message": "Update Prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Cancel"
+  },
+  "editPrompt": {
+    "message": "Edit Prompt"
+  },
   "myPromptsTitle": {
     "message": "My Favorites"
   },
@@ -54,6 +63,12 @@
   },
   "globalEnableDesc": {
     "message": "Toggle all extension features"
+  },
+  "languageLabel": {
+    "message": "Language"
+  },
+  "languageDesc": {
+    "message": "Choose display language"
   },
   "siteManagementTitle": {
     "message": "Site Management"
@@ -102,5 +117,20 @@
   },
   "modalInputPlaceholder": {
     "message": "Enter value for"
+  },
+  "popupUsage1": {
+    "message": "Type keywords in input box on enabled sites"
+  },
+  "popupUsage2": {
+    "message": "Select a prompt template from the popup"
+  },
+  "popupUsage3": {
+    "message": "Auto-fill and replace placeholders"
+  },
+  "managePromptsBtn": {
+    "message": "Manage Prompts & Settings"
+  },
+  "popupSubtitle": {
+    "message": "Your smart writing assistant"
   }
 }

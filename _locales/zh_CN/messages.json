@@ -35,6 +35,15 @@
   "addPromptBtn": {
     "message": "添加至库"
   },
+  "updatePromptBtn": {
+    "message": "更新提示词"
+  },
+  "cancelEditBtn": {
+    "message": "取消编辑"
+  },
+  "editPrompt": {
+    "message": "编辑提示词"
+  },
   "myPromptsTitle": {
     "message": "我的收藏"
   },
@@ -52,6 +61,12 @@
   },
   "globalEnableDesc": {
     "message": "一键开启或关闭扩展的所有功能"
+  },
+  "languageLabel": {
+    "message": "界面语言"
+  },
+  "languageDesc": {
+    "message": "选择您偏好的显示语言"
   },
   "siteManagementTitle": {
     "message": "网站管理"
@@ -100,5 +115,20 @@
   },
   "modalInputPlaceholder": {
     "message": "请输入"
+  },
+  "popupUsage1": {
+    "message": "在已配置的网站输入框中输入关键词"
+  },
+  "popupUsage2": {
+    "message": "选择弹出的提示词模板"
+  },
+  "popupUsage3": {
+    "message": "自动填充并替换占位符"
+  },
+  "managePromptsBtn": {
+    "message": "管理提示词 & 设置"
+  },
+  "popupSubtitle": {
+    "message": "您的智能写作助手"
   }
 }

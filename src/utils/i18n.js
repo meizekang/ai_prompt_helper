@@ -35,7 +35,15 @@ const I18nData = {
     "overlayHeader": "Prompt Match",
     "modalCancel": "Cancel",
     "modalConfirm": "Confirm and Insert",
-    "modalInputPlaceholder": "Enter value for"
+    "modalInputPlaceholder": "Enter value for",
+    "updatePromptBtn": "Update Prompt",
+    "cancelEditBtn": "Cancel",
+    "editPrompt": "Edit Prompt",
+    "popupUsage1": "Type keywords in input box on enabled sites",
+    "popupUsage2": "Select a prompt template from the popup",
+    "popupUsage3": "Auto-fill and replace placeholders",
+    "managePromptsBtn": "Manage Prompts & Settings",
+    "popupSubtitle": "Your smart writing assistant"
   },
   "zh_CN": {
     "extName": "AI 提示词助手",
@@ -73,7 +81,15 @@ const I18nData = {
     "overlayHeader": "提示词匹配",
     "modalCancel": "取消",
     "modalConfirm": "确定并插入",
-    "modalInputPlaceholder": "请输入"
+    "modalInputPlaceholder": "请输入",
+    "updatePromptBtn": "更新提示词",
+    "cancelEditBtn": "取消编辑",
+    "editPrompt": "编辑提示词",
+    "popupUsage1": "在已配置的网站输入框中输入关键词",
+    "popupUsage2": "选择弹出的提示词模板",
+    "popupUsage3": "自动填充并替换占位符",
+    "managePromptsBtn": "管理提示词 & 设置",
+    "popupSubtitle": "您的智能写作助手"
   }
 };
 

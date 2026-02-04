@@ -21,6 +21,21 @@ function updatePageText() {
     const key = element.getAttribute('data-i18n-placeholder');
     element.placeholder = I18n.getMessage(key);
   });
+  
+  // Dynamic button text based on edit mode
+  updateButtonText();
+}
+
+function updateButtonText() {
+    const isEdit = document.getElementById('editPromptId').value !== '';
+    const btn = document.getElementById('addPrompt');
+    if(btn) {
+        if(isEdit) {
+           btn.textContent = I18n.getMessage('updatePromptBtn') || '更新提示词';
+        } else {
+           btn.textContent = I18n.getMessage('addPromptBtn');
+        }
+    }
 }
 
 // Navigation
@@ -60,9 +75,14 @@ function loadPrompts() {
             <span class="item-title">${p.title}</span>
             <span class="item-desc">${p.content.substring(0, 80)}${p.content.length > 80 ? '...' : ''}</span>
           </div>
-          <button class="btn btn-icon delete-prompt" data-index="${index}" title="${I18n.getMessage('modalCancel') /* Reusing or use specific 'delete' tooltip */ }">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-          </button>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-icon edit-prompt" data-index="${index}" title="${I18n.getMessage('editPrompt') || '编辑'}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            </button>
+            <button class="btn btn-icon delete-prompt" data-index="${index}" title="${I18n.getMessage('modalCancel')}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </button>
+          </div>
         `;
         promptList.appendChild(div);
       });
@@ -78,7 +98,7 @@ function loadSettings() {
       domains: []
     };
 
-    // Migration logic (keep for backward compatibility)
+    // Migration logic
     if (Array.isArray(settings.enabledDomains)) {
       const oldDomains = settings.enabledDomains;
       oldDomains.forEach(domainStr => {
@@ -127,7 +147,7 @@ function loadSettings() {
               <input type="checkbox" class="domain-toggle" data-index="${index}" ${domain.enabled ? 'checked' : ''}>
               <span class="slider"></span>
             </label>
-            <button class="btn btn-icon delete-domain" data-index="${index}" title="${I18n.getMessage('modalCancel') /* Reusing or specific */ }">
+            <button class="btn btn-icon delete-domain" data-index="${index}" title="${I18n.getMessage('modalCancel')}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
@@ -138,10 +158,12 @@ function loadSettings() {
   });
 }
 
-// Add Prompt
+// Add/Update Prompt
 document.getElementById('addPrompt').addEventListener('click', () => {
   const title = document.getElementById('newTitle').value;
   const content = document.getElementById('newContent').value;
+  const editId = document.getElementById('editPromptId').value;
+  
   if (!title || !content) {
     alert(I18n.getMessage('alertFillTitleContent'));
     return;
@@ -150,28 +172,81 @@ document.getElementById('addPrompt').addEventListener('click', () => {
   const placeholders = [...content.matchAll(/\{\{(.+?)\}\}/g)].map(m => m[1]);
   
   chrome.storage.local.get(['prompts'], (result) => {
-    const prompts = result.prompts || [];
-    prompts.push({ id: Date.now().toString(), title, content, placeholders });
+    let prompts = result.prompts || [];
+    
+    if (editId) {
+        // Update existing
+        const index = prompts.findIndex(p => p.id === editId);
+        if (index !== -1) {
+            prompts[index] = { ...prompts[index], title, content, placeholders };
+        }
+        resetEditMode();
+    } else {
+        // Add new
+        prompts.push({ id: Date.now().toString(), title, content, placeholders });
+        // Clear inputs only on add
+        document.getElementById('newTitle').value = '';
+        document.getElementById('newContent').value = '';
+    }
+
     chrome.storage.local.set({ prompts }, () => {
-      document.getElementById('newTitle').value = '';
-      document.getElementById('newContent').value = '';
       loadPrompts();
     });
   });
 });
 
-// Delete Prompt
+function resetEditMode() {
+    document.getElementById('editPromptId').value = '';
+    document.getElementById('newTitle').value = '';
+    document.getElementById('newContent').value = '';
+    document.getElementById('cancelEdit').style.display = 'none';
+    document.getElementById('formTitleLabel').textContent = I18n.getMessage('newPromptLabel');
+    updateButtonText();
+}
+
+// Cancel Edit
+document.getElementById('cancelEdit').addEventListener('click', resetEditMode);
+
+// Handle Edit & Delete in List
 document.getElementById('promptList').addEventListener('click', (e) => {
-  const btn = e.target.closest('.delete-prompt');
-  if (btn) {
+  const delBtn = e.target.closest('.delete-prompt');
+  const editBtn = e.target.closest('.edit-prompt');
+
+  if (delBtn) {
     if(confirm(I18n.getMessage('confirmDeletePrompt'))) {
-      const index = parseInt(btn.dataset.index);
+      const index = parseInt(delBtn.dataset.index);
       chrome.storage.local.get(['prompts'], (result) => {
         const prompts = result.prompts || [];
+        // Check if we are editing this one
+        const deletedId = prompts[index].id;
+        if(document.getElementById('editPromptId').value === deletedId) {
+            resetEditMode();
+        }
+        
         prompts.splice(index, 1);
         chrome.storage.local.set({ prompts }, loadPrompts);
       });
     }
+    return;
+  }
+
+  if (editBtn) {
+    const index = parseInt(editBtn.dataset.index);
+    chrome.storage.local.get(['prompts'], (result) => {
+        const prompts = result.prompts || [];
+        const prompt = prompts[index];
+        if (prompt) {
+            document.getElementById('newTitle').value = prompt.title;
+            document.getElementById('newContent').value = prompt.content;
+            document.getElementById('editPromptId').value = prompt.id;
+            
+            // Show cancel button and scroll to top
+            document.getElementById('cancelEdit').style.display = 'inline-block';
+            document.getElementById('formTitleLabel').textContent = I18n.getMessage('editPrompt') || '编辑提示词';
+            updateButtonText();
+            document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
   }
 });
 
@@ -228,7 +303,6 @@ document.getElementById('languageSelect').addEventListener('change', (e) => {
     chrome.storage.local.set({ settings }, () => {
       I18n.setLocale(newLang);
       updatePageText();
-      // Reload prompts and settings to refresh dynamic content text if needed (e.g. empty states)
       loadPrompts();
       loadSettings();
     });

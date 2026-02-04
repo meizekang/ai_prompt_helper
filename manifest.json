@@ -10,7 +10,9 @@
     "scripting"
   ],
   "action": {
-    "default_popup": "src/popup/popup.html"
+    "default_popup": "src/popup/popup.html",
+    "default_icon": "icons/icon.svg",
+    "default_title": "__MSG_extName__"
   },
   "options_page": "src/options/options.html",
   "background": {

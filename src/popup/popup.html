@@ -2,15 +2,92 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>AI Prompt Helper</title>
+  <title data-i18n="extName">AI Prompt Helper</title>
+  <link rel="stylesheet" href="../styles/common.css">
   <style>
-    body { width: 200px; padding: 10px; font-family: sans-serif; }
-    button { width: 100%; padding: 8px; cursor: pointer; }
+    body { 
+      width: 320px; 
+      height: auto; 
+      padding: 16px; 
+      background: var(--bg-body);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .title-group h3 { margin: 0; font-size: 16px; }
+    .title-group p { margin: 0; font-size: 12px; color: var(--text-secondary); }
+    
+    .intro-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .usage-step {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .usage-step:last-child { margin-bottom: 0; }
+    
+    .step-icon {
+      background: var(--bg-hover);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--accent-color);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    
+    .step-text {
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    button { width: 100%; margin-top: 8px; }
   </style>
 </head>
 <body>
-  <h3>AI Prompt Helper</h3>
-  <button id="openOptions">管理提示词</button>
+  <div class="header">
+    <div class="logo-icon">AI</div>
+    <div class="title-group">
+      <h3 data-i18n="extName">AI Prompt Helper</h3>
+      <p data-i18n="popupSubtitle">Your smart writing assistant</p>
+    </div>
+  </div>
+
+  <div class="intro-card">
+    <div class="usage-step">
+      <div class="step-icon">1</div>
+      <div class="step-text" data-i18n="popupUsage1">在已配置的网站输入框中输入关键词</div>
+    </div>
+    <div class="usage-step">
+      <div class="step-icon">2</div>
+      <div class="step-text" data-i18n="popupUsage2">选择弹出的提示词模板</div>
+    </div>
+    <div class="usage-step">
+      <div class="step-icon">3</div>
+      <div class="step-text" data-i18n="popupUsage3">自动填充并替换占位符</div>
+    </div>
+  </div>
+
+  <button id="openOptions" class="btn btn-primary">
+    <span data-i18n="managePromptsBtn">管理提示词 & 设置</span>
+  </button>
+  
+  <script src="../utils/i18n.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
