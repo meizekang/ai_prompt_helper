@@ -37,7 +37,8 @@ const defaultSettings = {
     { id: 12, url: 'yiyan.baidu.com', enabled: true },
     { id: 13, url: 'hunyuan.tencent.com', enabled: true },
     { id: 14, url: 'chatglm.cn', enabled: true },
-    { id: 15, url: 'hailuoai.com', enabled: true }
+    { id: 15, url: 'hailuoai.com', enabled: true },
+    { id: 16, url: 'qianwen.com', enabled: true }
   ]
 };
 
