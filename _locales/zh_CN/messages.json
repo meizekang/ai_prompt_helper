@@ -3,7 +3,7 @@
     "message": "AI 提示词助手"
   },
   "extDesc": {
-    "message": "一个帮助管理和插入带占位符的 AI 提示词的 Chrome 扩展。"
+    "message": "提升 AI 效率。智能管理提示词库，支持关键词匹配、动态变量填充与一键调用。"
   },
   "optionsTitle": {
     "message": "AI 提示词助手 - 设置"
