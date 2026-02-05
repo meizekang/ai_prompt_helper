@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AI Prompt Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <div class="logo-icon">AI</div>
+                <div>
+                    <h1>AI Prompt Helper</h1>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.8;" id="subtitle">Your smart writing assistant</p>
+                </div>
+            </div>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('zh')" id="btn-zh">中文</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+            </div>
+        </header>
+
+        <!-- Chinese Content -->
+        <div id="content-zh" class="lang-content">
+            <div class="card">
+                <h1>隐私政策</h1>
+                <p class="last-updated">最后更新日期：2026年2月5日</p>
+
+                <p>欢迎使用 <strong>AI Prompt Helper</strong>（以下简称“本扩展”）。我们需要向您说明我们如何处理您的数据。简而言之：<strong>我们不收集您的任何个人信息，您的数据完全存储在您的本地设备上。</strong></p>
+
+                <h2>1. 数据收集与存储</h2>
+                <p>本扩展承诺<strong>不收集、不传输、不存储</strong>您的任何个人信息或使用数据到任何外部服务器。</p>
+                <ul>
+                    <li><strong>本地存储</strong>：您创建的所有提示词（Prompts）和设置选项均存储在您浏览器的 <code>chrome.storage.local</code> 中。这些数据仅保留在您的设备上，除非您主动将其导出或卸载本扩展。</li>
+                    <li><strong>无云端同步</strong>：本扩展目前没有云端同步功能，因此我们无法访问您的任何数据。</li>
+                </ul>
+
+                <h2>2. 权限使用说明</h2>
+                <p>为了实现功能，本扩展需要申请以下权限，我们仅在必要时使用这些权限：</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>：用于在您的本地设备上保存您的提示词库和偏好设置。</li>
+                    <li><strong>activeTab / scripting</strong>：用于在您当前浏览的 AI 网页（如 ChatGPT, Claude 等）中自动填充您选择的提示词。我们仅在您主动点击扩展界面或使用快捷键时才会与页面交互。</li>
+                    <li><strong>contextMenus</strong>：用于在网页上添加右键菜单，方便您将选中的文本快速保存为新的提示词。</li>
+                </ul>
+
+                <h2>3. 第三方服务</h2>
+                <p>本扩展纯本地运行，不包含任何第三方分析工具（如 Google Analytics）、广告 SDK 或追踪代码。</p>
+
+                <h2>4. 数据安全</h2>
+                <p>由于您的数据存储在本地，其安全性依赖于您设备的安全性。请勿在公共设备上保存敏感信息。</p>
+
+                <h2>5. 政策更新</h2>
+                <p>如果我们的隐私政策发生重大变更，我们将通过扩展更新说明或本页面通知您。由于本扩展不收集用户信息，我们无法通过电子邮件通知您。</p>
+
+                <h2>6. 联系我们</h2>
+                <p>如果您对本隐私政策有任何疑问，或者在使用过程中遇到问题，请通过 GitHub Issues 或应用商店评论区与我们联系。</p>
+            </div>
+        </div>
+
+        <!-- English Content -->
+        <div id="content-en" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last Updated: February 5, 2026</p>
+
+                <p>Welcome to <strong>AI Prompt Helper</strong> (hereinafter referred to as "the Extension"). We want to be transparent about how we handle your data. In short: <strong>We do not collect any of your personal information; your data is stored entirely on your local device.</strong></p>
+
+                <h2>1. Data Collection and Storage</h2>
+                <p>The Extension commits to <strong>not collecting, transmitting, or storing</strong> any of your personal information or usage data on any external servers.</p>
+                <ul>
+                    <li><strong>Local Storage</strong>: All prompts and settings you create are stored in your browser's <code>chrome.storage.local</code>. This data remains solely on your device unless you manually export it or uninstall the Extension.</li>
+                    <li><strong>No Cloud Sync</strong>: The Extension currently does not have cloud synchronization features, so we do not have access to any of your data.</li>
+                </ul>
+
+                <h2>2. Permissions Usage</h2>
+                <p>To function correctly, the Extension requests the following permissions, used only when necessary:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Used to save your prompt library and preferences on your local device.</li>
+                    <li><strong>activeTab / scripting</strong>: Used to auto-fill your selected prompts on AI websites you are currently visiting (e.g., ChatGPT, Claude). We interact with the page only when you actively click the extension interface or use a shortcut.</li>
+                    <li><strong>contextMenus</strong>: Used to add a right-click menu option, allowing you to quickly save selected text as a new prompt.</li>
+                </ul>
+
+                <h2>3. Third-Party Services</h2>
+                <p>The Extension runs purely locally and does not contain any third-party analytics tools (like Google Analytics), advertising SDKs, or tracking code.</p>
+
+                <h2>4. Data Security</h2>
+                <p>Since your data is stored locally, its security depends on the security of your device. Please avoid saving sensitive information on public devices.</p>
+
+                <h2>5. Policy Updates</h2>
+                <p>If there are significant changes to our privacy policy, we will notify you via extension update notes or this page. Since we do not collect user information, we cannot notify you via email.</p>
+
+                <h2>6. Contact Us</h2>
+                <p>If you have any questions about this privacy policy or encounter issues while using the Extension, please contact us via GitHub Issues or the Chrome Web Store support section.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 AI Prompt Helper. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            // Update Content
+            document.querySelectorAll('.lang-content').forEach(el => el.style.display = 'none');
+            document.getElementById('content-' + lang).style.display = 'block';
+
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            // Update Meta
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            const subtitle = document.getElementById('subtitle');
+            if (lang === 'zh') {
+                subtitle.innerText = '您的智能提示词助手';
+                document.title = '隐私政策 - AI Prompt Helper';
+            } else {
+                subtitle.innerText = 'Your smart writing assistant';
+                document.title = 'Privacy Policy - AI Prompt Helper';
+            }
+        }
+
+        // Auto-detect language
+        const userLang = navigator.language || navigator.userLanguage;
+        if (!userLang.startsWith('zh')) {
+            setLang('en');
+        }
+    </script>
+</body>
+</html>
