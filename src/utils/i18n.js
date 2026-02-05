@@ -49,7 +49,12 @@ if (!window.I18n) {
     "saveAsPrompt": "Save as Prompt",
     "autoSavePromptTitle": "Auto Save Prompt on Enter",
     "autoSavePromptDesc": "Ask to save prompt when pressing Enter in input boxes",
-    "savePromptConfirm": "Do you want to save this as a prompt?"
+    "savePromptConfirm": "Do you want to save this as a prompt?",
+    "exportPrompts": "Export Prompts",
+    "importPrompts": "Import Prompts",
+    "importFormatError": "Import failed: Invalid file format. Please use the correct JSON format.",
+    "importSuccess": "Successfully imported prompts",
+    "importTemplateHint": "Correct format example:\n[\n  {\n    \"title\": \"Example Title\",\n    \"content\": \"Example content {{text}}\"\n  }\n]"
   },
   "zh_CN": {
     "extName": "AI 提示词助手",
@@ -100,7 +105,12 @@ if (!window.I18n) {
     "saveAsPrompt": "保存为提示词",
     "autoSavePromptTitle": "回车自动保存提示词",
     "autoSavePromptDesc": "在输入框按下回车键时询问是否保存提示词",
-    "savePromptConfirm": "是否将此内容保存为提示词？"
+    "savePromptConfirm": "是否将此内容保存为提示词？",
+    "exportPrompts": "导出提示词",
+    "importPrompts": "导入提示词",
+    "importFormatError": "导入失败：文件格式不正确。请使用正确的 JSON 格式。",
+    "importSuccess": "成功导入条提示词",
+    "importTemplateHint": "正确的格式示例：\n[\n  {\n    \"title\": \"示例标题\",\n    \"content\": \"示例内容 {{text}}\"\n  }\n]"
   }
 };
 

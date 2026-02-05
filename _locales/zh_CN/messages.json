@@ -133,5 +133,20 @@
   },
   "saveAsPrompt": {
     "message": "保存为提示词"
+  },
+  "exportPrompts": {
+    "message": "导出提示词"
+  },
+  "importPrompts": {
+    "message": "导入提示词"
+  },
+  "importFormatError": {
+    "message": "导入失败：文件格式不正确。请使用正确的 JSON 格式。"
+  },
+  "importSuccess": {
+    "message": "成功导入条提示词"
+  },
+  "importTemplateHint": {
+    "message": "正确的格式示例：\n[\n  {\n    \"title\": \"示例标题\",\n    \"content\": \"示例内容 {{text}}\"\n  }\n]"
   }
 }

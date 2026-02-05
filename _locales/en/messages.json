@@ -135,5 +135,20 @@
   },
   "saveAsPrompt": {
     "message": "Save as Prompt"
+  },
+  "exportPrompts": {
+    "message": "Export Prompts"
+  },
+  "importPrompts": {
+    "message": "Import Prompts"
+  },
+  "importFormatError": {
+    "message": "Import failed: Invalid file format. Please use the correct JSON format."
+  },
+  "importSuccess": {
+    "message": "Successfully imported prompts"
+  },
+  "importTemplateHint": {
+    "message": "Correct format example:\n[\n  {\n    \"title\": \"Example Title\",\n    \"content\": \"Example content {{text}}\"\n  }\n]"
   }
 }

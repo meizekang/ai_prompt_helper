@@ -57,7 +57,15 @@ function loadPrompts() {
     if (prompts.length === 0) {
       promptList.innerHTML = `
         <div class="empty-state">
-          <span class="empty-icon">📝</span>
+          <span class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary); opacity: 0.5;">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </span>
           <div>${I18n.getMessage('emptyPrompts')}</div>
         </div>`;
     } else {
@@ -473,4 +481,67 @@ document.getElementById('domainList').addEventListener('click', (e) => {
 localize().then(() => {
   loadPrompts();
   loadSettings();
+});
+
+// Export Prompts
+document.getElementById('exportPromptsBtn').addEventListener('click', () => {
+  chrome.storage.local.get(['prompts'], (result) => {
+    const prompts = result.prompts || [];
+    // Only export essential fields to keep it clean
+    const exportData = prompts.map(({ title, content }) => ({ title, content }));
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ai-prompts-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+});
+
+// Import Prompts
+const importFileInput = document.getElementById('importFileInput');
+document.getElementById('importPromptsBtn').addEventListener('click', () => {
+  importFileInput.click();
+});
+
+importFileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    try {
+      const importedData = JSON.parse(event.target.result);
+      
+      // Validation
+      if (!Array.isArray(importedData) || !importedData.every(p => p.title && p.content)) {
+        throw new Error('Invalid format');
+      }
+
+      chrome.storage.local.get(['prompts'], (result) => {
+        let prompts = result.prompts || [];
+        
+        const newPrompts = importedData.map(p => ({
+          id: Date.now().toString() + Math.random().toString(36).substr(2, 5),
+          title: p.title,
+          content: p.content,
+          placeholders: [...p.content.matchAll(/\{\{(.+?)\}\}/g)].map(m => m[1]),
+          enabled: true
+        }));
+
+        prompts = [...prompts, ...newPrompts];
+        chrome.storage.local.set({ prompts }, () => {
+          loadPrompts();
+          const msg = I18n.getMessage('importSuccess');
+          alert(msg.includes('导入') ? `成功导入 ${newPrompts.length} 条提示词` : `Successfully imported ${newPrompts.length} prompts`);
+          importFileInput.value = ''; // Reset
+        });
+      });
+    } catch (err) {
+      alert(I18n.getMessage('importFormatError') + '\n\n' + I18n.getMessage('importTemplateHint'));
+      importFileInput.value = ''; // Reset
+    }
+  };
+  reader.readAsText(file);
 });
