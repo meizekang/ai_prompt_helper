@@ -1,21 +1,15 @@
 const defaultPrompts = [
   {
     id: '1',
-    title: '翻译为中文',
-    content: '请将以下内容翻译为中文：{{text}}',
+    title: '💡 使用说明 (必读)',
+    content: '欢迎使用 AI 提示词助手！\n\n1. 如何配置：在设置页面的“提示词库”中点击“新建提示词”。\n2. 占位符：使用 {{text}} 代表选中的文本。例如：\"请翻译：{{text}}\"。\n3. 快速调用：在支持的 AI 网站输入框中，输入与提示词标题匹配的文字，或直接点击弹出的悬浮按钮。\n4. 自定义变量：你可以使用任何双大括号包裹的词，如 {{language}}，插件会提示你输入具体内容。\n\n当前选中的文本是：{{text}}',
     placeholders: ['text']
   },
   {
     id: '2',
-    title: '代码解释',
-    content: '请解释这段{{language}}代码：{{code}}',
-    placeholders: ['language', 'code']
-  },
-  {
-    id: '3',
-    title: '总结文章',
-    content: '请总结这篇文章的核心观点：{{article}}',
-    placeholders: ['article']
+    title: '💡 Usage Guide (Read Me)',
+    content: 'Welcome to AI Prompt Helper!\n\n1. How to configure: Click "New Prompt" in the "Prompt Library" on the settings page.\n2. Placeholders: Use {{text}} to represent your selected text. E.g., "Please translate: {{text}}".\n3. Quick Access: On supported AI sites, type words matching the prompt title or click the floating button.\n4. Custom Variables: You can use any word in double braces, like {{language}}, and the extension will ask for input.\n\nYour current selection is: {{text}}',
+    placeholders: ['text']
   }
 ];
 
