@@ -1,6 +1,6 @@
 # AI Prompt Helper
 
-[English](./README.md) | [简体中文](./README_zh.md)
+[简体中文](./README_zh.md) | [English](./README.md)
 
 AI Prompt Helper is a powerful browser extension designed to boost your AI workflow. It helps you manage, organize, and instantly insert prompts with smart matching and dynamic placeholders.
 

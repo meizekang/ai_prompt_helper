@@ -1,6 +1,6 @@
 # AI Prompt Helper
 
-[English](./README.md) | [简体中文](./README_zh.md)
+[简体中文](./README_zh.md) | [English](./README.md)
 
 AI Prompt Helper 是一款功能强大的浏览器扩展，旨在优化您的 AI 工作流。它可以帮助您管理、组织并快速插入带有智能匹配和动态占位符的提示词（Prompts）。
 
