@@ -89,11 +89,16 @@ function findEditableRoot(element) {
   let root = element;
   // Walk up until we find an element that is explicitly contenteditable="true" or we hit body
   while (root && root.parentElement && root.tagName !== 'BODY') {
-    if (root.getAttribute('contenteditable') === 'true' || root.getAttribute('role') === 'textbox' || root.getAttribute('g_editable') === 'true') {
+    if (
+      root.getAttribute('contenteditable') === 'true' || 
+      root.getAttribute('role') === 'textbox' || 
+      root.getAttribute('g_editable') === 'true' ||
+      root.getAttribute('data-slate-editor') === 'true'
+    ) {
       return root;
     }
     // Check parent
-    if (root.parentElement.isContentEditable || root.parentElement.getAttribute('contenteditable') === 'true') {
+    if (root.parentElement.isContentEditable || root.parentElement.getAttribute('contenteditable') === 'true' || root.parentElement.getAttribute('data-slate-editor') === 'true') {
       // Keep going up
       root = root.parentElement;
     } else {
@@ -211,31 +216,39 @@ function handleInput(e) {
   activeElement = target;
   
   // Get text from the root editable container
-  const value = getElementText(root);
+  const fullText = getElementText(root);
 
   // Update history for the root element
-  if (value) {
-    inputHistory.set(root, value);
+  if (fullText) {
+    inputHistory.set(root, fullText);
   }
 
-  // Use the specific value for matching prompts (current word/partial)
-  // For prompt matching, we might want the cursor position context, but current logic uses full text inclusion?
-  // Current logic: prompts.filter(p => p.title...includes(value) || p.content...includes(value))
-  // The 'value' used for matching was originally target.value/innerText.
-  // If we are in a <p>, innerText is the paragraph. That's probably what we want for matching?
-  // Or do we want the whole text?
-  // The original code used `target.value` or `target.innerText`.
-  // If target is <p>, it used <p>'s text.
-  // Let's stick to using the specific target's text for matching to avoid matching against huge text blocks,
-  // but use root for history tracking.
-  const matchValue = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' ? target.value : target.innerText;
-
-  if (!matchValue) {
+  if (!fullText) {
     removeOverlay();
     return;
   }
 
-  const matches = prompts.filter(p => p.title.toLowerCase().includes(matchValue.toLowerCase()) || p.content.toLowerCase().includes(matchValue.toLowerCase()));
+  // Improved matching logic: 
+  // 1. Try to match the last word/segment (for Slate.js and complex editors)
+  // 2. Fallback to full text match if no word match found
+  const words = fullText.trim().split(/\s+/);
+  const lastWord = words[words.length - 1] || '';
+  
+  let matches = [];
+  if (lastWord.length > 0) {
+    matches = prompts.filter(p => 
+      p.title.toLowerCase().includes(lastWord.toLowerCase()) || 
+      p.content.toLowerCase().includes(lastWord.toLowerCase())
+    );
+  }
+
+  // If no matches with last word, or last word is too short, try full text match (legacy behavior)
+  if (matches.length === 0) {
+    matches = prompts.filter(p => 
+      p.title.toLowerCase().includes(fullText.toLowerCase()) || 
+      p.content.toLowerCase().includes(fullText.toLowerCase())
+    );
+  }
   
   if (matches.length > 0) {
     showOverlay(target, matches);
