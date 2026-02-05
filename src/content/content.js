@@ -6,6 +6,7 @@ let activeElement = null;
 let prompts = [];
 let settings = {};
 let isInserting = false;
+let inputTimer = null; // Timer for debouncing input
 // Track input values to handle cases where input is cleared before we read it
 const inputHistory = new WeakMap();
 
@@ -60,7 +61,30 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function initListeners() {
-  document.addEventListener('input', handleInput);
+  document.addEventListener('input', (e) => {
+    if (isInserting) return;
+    
+    const target = e.target;
+    if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay')) return;
+
+    const root = findEditableRoot(target);
+    if (!root) return;
+
+    const fullText = getElementText(root);
+    
+    // If input is cleared, remove overlay immediately
+    if (!fullText || fullText.trim().length === 0) {
+      if (inputTimer) clearTimeout(inputTimer);
+      removeOverlay();
+      return;
+    }
+
+    // Debounce the matching logic
+    if (inputTimer) clearTimeout(inputTimer);
+    inputTimer = setTimeout(() => {
+      handleInput(e);
+    }, 300);
+  });
   document.addEventListener('click', onDocumentClick);
   document.addEventListener('keydown', handleKeyDown, true); // Use capture to ensure we see it
 }
@@ -203,11 +227,7 @@ function showSaveConfirmation(text, target) {
 }
 
 function handleInput(e) {
-  if (isInserting) return;
   const target = e.target;
-  // Ignore inputs inside our own UI
-  if (target.closest('.ai-helper-modal') || target.closest('.ai-helper-overlay')) return;
-
   const root = findEditableRoot(target);
   if (!root) return;
   // If root is body, and target isn't explicitly editable, ignore
