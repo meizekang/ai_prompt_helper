@@ -17,13 +17,26 @@
                 </div>
             </div>
             <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('zh')" id="btn-zh">中文</button>
+                <button class="lang-btn active" onclick="setLang('zh_CN')" id="btn-zh_CN">简体中文</button>
+                <button class="lang-btn" onclick="setLang('zh_TW')" id="btn-zh_TW">繁體中文</button>
                 <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+                <button class="lang-btn" onclick="setLang('ko')" id="btn-ko">한국어</button>
+                <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">Français</button>
+                <button class="lang-btn" onclick="setLang('de')" id="btn-de">Deutsch</button>
+                <button class="lang-btn" onclick="setLang('es')" id="btn-es">Español</button>
+                <button class="lang-btn" onclick="setLang('pt')" id="btn-pt">Português</button>
+                <button class="lang-btn" onclick="setLang('it')" id="btn-it">Italiano</button>
+                <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">Русский</button>
+                <button class="lang-btn" onclick="setLang('ar')" id="btn-ar">العربية</button>
+                <button class="lang-btn" onclick="setLang('hi')" id="btn-hi">हिन्दी</button>
+                <button class="lang-btn" onclick="setLang('tr')" id="btn-tr">Türkçe</button>
+                <button class="lang-btn" onclick="setLang('vi')" id="btn-vi">Tiếng Việt</button>
+                <button class="lang-btn" onclick="setLang('id')" id="btn-id">Bahasa Indonesia</button>
             </div>
         </header>
 
-        <!-- Chinese Content -->
-        <div id="content-zh" class="lang-content">
+        <!-- Chinese Simplified Content -->
+        <div id="content-zh_CN" class="lang-content">
             <div class="card">
                 <h1>隐私政策</h1>
                 <p class="last-updated">最后更新日期：2026年2月5日</p>
@@ -49,13 +62,50 @@
                 <p>本扩展纯本地运行，不包含任何第三方分析工具（如 Google Analytics）、广告 SDK 或追踪代码。</p>
 
                 <h2>4. 数据安全</h2>
-                <p>由于您的数据存储在本地，其安全性依赖于您设备的安全性。请勿在公共设备上保存敏感信息。</p>
+                <p>由于您的数据存储在本地，其安全性依赖于您设备的安全性。请勿 in 公共设备上保存敏感信息。</p>
 
                 <h2>5. 政策更新</h2>
                 <p>如果我们的隐私政策发生重大变更，我们将通过扩展更新说明或本页面通知您。由于本扩展不收集用户信息，我们无法通过电子邮件通知您。</p>
 
                 <h2>6. 联系我们</h2>
                 <p>如果您对本隐私政策有任何疑问，或者在使用过程中遇到问题，请通过 GitHub Issues 或应用商店评论区与我们联系。</p>
+            </div>
+        </div>
+
+        <!-- Chinese Traditional Content -->
+        <div id="content-zh_TW" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>隱私政策</h1>
+                <p class="last-updated">最後更新日期：2026年2月5日</p>
+
+                <p>歡迎使用 <strong>AI Prompt Helper</strong>（以下簡稱「本擴充功能」）。我們需要向您說明我們如何處理您的數據。簡而言之：<strong>我們不收集您的任何個人資訊，您的數據完全存儲在您的本地設備上。</strong></p>
+
+                <h2>1. 數據收集與存儲</h2>
+                <p>本擴充功能承諾<strong>不收集、不傳輸、不存儲</strong>您的任何個人資訊或使用數據到任何外部服務器。</p>
+                <ul>
+                    <li><strong>本地存儲</strong>：您創建的所有提示詞（Prompts）和設置選項均存儲在您瀏覽器的 <code>chrome.storage.local</code> 中。這些數據僅保留在您的設備上，除非您主動將其匯出或卸載本擴充功能。</li>
+                    <li><strong>無雲端同步</strong>：本擴充功能目前沒有雲端同步功能，因此我們無法訪問您的任何數據。</li>
+                </ul>
+
+                <h2>2. 權限使用說明</h2>
+                <p>為了實現功能，本擴充功能需要申請以下權限，我們僅在必要時使用這些權限：</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>：用於在您的本地設備上保存您的提示詞庫和偏好設置。</li>
+                    <li><strong>activeTab / scripting</strong>：用於在您當前瀏覽的 AI 網頁（如 ChatGPT, Claude 等）中自動填充您選擇的提示詞。我們僅在您主動點擊擴充功能界面或使用快捷鍵時才會與頁面交互。</li>
+                    <li><strong>contextMenus</strong>：用於在網頁上添加右鍵菜單，方便您將選中的文本快速保存為新的提示詞。</li>
+                </ul>
+
+                <h2>3. 第三方服務</h2>
+                <p>本擴充功能純本地運行，不包含任何第三方分析工具（如 Google Analytics）、廣告 SDK 或追蹤代碼。</p>
+
+                <h2>4. 數據安全</h2>
+                <p>由於您的數據存儲在本地，其安全性依賴於您設備的安全性。請勿在公共設備上保存敏感資訊。</p>
+
+                <h2>5. 政策更新</h2>
+                <p>如果我們的隱私政策發生重大變更，我們將通過擴充功能更新說明或本頁面通知您。由於本擴充功能不收集用戶資訊，我們無法通過電子郵件通知您。</p>
+
+                <h2>6. 聯繫我們</h2>
+                <p>如果您對本隱私政策有任何疑問，或者在使用過程中遇到問題，請通過 GitHub Issues 或應用商店評論區與我們聯繫。</p>
             </div>
         </div>
 
@@ -96,37 +146,509 @@
             </div>
         </div>
 
+        <!-- Korean Content -->
+        <div id="content-ko" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>개인정보 처리방침</h1>
+                <p class="last-updated">최종 업데이트: 2026년 2월 5일</p>
+
+                <p><strong>AI Prompt Helper</strong>(이하 "본 확장 프로그램")를 이용해 주셔서 감사합니다. 당사는 귀하의 데이터를 어떻게 처리하는지 투명하게 공개하고자 합니다. 요약하자면: <strong>당사는 귀하의 개인정보를 수집하지 않으며, 귀하의 데이터는 전적으로 귀하의 로컬 장치에 저장됩니다.</strong></p>
+
+                <h2>1. 데이터 수집 및 저장</h2>
+                <p>본 확장 프로그램은 귀하의 개인정보나 사용 데이터를 외부 서버로 <strong>수집, 전송 또는 저장하지 않을 것</strong>을 약속합니다.</p>
+                <ul>
+                    <li><strong>로컬 저장소</strong>: 귀하가 생성한 모든 프롬프트와 설정은 브라우저의 <code>chrome.storage.local</code>에 저장됩니다. 이 데이터는 귀하가 직접 내보내거나 확장 프로그램을 삭제하지 않는 한 귀하의 장치에만 유지됩니다.</li>
+                    <li><strong>클라우드 동기화 없음</strong>: 본 확장 프로그램은 현재 클라우드 동기화 기능이 없으므로 당사는 귀하의 데이터에 액세스할 수 없습니다.</li>
+                </ul>
+
+                <h2>2. 권한 사용 설명</h2>
+                <p>기능 구현을 위해 본 확장 프로그램은 다음 권한을 요청하며, 필요한 경우에만 사용합니다:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: 로컬 장치에 프롬프트 라이브러리와 환경 설정을 저장하는 데 사용됩니다.</li>
+                    <li><strong>activeTab / scripting</strong>: 현재 방문 중인 AI 웹사이트(예: ChatGPT, Claude)에서 선택한 프롬프트를 자동으로 채우는 데 사용됩니다. 귀하가 확장 프로그램 인터페이스를 클릭하거나 단축키를 사용할 때만 페이지와 상호 작용합니다.</li>
+                    <li><strong>contextMenus</strong>: 웹페이지에 우클릭 메뉴를 추가하여 선택한 텍스트를 새 프롬프트로 빠르게 저장할 수 있도록 하는 데 사용됩니다.</li>
+                </ul>
+
+                <h2>3. 제3자 서비스</h2>
+                <p>본 확장 프로그램은 순수하게 로컬에서 실행되며 제3자 분석 도구(예: Google Analytics), 광고 SDK 또는 추적 코드를 포함하지 않습니다.</p>
+
+                <h2>4. 데이터 보안</h2>
+                <p>귀하의 데이터는 로컬에 저장되므로 보안은 귀하의 장치 보안에 달려 있습니다. 공용 장치에 민감한 정보를 저장하지 마십시오.</p>
+
+                <h2>5. 정책 업데이트</h2>
+                <p>개인정보 처리방침에 중대한 변경 사항이 있는 경우 확장 프로그램 업데이트 공지 또는 본 페이지를 통해 알려드립니다. 당사는 사용자 정보를 수집하지 않으므로 이메일로 통지할 수 없습니다.</p>
+
+                <h2>6. 문의하기</h2>
+                <p>본 개인정보 처리방침에 대해 궁금한 점이 있거나 사용 중 문제가 발생하면 GitHub Issues 또는 앱 스토어 리뷰 섹션을 통해 문의해 주시기 바랍니다.</p>
+            </div>
+        </div>
+
+        <!-- French Content -->
+        <div id="content-fr" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Politique de confidentialité</h1>
+                <p class="last-updated">Dernière mise à jour : 5 février 2026</p>
+
+                <p>Bienvenue dans <strong>AI Prompt Helper</strong> (ci-après dénommé "l'Extension"). Nous voulons être transparents sur la façon dont nous traitons vos données. En résumé : <strong>Nous ne collectons aucune de vos informations personnelles ; vos données sont stockées entièrement sur votre appareil local.</strong></p>
+
+                <h2>1. Collecte et stockage des données</h2>
+                <p>L'Extension s'engage à <strong>ne pas collecter, transmettre ou stocker</strong> vos informations personnelles ou données d'utilisation sur des serveurs externes.</p>
+                <ul>
+                    <li><strong>Stockage local</strong> : Tous les prompts et paramètres que vous créez sont stockés dans le <code>chrome.storage.local</code> de votre navigateur. Ces données restent uniquement sur votre appareil, à moins que vous ne les exportiez manuellement ou que vous ne désinstalliez l'Extension.</li>
+                    <li><strong>Pas de synchronisation cloud</strong> : L'Extension ne dispose pas actuellement de fonctionnalités de synchronisation cloud, nous n'avons donc accès à aucune de vos données.</li>
+                </ul>
+
+                <h2>2. Utilisation des permissions</h2>
+                <p>Pour fonctionner correctement, l'Extension demande les permissions suivantes, utilisées uniquement lorsque nécessaire :</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong> : Utilisé pour sauvegarder votre bibliothèque de prompts et vos préférences sur votre appareil local.</li>
+                    <li><strong>activeTab / scripting</strong> : Utilisé pour remplir automatiquement vos prompts sélectionnés sur les sites d'IA que vous visitez actuellement (ex: ChatGPT, Claude). Nous n'interagissons avec la page que lorsque vous cliquez activement sur l'interface de l'extension ou utilisez un raccourci.</li>
+                    <li><strong>contextMenus</strong> : Utilisé pour ajouter une option de menu contextuel, vous permettant de sauvegarder rapidement le texte sélectionné comme un nouveau prompt.</li>
+                </ul>
+
+                <h2>3. Services tiers</h2>
+                <p>L'Extension fonctionne purement localement et ne contient aucun outil d'analyse tiers (comme Google Analytics), SDK publicitaire ou code de suivi.</p>
+
+                <h2>4. Sécurité des données</h2>
+                <p>Puisque vos données sont stockées localement, leur sécurité dépend de la sécurité de votre appareil. Veuillez éviter de sauvegarder des informations sensibles sur des appareils publics.</p>
+
+                <h2>5. Mises à jour de la politique</h2>
+                <p>S'il y a des changements importants dans notre politique de confidentialité, nous vous en informerons via les notes de mise à jour de l'extension ou cette page. Comme nous ne collectons pas d'informations sur les utilisateurs, nous ne pouvons pas vous en informer par e-mail.</p>
+
+                <h2>6. Contactez-nous</h2>
+                <p>Si vous avez des questions sur cette politique de confidentialité ou si vous rencontrez des problèmes lors de l'utilisation de l'Extension, veuillez nous contacter via GitHub Issues ou la section support du Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- German Content -->
+        <div id="content-de" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Datenschutzbestimmungen</h1>
+                <p class="last-updated">Zuletzt aktualisiert: 5. Februar 2026</p>
+
+                <p>Willkommen bei <strong>AI Prompt Helper</strong> (im Folgenden als "die Erweiterung" bezeichnet). Wir möchten transparent machen, wie wir mit Ihren Daten umgehen. Kurz gesagt: <strong>Wir sammeln keine Ihrer persönlichen Informationen; Ihre Daten werden vollständig auf Ihrem lokalen Gerät gespeichert.</strong></p>
+
+                <h2>1. Datenerhebung und -speicherung</h2>
+                <p>Die Erweiterung verpflichtet sich, <strong>keine Ihrer persönlichen Informationen oder Nutzungsdaten auf externen Servern zu sammeln, zu übertragen oder zu speichern</strong>.</p>
+                <ul>
+                    <li><strong>Lokale Speicherung</strong>: Alle von Ihnen erstellten Prompts und Einstellungen werden im <code>chrome.storage.local</code> Ihres Browsers gespeichert. Diese Daten verbleiben ausschließlich auf Ihrem Gerät, es sei denn, Sie exportieren sie manuell oder deinstallieren die Erweiterung.</li>
+                    <li><strong>Keine Cloud-Synchronisierung</strong>: Die Erweiterung verfügt derzeit über keine Cloud-Synchronisierungsfunktionen, sodass wir keinen Zugriff auf Ihre Daten haben.</li>
+                </ul>
+
+                <h2>2. Verwendung von Berechtigungen</h2>
+                <p>Um ordnungsgemäß zu funktionieren, fordert die Erweiterung die folgenden Berechtigungen an, die nur bei Bedarf verwendet werden:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Wird verwendet, um Ihre Prompt-Bibliothek und Einstellungen auf Ihrem lokalen Gerät zu speichern.</li>
+                    <li><strong>activeTab / scripting</strong>: Wird verwendet, um Ihre ausgewählten Prompts auf KI-Websites, die Sie gerade besuchen (z. B. ChatGPT, Claude), automatisch auszufüllen. Wir interagieren nur dann mit der Seite, wenn Sie aktiv auf die Benutzeroberfläche der Erweiterung klicken oder eine Tastenkombination verwenden.</li>
+                    <li><strong>contextMenus</strong>: Wird verwendet, um eine Option im Kontextmenü hinzuzufügen, mit der Sie markierten Text schnell als neuen Prompt speichern können.</li>
+                </ul>
+
+                <h2>3. Drittanbieter-Dienste</h2>
+                <p>Die Erweiterung läuft rein lokal und enthält keine Analysetools von Drittanbietern (wie Google Analytics), Werbe-SDKs oder Tracking-Code.</p>
+
+                <h2>4. Datensicherheit</h2>
+                <p>Da Ihre Daten lokal gespeichert werden, hängt deren Sicherheit von der Sicherheit Ihres Geräts ab. Bitte vermeiden Sie es, sensible Informationen auf öffentlichen Geräten zu speichern.</p>
+
+                <h2>5. Aktualisierungen der Richtlinie</h2>
+                <p>Wenn es wesentliche Änderungen an unserer Datenschutzrichtlinie gibt, werden wir Sie über die Update-Hinweise der Erweiterung oder diese Seite informieren. Da wir keine Benutzerinformationen sammeln, können wir Sie nicht per E-Mail benachrichtigen.</p>
+
+                <h2>6. Kontaktieren Sie uns</h2>
+                <p>Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben oder Probleme bei der Verwendung der Erweiterung auftreten, kontaktieren Sie uns bitte über GitHub Issues oder den Support-Bereich im Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Spanish Content -->
+        <div id="content-es" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Política de privacidad</h1>
+                <p class="last-updated">Última actualización: 5 de febrero de 2026</p>
+
+                <p>Bienvenido a <strong>AI Prompt Helper</strong> (en adelante, "la Extensión"). Queremos ser transparentes sobre cómo manejamos tus datos. En resumen: <strong>No recopilamos ninguna de tu información personal; tus datos se almacenan completamente en tu dispositivo local.</strong></p>
+
+                <h2>1. Recopilación y almacenamiento de datos</h2>
+                <p>La Extensión se compromete a <strong>no recopilar, transmitir ni almacenar</strong> ninguna de tu información personal o datos de uso en servidores externos.</p>
+                <ul>
+                    <li><strong>Almacenamiento local</strong>: Todos los prompts y configuraciones que creas se almacenan en el <code>chrome.storage.local</code> de tu navegador. Estos datos permanecen únicamente en tu dispositivo a menos que los exportes manualmente o desinstales la Extensión.</li>
+                    <li><strong>Sin sincronización en la nube</strong>: La Extensión no tiene actualmente funciones de sincronización en la nube, por lo que no tenemos acceso a ninguno de tus datos.</li>
+                </ul>
+
+                <h2>2. Uso de permisos</h2>
+                <p>Para funcionar correctamente, la Extensión solicita los siguientes permisos, utilizados solo cuando es necesario:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Se utiliza para guardar tu biblioteca de prompts y preferencias en tu dispositivo local.</li>
+                    <li><strong>activeTab / scripting</strong>: Se utiliza para autocompletar tus prompts seleccionados en los sitios web de IA que estás visitando actualmente (ej. ChatGPT, Claude). Solo interactuamos con la página cuando haces clic activamente en la interfaz de la extensión o usas un atajo.</li>
+                    <li><strong>contextMenus</strong>: Se utiliza para añadir una opción al menú contextual, permitiéndote guardar rápidamente el texto seleccionado como un nuevo prompt.</li>
+                </ul>
+
+                <h2>3. Servicios de terceros</h2>
+                <p>La Extensión funciona puramente de forma local y no contiene ninguna herramienta de análisis de terceros (como Google Analytics), SDK publicitarios o código de seguimiento.</p>
+
+                <h2>4. Seguridad de los datos</h2>
+                <p>Dado que tus datos se almacenan localmente, su seguridad depende de la seguridad de tu dispositivo. Por favor, evita guardar información sensible en dispositivos públicos.</p>
+
+                <h2>5. Actualizaciones de la política</h2>
+                <p>Si hay cambios significativos en nuestra política de privacidad, te informaremos a través de las notas de actualización de la extensión o de esta página. Como no recopilamos información de los usuarios, no podemos notificarte por correo electrónico.</p>
+
+                <h2>6. Contacta con nosotros</h2>
+                <p>Si tienes alguna pregunta sobre esta política de privacidad o encuentras problemas al usar la Extensión, por favor contáctanos a través de GitHub Issues o la sección de soporte de la Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Portuguese Content -->
+        <div id="content-pt" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Política de Privacidade</h1>
+                <p class="last-updated">Última atualização: 5 de fevereiro de 2026</p>
+
+                <p>Bem-vindo ao <strong>AI Prompt Helper</strong> (doravante referido como "a Extensão"). Queremos ser transparentes sobre como lidamos com seus dados. Em resumo: <strong>Não coletamos nenhuma de suas informações pessoais; seus dados são armazenados inteiramente em seu dispositivo local.</strong></p>
+
+                <h2>1. Coleta e Armazenamento de Dados</h2>
+                <p>A Extensão compromete-se a <strong>não coletar, transmitir ou armazenar</strong> qualquer uma de suas informações pessoais ou dados de uso em servidores externos.</p>
+                <ul>
+                    <li><strong>Armazenamento Local</strong>: Todos os prompts e configurações que você cria são armazenados no <code>chrome.storage.local</code> do seu navegador. Esses dados permanecem exclusivamente no seu dispositivo, a menos que você os exporte manualmente ou desinstale a Extensão.</li>
+                    <li><strong>Sem Sincronização na Nuvem</strong>: A Extensão não possui atualmente recursos de sincronização na nuvem, portanto não temos acesso a nenhum de seus dados.</li>
+                </ul>
+
+                <h2>2. Uso de Permissões</h2>
+                <p>Para funcionar corretamente, a Extensão solicita as seguintes permissões, usadas apenas quando necessário:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Usado para salvar sua biblioteca de prompts e preferências em seu dispositivo local.</li>
+                    <li><strong>activeTab / scripting</strong>: Usado para preencher automaticamente seus prompts selecionados em sites de IA que você está visitando atualmente (ex: ChatGPT, Claude). Interagimos com a página apenas quando você clica ativamente na interface da extensão ou usa um atalho.</li>
+                    <li><strong>contextMenus</strong>: Usado para adicionar uma opção de menu de contexto, permitindo que você salve rapidamente o texto selecionado como um novo prompt.</li>
+                </ul>
+
+                <h2>3. Serviços de Terceiros</h2>
+                <p>A Extensão funciona puramente de forma local e não contém nenhuma ferramenta de análise de terceiros (como Google Analytics), SDKs de publicidade ou código de rastreamento.</p>
+
+                <h2>4. Segurança de Dados</h2>
+                <p>Como seus dados são armazenados localmente, sua segurança depende da segurança do seu dispositivo. Evite salvar informações confidenciais em dispositivos públicos.</p>
+
+                <h2>5. Atualizações da Política</h2>
+                <p>Se houver mudanças significativas em nossa política de privacidade, notificaremos você por meio de notas de atualização da extensão ou desta página. Como não coletamos informações do usuário, não podemos notificá-lo por e-mail.</p>
+
+                <h2>6. Entre em Contato</h2>
+                <p>Se você tiver alguma dúvida sobre esta política de privacidade ou encontrar problemas ao usar a Extensão, entre em contato conosco via GitHub Issues ou na seção de suporte da Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Italiano Content -->
+        <div id="content-it" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Informativa sulla Privacy</h1>
+                <p class="last-updated">Ultimo aggiornamento: 5 febbraio 2026</p>
+
+                <p>Benvenuti in <strong>AI Prompt Helper</strong> (di seguito denominata "l'Estensione"). Vogliamo essere trasparenti su come gestiamo i vostri dati. In breve: <strong>Non raccogliamo alcuna informazione personale; i vostri dati sono memorizzati interamente sul vostro dispositivo locale.</strong></p>
+
+                <h2>1. Raccolta e Archiviazione dei Dati</h2>
+                <p>L'Estensione si impegna a <strong>non raccogliere, trasmettere o memorizzare</strong> alcuna informazione personale o dati di utilizzo su server esterni.</p>
+                <ul>
+                    <li><strong>Archiviazione Locale</strong>: Tutti i prompt e le impostazioni creati sono memorizzati nel <code>chrome.storage.local</code> del browser. Questi dati rimangono esclusivamente sul vostro dispositivo a meno che non li esportiate manualmente o disinstalliate l'Estensione.</li>
+                    <li><strong>Nessuna Sincronizzazione Cloud</strong>: L'Estensione non dispone attualmente di funzioni di sincronizzazione cloud, pertanto non abbiamo accesso a nessuno dei vostri dati.</li>
+                </ul>
+
+                <h2>2. Utilizzo dei Permessi</h2>
+                <p>Per funzionare correttamente, l'Estensione richiede i seguenti permessi, utilizzati solo quando necessario:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Utilizzato per salvare la libreria di prompt e le preferenze sul dispositivo locale.</li>
+                    <li><strong>activeTab / scripting</strong>: Utilizzato per compilare automaticamente i prompt selezionati sui siti web di IA che state visitando (es. ChatGPT, Claude). Interagiamo con la pagina solo quando cliccate attivamente sull'interfaccia dell'estensione o utilizzate una scorciatoia.</li>
+                    <li><strong>contextMenus</strong>: Utilizzato per aggiungere un'opzione al menu contestuale, consentendo di salvare rapidamente il testo selezionato come un nuovo prompt.</li>
+                </ul>
+
+                <h2>3. Servizi di Terze Parti</h2>
+                <p>L'Estensione funziona puramente in locale e non contiene strumenti di analisi di terze parti (come Google Analytics), SDK pubblicitari o codici di tracciamento.</p>
+
+                <h2>4. Sicurezza dei Dati</h2>
+                <p>Poiché i dati sono memorizzati localmente, la loro sicurezza dipende dalla sicurezza del vostro dispositivo. Si prega di evitare di salvare informazioni sensibili su dispositivi pubblici.</p>
+
+                <h2>5. Aggiornamenti della Politica</h2>
+                <p>In caso di modifiche significative alla nostra informativa sulla privacy, vi informeremo tramite le note di aggiornamento dell'estensione o questa pagina. Poiché non raccogliamo informazioni sugli utenti, non possiamo informarvi via e-mail.</p>
+
+                <h2>6. Contattaci</h2>
+                <p>In caso di domande sulla presente informativa sulla privacy o di problemi durante l'utilizzo dell'Estensione, vi preghiamo di contattarci tramite GitHub Issues o la sezione di supporto del Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Russian Content -->
+        <div id="content-ru" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Политика конфиденциальности</h1>
+                <p class="last-updated">Последнее обновление: 5 февраля 2026 г.</p>
+
+                <p>Добро пожаловать в <strong>AI Prompt Helper</strong> (далее «Расширение»). Мы хотим быть прозрачными в отношении того, как мы обрабатываем ваши данные. Вкратце: <strong>Мы не собираем никакую вашу личную информацию; ваши данные хранятся исключительно на вашем локальном устройстве.</strong></p>
+
+                <h2>1. Сбор и хранение данных</h2>
+                <p>Расширение обязуется <strong>не собирать, не передавать и не хранить</strong> любую вашу личную информацию или данные об использовании на каких-либо внешних серверах.</p>
+                <ul>
+                    <li><strong>Локальное хранилище</strong>: Все создаваемые вами промпты и настройки хранятся в <code>chrome.storage.local</code> вашего браузера. Эти данные остаются только на вашем устройстве, если вы не экспортируете их вручную или не удалите Расширение.</li>
+                    <li><strong>Нет облачной синхрониции</strong>: В настоящее время в Расширении нет функций облачной синхронизации, поэтому у нас нет доступа к вашим данным.</li>
+                </ul>
+
+                <h2>2. Использование разрешений</h2>
+                <p>Для правильной работы Расширение запрашивает следующие разрешения, используемые только при необходимости:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Используется для сохранения вашей библиотеки промптов и настроек на вашем локальном устройстве.</li>
+                    <li><strong>activeTab / scripting</strong>: Используется для автозаполнения выбранных вами промптов на сайтах ИИ, которые вы посещаете в данный момент (например, ChatGPT, Claude). Мы взаимодействуем со страницей только тогда, когда вы активно нажимаете на интерфейс расширения или используете горячую клавишу.</li>
+                    <li><strong>contextMenus</strong>: Используется для добавления пункта в контекстное меню, позволяющего быстро сохранить выделенный текст как новый промпт.</li>
+                </ul>
+
+                <h2>3. Сторонние сервисы</h2>
+                <p>Расширение работает исключительно локально и не содержит никаких сторонних инструментов аналитики (таких как Google Analytics), рекламных SDK или кода отслеживания.</p>
+
+                <h2>4. Безопасность данных</h2>
+                <p>Поскольку ваши данные хранятся локально, их безопасность зависит от безопасности вашего устройства. Пожалуйста, избегайте сохранения конфиденциальной информации на общедоступных устройствах.</p>
+
+                <h2>5. Обновления политики</h2>
+                <p>Если в нашей политике конфиденциальности произойдут существенные изменения, мы уведомим вас через примечания к обновлению расширения или на этой странице. Поскольку мы не собираем информацию о пользователях, мы не можем уведомить вас по электронной почте.</p>
+
+                <h2>6. Свяжитесь с нами</h2>
+                <p>Если у вас есть вопросы по поводу этой политики конфиденциальности или вы столкнулись с проблемами при использовании Расширения, свяжитесь с нами через GitHub Issues или раздел поддержки в Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Arabic Content -->
+        <div id="content-ar" class="lang-content" style="display: none;" dir="rtl">
+            <div class="card">
+                <h1>سياسة الخصوصية</h1>
+                <p class="last-updated">آخر تحديث: 5 فبراير 2026</p>
+
+                <p>مرحباً بك في <strong>AI Prompt Helper</strong> (المشار إليه فيما يلي باسم "الامتداد"). نريد أن نكون شفافين بشأن كيفية تعاملنا مع بياناتك. باختصار: <strong>نحن لا نجمع أيًا من معلوماتك الشخصية؛ يتم تخزين بياناتك بالكامل على جهازك المحلي.</strong></p>
+
+                <h2>1. جمع البيانات وتخزينها</h2>
+                <p>يلتزم الامتداد <strong>بعدم جمع أو نقل أو تخزين</strong> أي من معلوماتك الشخصية أو بيانات الاستخدام على أي خوادم خارجية.</p>
+                <ul>
+                    <li><strong>التخزين المحلي</strong>: يتم تخزين جميع الأوامر والإعدادات التي تنشئها في <code>chrome.storage.local</code> بمتصفحك. تبقى هذه البيانات حصريًا على جهازك ما لم تقم بتصديرها يدويًا أو إلغاء تثبيت الامتداد.</li>
+                    <li><strong>لا توجد مزامنة سحابية</strong>: لا يحتوي الامتداد حاليًا على ميزات مزامنة سحابية، لذا لا يمكننا الوصول إلى أي من بياناتك.</li>
+                </ul>
+
+                <h2>2. استخدام الأذونات</h2>
+                <p>ليعمل الامتداد بشكل صحيح، فإنه يطلب الأذونات التالية، والتي تُستخدم فقط عند الضرورة:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: يُستخدم لحفظ مكتبة الأوامر والتفضيلات الخاصة بك على جهازك المحلي.</li>
+                    <li><strong>activeTab / scripting</strong>: يُستخدم لملء الأوامر المحددة تلقائيًا على مواقع الذكاء الاصطناعي التي تزورها حاليًا (مثل ChatGPT و Claude). نحن نتفاعل مع الصفحة فقط عندما تنقر بنشاط على واجهة الامتداد أو تستخدم اختصارًا.</li>
+                    <li><strong>contextMenus</strong>: يُستخدم لإضافة خيار قائمة سياق، مما يتيح لك حفظ النص المحدد بسرعة كأمر جديد.</li>
+                </ul>
+
+                <h2>3. خدمات الطرف الثالث</h2>
+                <p>يعمل الامتداد محليًا بالكامل ولا يحتوي على أي أدوات تحليل تابعة لجهات خارجية (مثل Google Analytics) أو مجموعات أدوات تطوير إعلانية أو أكواد تتبع.</p>
+
+                <h2>4. أمن البيانات</h2>
+                <p>بما أن بياناتك مخزنة محليًا، فإن أمنها يعتمد على أمن جهازك. يرجى تجنب حفظ المعلومات الحساسة على الأجهزة العامة.</p>
+
+                <h2>5. تحديثات السياسة</h2>
+                <p>إذا كانت هناك تغييرات كبيرة في سياسة الخصوصية الخاصة بنا، فسنقوم بإخطارك عبر ملاحظات تحديث الامتداد أو هذه الصفحة. نظرًا لأننا لا نجمع معلومات المستخدم، فلا يمكننا إخطارك عبر البريد الإلكتروني.</p>
+
+                <h2>6. اتصل بنا</h2>
+                <p>إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو واجهت مشكلات أثناء استخدام الامتداد، فيرجى الاتصال بنا عبر GitHub Issues أو قسم الدعم في Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Hindi Content -->
+        <div id="content-hi" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>गोपनीयता नीति</h1>
+                <p class="last-updated">अंतिम अपडेट: 5 फरवरी, 2026</p>
+
+                <p><strong>AI Prompt Helper</strong> (इसके बाद "एक्सटेंशन" के रूप में संदर्भित) में आपका स्वागत है। हम इस बारे में पारदर्शी होना चाहते हैं कि हम आपके डेटा को कैसे संभालते हैं। संक्षेप में: <strong>हम आपकी कोई भी व्यक्तिगत जानकारी एकत्र नहीं करते हैं; आपका डेटा पूरी तरह से आपके स्थानीय डिवाइस पर संग्रहीत होता है।</strong></p>
+
+                <h2>1. डेटा संग्रह और भंडारण</h2>
+                <p>एक्सटेंशन आपकी किसी भी व्यक्तिगत जानकारी या उपयोग डेटा को किसी बाहरी सर्वर पर <strong>एकत्र, प्रसारित या संग्रहीत नहीं करने</strong> के लिए प्रतिबद्ध है।</p>
+                <ul>
+                    <li><strong>स्थानीय भंडारण</strong>: आपके द्वारा बनाए गए सभी प्रॉम्प्ट और सेटिंग्स आपके ब्राउज़र के <code>chrome.storage.local</code> में संग्रहीत होते हैं। यह डेटा पूरी तरह से आपके डिवाइस पर रहता है जब तक कि आप इसे मैन्युअल रूप से निर्यात नहीं करते या एक्सटेंशन को अनइंस्टॉल नहीं करते।</li>
+                    <li><strong>कोई क्लाउड सिंक नहीं</strong>: एक्सटेंशन में वर्तमान में क्लाउड सिंक्रोनाइज़ेशन सुविधाएँ नहीं हैं, इसलिए हमारे पास आपके किसी भी डेटा तक पहुँच नहीं है।</li>
+                </ul>
+
+                <h2>2. अनुमतियों का उपयोग</h2>
+                <p>सही ढंग से कार्य करने के लिए, एक्सटेंशन निम्नलिखित अनुमतियों का अनुरोध करता है, जिनका उपयोग केवल आवश्यकता होने पर ही किया जाता है:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: आपके स्थानीय डिवाइस पर आपकी प्रॉम्प्ट लाइब्रेरी और प्राथमिकताओं को सहेजने के लिए उपयोग किया जाता है।</li>
+                    <li><strong>activeTab / scripting</strong>: आपके द्वारा वर्तमान में देखी जा रही AI वेबसाइटों (जैसे ChatGPT, Claude) पर आपके चयनित प्रॉम्प्ट को ऑटो-फिल करने के लिए उपयोग किया जाता है। हम पेज के साथ तभी इंटरैक्ट करते हैं जब आप सक्रिय रूप से एक्सटेंशन इंटरफ़ेस पर क्लिक करते हैं या शॉर्टकट का उपयोग करते हैं।</li>
+                    <li><strong>contextMenus</strong>: एक राइट-क्लिक मेनू विकल्प जोड़ने के लिए उपयोग किया जाता है, जिससे आप चयनित टेक्स्ट को एक नए प्रॉम्प्ट के रूप में तेज़ी से सहेज सकते हैं।</li>
+                </ul>
+
+                <h2>3. तृतीय-पक्ष सेवाएँ</h2>
+                <p>एक्सटेंशन पूरी तरह से स्थानीय रूप से चलता है और इसमें कोई तृतीय-पक्ष विश्लेषण उपकरण (जैसे Google Analytics), विज्ञापन SDK या ट्रैकिंग कोड नहीं है।</p>
+
+                <h2>4. डेटा सुरक्षा</h2>
+                <p>चूंकि आपका डेटा स्थानीय रूप से संग्रहीत है, इसलिए इसकी सुरक्षा आपके डिवाइस की सुरक्षा पर निर्भर करती है। कृपया सार्वजनिक उपकरणों पर संवेदनशील जानकारी सहेजने से बचें।</p>
+
+                <h2>5. नीति अपडेट</h2>
+                <p>यदि हमारी गोपनीयता नीति में महत्वपूर्ण परिवर्तन होते हैं, तो हम आपको एक्सटेंशन अपडेट नोट्स या इस पेज के माध्यम से सूचित करेंगे। चूंकि हम उपयोगकर्ता जानकारी एकत्र नहीं करते हैं, इसलिए हम आपको ईमेल के माध्यम से सूचित नहीं कर सकते हैं।</p>
+
+                <h2>6. हमसे संपर्क करें</h2>
+                <p>यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न हैं या एक्सटेंशन का उपयोग करते समय समस्याओं का सामना करना पड़ता है, तो कृपया GitHub Issues या Chrome Web Store सहायता अनुभाग के माध्यम से हमसे संपर्क करें।</p>
+            </div>
+        </div>
+
+        <!-- Turkish Content -->
+        <div id="content-tr" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Gizlilik Politikası</h1>
+                <p class="last-updated">Son Güncelleme: 5 Şubat 2026</p>
+
+                <p><strong>AI Prompt Helper</strong>'a (bundan sonra "Uzantı" olarak anılacaktır) hoş geldiniz. Verilerinizi nasıl işlediğimiz konusunda şeffaf olmak istiyoruz. Kısacası: <strong>Kişisel bilgilerinizin hiçbirini toplamıyoruz; verileriniz tamamen yerel cihazınızda saklanır.</strong></p>
+
+                <h2>1. Veri Toplama ve Saklama</h2>
+                <p>Uzantı, kişisel bilgilerinizin veya kullanım verilerinizin hiçbirini harici sunucularda <strong>toplamamayı, iletmemeyi veya saklamamayı</strong> taahhüt eder.</p>
+                <ul>
+                    <li><strong>Yerel Depolama</strong>: Oluşturduğunuz tüm ipuçları ve ayarlar tarayıcınızın <code>chrome.storage.local</code> alanında saklanır. Bu veriler, siz manuel olarak dışa aktarmadığınız veya Uzantıyı kaldırmadığınız sürece yalnızca cihazınızda kalır.</li>
+                    <li><strong>Bulut Senkronizasyonu Yok</strong>: Uzantının şu anda bulut senkronizasyon özellikleri yoktur, bu nedenle verilerinizin hiçbirine erişimimiz yoktur.</li>
+                </ul>
+
+                <h2>2. İzin Kullanımı</h2>
+                <p>Düzgün çalışması için Uzantı, yalnızca gerektiğinde kullanılan aşağıdaki izinleri ister:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: İpucu kitaplığınızı ve tercihlerinizi yerel cihazınıza kaydetmek için kullanılır.</li>
+                    <li><strong>activeTab / scripting</strong>: Şu anda ziyaret ettiğiniz AI web sitelerinde (örneğin ChatGPT, Claude) seçtiğiniz ipuçlarını otomatik olarak doldurmak için kullanılır. Sayfayla yalnızca uzantı arayüzüne aktif olarak tıkladığınızda veya bir kısayol kullandığınızda etkileşime gireriz.</li>
+                    <li><strong>contextMenus</strong>: Seçili metni hızlı bir şekilde yeni bir ipucu olarak kaydetmenize olanak tanıyan bir sağ tık menü seçeneği eklemek için kullanılır.</li>
+                </ul>
+
+                <h2>3. Üçüncü Taraf Hizmetleri</h2>
+                <p>Uzantı tamamen yerel olarak çalışır ve herhangi bir üçüncü taraf analiz aracı (Google Analytics gibi), reklam SDK'sı veya izleme kodu içermez.</p>
+
+                <h2>4. Veri Güvenliği</h2>
+                <p>Verileriniz yerel olarak saklandığından, güvenliği cihazınızın güvenliğine bağlıdır. Lütfen hassas bilgileri halka açık cihazlara kaydetmekten kaçının.</p>
+
+                <h2>5. Politika Güncellemeleri</h2>
+                <p>Gizlilik politikamızda önemli değişiklikler olursa, sizi uzantı güncelleme notları veya bu sayfa aracılığıyla bilgilendireceğiz. Kullanıcı bilgilerini toplamadığımız için sizi e-posta yoluyla bilgilendiremeyiz.</p>
+
+                <h2>6. Bize Ulaşın</h2>
+                <p>Bu gizlilik politikası hakkında herhangi bir sorunuz varsa veya Uzantıyı kullanırken sorunlarla karşılaşırsanız, lütfen GitHub Issues veya Chrome Web Store destek bölümü aracılığıyla bizimle iletişime geçin.</p>
+            </div>
+        </div>
+
+        <!-- Vietnamese Content -->
+        <div id="content-vi" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Chính sách Bảo mật</h1>
+                <p class="last-updated">Cập nhật lần cuối: Ngày 5 tháng 2 năm 2026</p>
+
+                <p>Chào mừng bạn đến với <strong>AI Prompt Helper</strong> (sau đây gọi là "Tiện ích"). Chúng tôi muốn minh bạch về cách chúng tôi xử lý dữ liệu của bạn. Tóm lại: <strong>Chúng tôi không thu thập bất kỳ thông tin cá nhân nào của bạn; dữ liệu của bạn được lưu trữ hoàn toàn trên thiết bị cục bộ của bạn.</strong></p>
+
+                <h2>1. Thu thập và Lưu trữ Dữ liệu</h2>
+                <p>Tiện ích cam kết <strong>không thu thập, truyền tải hoặc lưu trữ</strong> bất kỳ thông tin cá nhân hoặc dữ liệu sử dụng nào của bạn trên bất kỳ máy chủ bên ngoài nào.</p>
+                <ul>
+                    <li><strong>Lưu trữ Cục bộ</strong>: Tất cả các prompt và cài đặt bạn tạo đều được lưu trữ trong <code>chrome.storage.local</code> của trình duyệt. Dữ liệu này chỉ nằm trên thiết bị của bạn trừ khi bạn chủ động xuất dữ liệu hoặc gỡ cài đặt Tiện ích.</li>
+                    <li><strong>Không Đồng bộ hóa Đám mây</strong>: Tiện ích hiện không có tính năng đồng bộ hóa đám mây, vì vậy chúng tôi không có quyền truy cập vào bất kỳ dữ liệu nào của bạn.</li>
+                </ul>
+
+                <h2>2. Sử dụng Quyền hạn</h2>
+                <p>Để hoạt động chính xác, Tiện ích yêu cầu các quyền sau, chỉ được sử dụng khi cần thiết:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Được sử dụng để lưu kho prompt và các tùy chọn của bạn trên thiết bị cục bộ.</li>
+                    <li><strong>activeTab / scripting</strong>: Được sử dụng để tự động điền các prompt bạn đã chọn trên các trang web AI mà bạn đang truy cập (ví dụ: ChatGPT, Claude). Chúng tôi chỉ tương tác với trang khi bạn chủ động nhấp vào giao diện tiện ích hoặc sử dụng phím tắt.</li>
+                    <li><strong>contextMenus</strong>: Được sử dụng để thêm tùy chọn menu chuột phải, cho phép bạn nhanh chóng lưu văn bản đã chọn làm prompt mới.</li>
+                </ul>
+
+                <h2>3. Dịch vụ của Bên thứ ba</h2>
+                <p>Tiện ích chạy hoàn toàn cục bộ và không chứa bất kỳ công cụ phân tích bên thứ ba nào (như Google Analytics), SDK quảng cáo hoặc mã theo dõi.</p>
+
+                <h2>4. An toàn Dữ liệu</h2>
+                <p>Vì dữ liệu của bạn được lưu trữ cục bộ, tính bảo mật của nó phụ thuộc vào tính bảo mật của thiết bị của bạn. Vui lòng tránh lưu thông tin nhạy cảm trên các thiết bị công cộng.</p>
+
+                <h2>5. Cập nhật Chính sách</h2>
+                <p>Nếu có những thay đổi quan trọng trong chính sách bảo mật của chúng tôi, chúng tôi sẽ thông báo cho bạn qua ghi chú cập nhật tiện ích hoặc trang này. Vì chúng tôi không thu thập thông tin người dùng, chúng tôi không thể thông báo cho bạn qua email.</p>
+
+                <h2>6. Liên hệ với Chúng tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào về chính sách bảo mật này hoặc gặp sự cố khi sử dụng Tiện ích, vui lòng liên hệ với chúng tôi qua GitHub Issues hoặc phần hỗ trợ của Chrome Web Store.</p>
+            </div>
+        </div>
+
+        <!-- Indonesian Content -->
+        <div id="content-id" class="lang-content" style="display: none;">
+            <div class="card">
+                <h1>Kebijakan Privasi</h1>
+                <p class="last-updated">Terakhir Diperbarui: 5 Februari 2026</p>
+
+                <p>Selamat datang di <strong>AI Prompt Helper</strong> (selanjutnya disebut sebagai "Ekstensi"). Kami ingin transparan tentang bagaimana kami menangani data Anda. Singkatnya: <strong>Kami tidak mengumpulkan informasi pribadi Anda; data Anda disimpan sepenuhnya di perangkat lokal Anda.</strong></p>
+
+                <h2>1. Pengumpulan dan Penyimpanan Data</h2>
+                <p>Ekstensi berkomitmen untuk <strong>tidak mengumpulkan, mengirimkan, atau menyimpan</strong> informasi pribadi atau data penggunaan Anda di server eksternal mana pun.</p>
+                <ul>
+                    <li><strong>Penyimpanan Lokal</strong>: Semua prompt dan pengaturan yang Anda buat disimpan di <code>chrome.storage.local</code> browser Anda. Data ini tetap berada di perangkat Anda kecuali Anda mengekspornya secara manual atau menghapus instalan Ekstensi.</li>
+                    <li><strong>Tidak Ada Sinkronisasi Cloud</strong>: Ekstensi saat ini tidak memiliki fitur sinkronisasi cloud, sehingga kami tidak memiliki akses ke data Anda.</li>
+                </ul>
+
+                <h2>2. Penggunaan Izin</h2>
+                <p>Agar berfungsi dengan benar, Ekstensi meminta izin berikut, yang hanya digunakan saat diperlukan:</p>
+                <ul>
+                    <li><strong>storage / unlimitedStorage</strong>: Digunakan untuk menyimpan perpustakaan prompt dan preferensi Anda di perangkat lokal Anda.</li>
+                    <li><strong>activeTab / scripting</strong>: Digunakan untuk mengisi otomatis prompt pilihan Anda di situs web AI yang sedang Anda kunjungi (misalnya, ChatGPT, Claude). Kami berinteraksi dengan halaman hanya saat Anda mengklik antarmuka ekstensi secara aktif atau menggunakan pintasan.</li>
+                    <li><strong>contextMenus</strong>: Digunakan untuk menambahkan opsi menu klik kanan, yang memungkinkan Anda menyimpan teks yang dipilih sebagai prompt baru dengan cepat.</li>
+                </ul>
+
+                <h2>3. Layanan Pihak Ketiga</h2>
+                <p>Ekstensi berjalan sepenuhnya secara lokal dan tidak mengandung alat analitik pihak ketiga (seperti Google Analytics), SDK iklan, atau kode pelacakan.</p>
+
+                <h2>4. Keamanan Data</h2>
+                <p>Karena data Anda disimpan secara lokal, keamanannya bergantung pada keamanan perangkat Anda. Harap hindari menyimpan informasi sensitif di perangkat publik.</p>
+
+                <h2>5. Pembaruan Kebijakan</h2>
+                <p>Jika ada perubahan signifikan pada kebijakan privasi kami, kami akan memberi tahu Anda melalui catatan pembaruan ekstensi atau halaman ini. Karena kami tidak mengumpulkan informasi pengguna, kami tidak dapat memberi tahu Anda melalui email.</p>
+
+                <h2>6. Hubungi Kami</h2>
+                <p>Jika Anda memiliki pertanyaan tentang kebijakan privasi ini atau mengalami masalah saat menggunakan Ekstensi, silakan hubungi kami melalui GitHub Issues atau bagian dukungan Chrome Web Store.</p>
+            </div>
+        </div>
+
         <div class="footer">
             <p>&copy; 2026 AI Prompt Helper. All rights reserved.</p>
         </div>
     </div>
 
     <script>
+        const langData = {
+            'zh_CN': { subtitle: '您的智能提示词助手', title: '隐私政策 - AI Prompt Helper', htmlLang: 'zh-CN' },
+            'zh_TW': { subtitle: '您的智能提示詞助手', title: '隱私政策 - AI Prompt Helper', htmlLang: 'zh-TW' },
+            'en': { subtitle: 'Your smart writing assistant', title: 'Privacy Policy - AI Prompt Helper', htmlLang: 'en' },
+            'ko': { subtitle: '당신의 스마트한 작문 도우미', title: '개인정보 처리방침 - AI Prompt Helper', htmlLang: 'ko' },
+            'fr': { subtitle: 'Votre assistant d\'écriture intelligent', title: 'Politique de confidentialité - AI Prompt Helper', htmlLang: 'fr' },
+            'de': { subtitle: 'Ihr intelligenter Schreibassistent', title: 'Datenschutzbestimmungen - AI Prompt Helper', htmlLang: 'de' },
+            'es': { subtitle: 'Tu asistente de escritura inteligente', title: 'Política de privacidad - AI Prompt Helper', htmlLang: 'es' },
+            'pt': { subtitle: 'Seu assistente de escrita inteligente', title: 'Política de Privacidade - AI Prompt Helper', htmlLang: 'pt' },
+            'it': { subtitle: 'Il tuo assistente di scrittura intelligente', title: 'Informativa sulla Privacy - AI Prompt Helper', htmlLang: 'it' },
+            'ru': { subtitle: 'Ваш умный помощник по письму', title: 'Политика конфиденциальности - AI Prompt Helper', htmlLang: 'ru' },
+            'ar': { subtitle: 'مساعد الكتابة الذكي الخاص بك', title: 'سياسة الخصوصية - AI Prompt Helper', htmlLang: 'ar' },
+            'hi': { subtitle: 'आपका स्मार्ट लेखन सहायक', title: 'गोपनीयता नीति - AI Prompt Helper', htmlLang: 'hi' },
+            'tr': { subtitle: 'Akıllı yazım yardımcınız', title: 'Gizlilik Politikası - AI Prompt Helper', htmlLang: 'tr' },
+            'vi': { subtitle: 'Trợ lý viết lách thông minh của bạn', title: 'Chính sách Bảo mật - AI Prompt Helper', htmlLang: 'vi' },
+            'id': { subtitle: 'Asisten penulisan cerdas Anda', title: 'Kebijakan Privasi - AI Prompt Helper', htmlLang: 'id' }
+        };
+
         function setLang(lang) {
             // Update Content
             document.querySelectorAll('.lang-content').forEach(el => el.style.display = 'none');
-            document.getElementById('content-' + lang).style.display = 'block';
+            const contentEl = document.getElementById('content-' + lang);
+            if (contentEl) {
+                contentEl.style.display = 'block';
+            }
 
             // Update Buttons
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
+            const btnEl = document.getElementById('btn-' + lang);
+            if (btnEl) {
+                btnEl.classList.add('active');
+            }
 
             // Update Meta
-            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-            const subtitle = document.getElementById('subtitle');
-            if (lang === 'zh') {
-                subtitle.innerText = '您的智能提示词助手';
-                document.title = '隐私政策 - AI Prompt Helper';
-            } else {
-                subtitle.innerText = 'Your smart writing assistant';
-                document.title = 'Privacy Policy - AI Prompt Helper';
-            }
+            const data = langData[lang] || langData['en'];
+            document.documentElement.lang = data.htmlLang;
+            document.getElementById('subtitle').innerText = data.subtitle;
+            document.title = data.title;
         }
 
         // Auto-detect language
-        const userLang = navigator.language || navigator.userLanguage;
-        if (!userLang.startsWith('zh')) {
-            setLang('en');
+        const userLang = (navigator.language || navigator.userLanguage).replace('-', '_');
+        if (langData[userLang]) {
+            setLang(userLang);
+        } else if (userLang.startsWith('zh')) {
+            setLang(userLang.includes('TW') || userLang.includes('HK') ? 'zh_TW' : 'zh_CN');
+        } else {
+            const shortLang = userLang.split('_')[0];
+            if (langData[shortLang]) {
+                setLang(shortLang);
+            } else {
+                setLang('en');
+            }
         }
     </script>
 </body>
