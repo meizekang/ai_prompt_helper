@@ -134,13 +134,12 @@ const defaultSettings = {
     { id: 7, url: 'perplexity.ai', enabled: true },
     { id: 8, url: 'chat.mistral.ai', enabled: true },
     { id: 9, url: 'doubao.com', enabled: true },
-    { id: 10, url: 'kimi.moonshot.cn', enabled: true },
-    { id: 11, url: 'tongyi.aliyun.com', enabled: true },
-    { id: 12, url: 'yiyan.baidu.com', enabled: true },
-    { id: 13, url: 'hunyuan.tencent.com', enabled: true },
-    { id: 14, url: 'chatglm.cn', enabled: true },
-    { id: 15, url: 'hailuoai.com', enabled: true },
-    { id: 16, url: 'qianwen.com', enabled: true }
+    { id: 10, url: 'kimi.com', enabled: true },
+    { id: 11, url: 'yiyan.baidu.com', enabled: true },
+    { id: 12, url: 'hunyuan.tencent.com', enabled: true },
+    { id: 13, url: 'chatglm.cn', enabled: true },
+    { id: 14, url: 'hailuoai.com', enabled: true },
+    { id: 15, url: 'qianwen.com', enabled: true }
   ]
 };
 
