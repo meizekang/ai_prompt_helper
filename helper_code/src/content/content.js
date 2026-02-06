@@ -62,6 +62,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function initListeners() {
+  // Use capture for input to catch events from Lexical/Kimi
   document.addEventListener('input', (e) => {
     if (isInserting) return;
     
@@ -85,7 +86,7 @@ function initListeners() {
     inputTimer = setTimeout(() => {
       handleInput(e);
     }, 300);
-  });
+  }, true);
   document.addEventListener('click', onDocumentClick);
   document.addEventListener('keydown', handleKeyDown, true); // Use capture to ensure we see it
 }
@@ -119,7 +120,9 @@ function findEditableRoot(element) {
       root.getAttribute('role') === 'textbox' || 
       root.getAttribute('g_editable') === 'true' ||
       root.getAttribute('data-slate-editor') === 'true' ||
-      root.hasAttribute('data-slate-editor')
+      root.hasAttribute('data-slate-editor') ||
+      root.getAttribute('data-lexical-editor') === 'true' ||
+      root.classList.contains('chat-input-editor')
     ) {
       return root;
     }
@@ -128,7 +131,9 @@ function findEditableRoot(element) {
       root.parentElement.isContentEditable ||
       root.parentElement.getAttribute('contenteditable') === 'true' ||
       root.parentElement.getAttribute('data-slate-editor') === 'true' ||
-      root.parentElement.hasAttribute('data-slate-editor')
+      root.parentElement.hasAttribute('data-slate-editor') ||
+      root.parentElement.getAttribute('data-lexical-editor') === 'true' ||
+      root.parentElement.classList.contains('chat-input-editor')
     ) {
       // Keep going up
       root = root.parentElement;
@@ -235,11 +240,15 @@ function showSaveConfirmation(text, target) {
 
 function handleInput(e) {
   const target = e.target;
+  // Special handling for Lexical/Kimi where the event might be on a child span
   const root = findEditableRoot(target);
   if (!root) return;
   // If root is body, and target isn't explicitly editable, ignore
   if (root.tagName === 'BODY' && target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
 
+  // For Kimi/Lexical, the target might be a span inside the editor, 
+  // but we want the overlay positioned relative to the editor container or the span.
+  // We'll use the target for positioning as it's more precise for the cursor.
   activeElement = target;
   activeRoot = root;
   
@@ -538,7 +547,8 @@ function insertText(text) {
   // Contenteditable / rich editors
   if (root && (root.isContentEditable || root.getAttribute?.('contenteditable') === 'true' || root.getAttribute?.('role') === 'textbox')) {
     const isSlate = root.getAttribute?.('data-slate-editor') === 'true' || root.hasAttribute?.('data-slate-editor');
-    if (isSlate) {
+    const isLexical = root.getAttribute?.('data-lexical-editor') === 'true';
+    if (isSlate || isLexical) {
       replaceContentEditableTextViaExecCommand(root, text);
     } else {
       replaceContentEditableText(root, text);
@@ -601,10 +611,11 @@ function replaceContentEditableTextViaExecCommand(root, text) {
   // Slate editors (like yiyan.baidu.com and qianwen.com) typically rely on beforeinput/execCommand pipeline.
   const isYiyan = window.location.hostname && window.location.hostname.includes('yiyan.baidu.com');
   const isQianwen = window.location.hostname && window.location.hostname.includes('qianwen.com');
-  const isSpecialSlate = isYiyan || isQianwen;
+  const isKimi = window.location.hostname && window.location.hostname.includes('kimi.com');
+  const isSpecialSlate = isYiyan || isQianwen || isKimi;
 
   root.focus?.();
-  // For special Slate editors, avoid manual Range selection on the Slate root (can desync selection/behavior).
+  // For special Slate/Lexical editors, avoid manual Range selection on the root (can desync selection/behavior).
   // Use selectAll command instead (closer to user Cmd/Ctrl+A).
   if (isSpecialSlate) {
     try { document.execCommand('selectAll', false); } catch (_) {}
@@ -614,8 +625,8 @@ function replaceContentEditableTextViaExecCommand(root, text) {
 
   let inserted = false;
 
-  // Prefer simulating a paste event (Slate reliably handles paste -> state update).
-  // This avoids direct DOM mutation which can desync Slate internal state.
+  // Prefer simulating a paste event (Slate/Lexical reliably handles paste -> state update).
+  // This avoids direct DOM mutation which can desync internal state.
   if (isSpecialSlate) {
     try {
       const dt = new DataTransfer();
@@ -627,7 +638,7 @@ function replaceContentEditableTextViaExecCommand(root, text) {
         clipboardData: dt
       });
       root.dispatchEvent(pasteEvent);
-      // Slate typically preventDefault() on paste; if so, it has taken over and updated state.
+      // Slate/Lexical typically preventDefault() on paste; if so, it has taken over and updated state.
       // IMPORTANT: don't run execCommand afterwards, or we may corrupt the editor DOM/selection.
       if (pasteEvent.defaultPrevented) {
         return;
