@@ -3,6 +3,7 @@ if (!window.aiHelperContentScriptLoaded) {
 
   let currentOverlay = null;
 let activeElement = null;
+let activeRoot = null;
 let prompts = [];
 let settings = {};
 let isInserting = false;
@@ -117,12 +118,18 @@ function findEditableRoot(element) {
       root.getAttribute('contenteditable') === 'true' || 
       root.getAttribute('role') === 'textbox' || 
       root.getAttribute('g_editable') === 'true' ||
-      root.getAttribute('data-slate-editor') === 'true'
+      root.getAttribute('data-slate-editor') === 'true' ||
+      root.hasAttribute('data-slate-editor')
     ) {
       return root;
     }
     // Check parent
-    if (root.parentElement.isContentEditable || root.parentElement.getAttribute('contenteditable') === 'true' || root.parentElement.getAttribute('data-slate-editor') === 'true') {
+    if (
+      root.parentElement.isContentEditable ||
+      root.parentElement.getAttribute('contenteditable') === 'true' ||
+      root.parentElement.getAttribute('data-slate-editor') === 'true' ||
+      root.parentElement.hasAttribute('data-slate-editor')
+    ) {
       // Keep going up
       root = root.parentElement;
     } else {
@@ -234,6 +241,7 @@ function handleInput(e) {
   if (root.tagName === 'BODY' && target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && !target.isContentEditable) return;
 
   activeElement = target;
+  activeRoot = root;
   
   // Get text from the root editable container
   const fullText = getElementText(root);
@@ -511,18 +519,168 @@ function showPlaceholderModal(prompt) {
 }
 
 function insertText(text) {
-  if (!activeElement) return;
-  
+  const target = activeRoot || activeElement;
+  if (!target) return;
+
+  const root = findEditableRoot(target) || target;
+
   isInserting = true;
-  if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
-    activeElement.value = text;
-  } else if (activeElement.isContentEditable) {
-    activeElement.innerText = text;
+
+  // Inputs / Textareas (React controlled inputs require native setter)
+  if (root && (root.tagName === 'INPUT' || root.tagName === 'TEXTAREA')) {
+    setNativeValue(root, text);
+    dispatchTextInputEvents(root, text);
+    isInserting = false;
+    return;
   }
-  
-  // Trigger input event for frameworks like React/Vue
-  activeElement.dispatchEvent(new Event('input', { bubbles: true }));
+
+  // Contenteditable / rich editors
+  if (root && (root.isContentEditable || root.getAttribute?.('contenteditable') === 'true' || root.getAttribute?.('role') === 'textbox')) {
+    const isSlate = root.getAttribute?.('data-slate-editor') === 'true' || root.hasAttribute?.('data-slate-editor');
+    if (isSlate) {
+      replaceContentEditableTextViaExecCommand(root, text);
+    } else {
+      replaceContentEditableText(root, text);
+    }
+    isInserting = false;
+    return;
+  }
+
   isInserting = false;
+}
+
+function setNativeValue(el, value) {
+  try {
+    const proto = Object.getPrototypeOf(el);
+    const descriptor = Object.getOwnPropertyDescriptor(el, 'value');
+    const protoDescriptor = Object.getOwnPropertyDescriptor(proto, 'value');
+    const setter = (protoDescriptor && protoDescriptor.set) || (descriptor && descriptor.set);
+    if (setter) setter.call(el, value);
+    else el.value = value;
+  } catch (_) {
+    el.value = value;
+  }
+}
+
+function dispatchTextInputEvents(el, value) {
+  // Some frameworks listen to InputEvent; keep a plain Event fallback.
+  try {
+    el.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, data: value, inputType: 'insertText' }));
+  } catch (_) {
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  el.dispatchEvent(new Event('change', { bubbles: true }));
+}
+
+function replaceContentEditableText(root, text) {
+  try {
+    root.focus?.();
+
+    // Replace visible text
+    root.innerText = text;
+
+    // Put caret at end
+    placeCaretAtEnd(root);
+
+    // Notify frameworks
+    try {
+      root.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, data: text, inputType: 'insertText' }));
+    } catch (_) {
+      root.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  } catch (_) {
+    // Last resort
+    root.textContent = text;
+    root.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}
+
+function replaceContentEditableTextViaExecCommand(root, text) {
+  // Slate editors (like yiyan.baidu.com) typically rely on beforeinput/execCommand pipeline.
+  const isYiyan = window.location.hostname && window.location.hostname.includes('yiyan.baidu.com');
+
+  root.focus?.();
+  // For yiyan, avoid manual Range selection on the Slate root (can desync selection/behavior).
+  // Use selectAll command instead (closer to user Cmd/Ctrl+A).
+  if (isYiyan) {
+    try { document.execCommand('selectAll', false); } catch (_) {}
+  } else {
+    selectNodeContents(root);
+  }
+
+  let inserted = false;
+
+  // Prefer simulating a paste event (Slate reliably handles paste -> state update).
+  // This avoids direct DOM mutation which can desync Slate internal state.
+  if (isYiyan) {
+    try {
+      const dt = new DataTransfer();
+      dt.setData('text/plain', text);
+      dt.setData('text', text);
+      const pasteEvent = new ClipboardEvent('paste', {
+        bubbles: true,
+        cancelable: true,
+        clipboardData: dt
+      });
+      root.dispatchEvent(pasteEvent);
+      // Slate typically preventDefault() on paste; if so, it has taken over and updated state.
+      // IMPORTANT: don't run execCommand afterwards, or we may corrupt the editor DOM/selection.
+      if (pasteEvent.defaultPrevented) {
+        return;
+      }
+    } catch (_) {}
+  }
+
+  try {
+    // execCommand triggers beforeinput/input in Chromium, which Slate listens for.
+    inserted = document.execCommand('insertText', false, text);
+  } catch (_) {
+    inserted = false;
+  }
+
+  if (!inserted) {
+    // Fallback: try a delete + insert (still via execCommand), then let editor handle beforeinput.
+    try {
+      document.execCommand('delete', false);
+      inserted = document.execCommand('insertText', false, text);
+    } catch (_) {}
+
+    if (!inserted) {
+      // Last resort: dispatch beforeinput and allow Slate to intercept and update its state.
+      try {
+        root.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, data: text, inputType: 'insertFromPaste' }));
+      } catch (_) {}
+      try {
+        root.dispatchEvent(new InputEvent('input', { bubbles: true, cancelable: true, data: text, inputType: 'insertFromPaste' }));
+      } catch (_) {
+        root.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+  }
+
+  // For yiyan, let Slate manage caret/selection after insertion.
+  if (!isYiyan) {
+    placeCaretAtEnd(root);
+  }
+}
+
+function selectNodeContents(el) {
+  const selection = window.getSelection?.();
+  if (!selection) return;
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+function placeCaretAtEnd(el) {
+  const selection = window.getSelection?.();
+  if (!selection) return;
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  selection.removeAllRanges();
+  selection.addRange(range);
 }
 
   // Start
