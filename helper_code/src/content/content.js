@@ -598,13 +598,15 @@ function replaceContentEditableText(root, text) {
 }
 
 function replaceContentEditableTextViaExecCommand(root, text) {
-  // Slate editors (like yiyan.baidu.com) typically rely on beforeinput/execCommand pipeline.
+  // Slate editors (like yiyan.baidu.com and qianwen.com) typically rely on beforeinput/execCommand pipeline.
   const isYiyan = window.location.hostname && window.location.hostname.includes('yiyan.baidu.com');
+  const isQianwen = window.location.hostname && window.location.hostname.includes('qianwen.com');
+  const isSpecialSlate = isYiyan || isQianwen;
 
   root.focus?.();
-  // For yiyan, avoid manual Range selection on the Slate root (can desync selection/behavior).
+  // For special Slate editors, avoid manual Range selection on the Slate root (can desync selection/behavior).
   // Use selectAll command instead (closer to user Cmd/Ctrl+A).
-  if (isYiyan) {
+  if (isSpecialSlate) {
     try { document.execCommand('selectAll', false); } catch (_) {}
   } else {
     selectNodeContents(root);
@@ -614,7 +616,7 @@ function replaceContentEditableTextViaExecCommand(root, text) {
 
   // Prefer simulating a paste event (Slate reliably handles paste -> state update).
   // This avoids direct DOM mutation which can desync Slate internal state.
-  if (isYiyan) {
+  if (isSpecialSlate) {
     try {
       const dt = new DataTransfer();
       dt.setData('text/plain', text);
@@ -660,8 +662,8 @@ function replaceContentEditableTextViaExecCommand(root, text) {
     }
   }
 
-  // For yiyan, let Slate manage caret/selection after insertion.
-  if (!isYiyan) {
+  // For special Slate editors, let Slate manage caret/selection after insertion.
+  if (!isSpecialSlate) {
     placeCaretAtEnd(root);
   }
 }
