@@ -126,20 +126,22 @@ const defaultSettings = {
   autoSavePromptOnEnter: true,
   domains: [
     { id: 1, url: 'chatgpt.com', enabled: true },
-    { id: 2, url: 'claude.ai', enabled: true },
-    { id: 3, url: 'gemini.google.com', enabled: true },
-    { id: 4, url: 'poe.com', enabled: true },
-    { id: 5, url: 'deepseek.com', enabled: true },
-    { id: 6, url: 'copilot.microsoft.com', enabled: true },
-    { id: 7, url: 'perplexity.ai', enabled: true },
-    { id: 8, url: 'chat.mistral.ai', enabled: true },
-    { id: 9, url: 'doubao.com', enabled: true },
-    { id: 10, url: 'kimi.com', enabled: true },
-    { id: 11, url: 'yiyan.baidu.com', enabled: true },
-    { id: 12, url: 'hunyuan.tencent.com', enabled: true },
-    { id: 13, url: 'chatglm.cn', enabled: true },
-    { id: 14, url: 'hailuoai.com', enabled: true },
-    { id: 15, url: 'qianwen.com', enabled: true }
+    { id: 2, url: 'grok.com', enabled: true },
+    { id: 3, url: 'openai.com', enabled: true },
+    { id: 4, url: 'claude.ai', enabled: true },
+    { id: 5, url: 'gemini.google.com', enabled: true },
+    { id: 6, url: 'poe.com', enabled: true },
+    { id: 7, url: 'deepseek.com', enabled: true },
+    { id: 8, url: 'copilot.microsoft.com', enabled: true },
+    { id: 9, url: 'perplexity.ai', enabled: true },
+    { id: 10, url: 'chat.mistral.ai', enabled: true },
+    { id: 11, url: 'doubao.com', enabled: true },
+    { id: 12, url: 'kimi.com', enabled: true },
+    { id: 13, url: 'yiyan.baidu.com', enabled: true },
+    { id: 14, url: 'hunyuan.tencent.com', enabled: true },
+    { id: 15, url: 'chatglm.cn', enabled: true },
+    { id: 16, url: 'hailuoai.com', enabled: true },
+    { id: 17, url: 'qianwen.com', enabled: true }
   ]
 };
 
