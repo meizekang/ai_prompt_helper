@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Assistente Prompt IA"
+  },
+  "extDesc": {
+    "message": "Migliora l'efficienza dell'IA. Gestione intelligente della libreria di prompt, con supporto per corrispondenza parole chiave, riempimento dinamico delle variabili e richiamo con un clic."
+  },
+  "optionsTitle": {
+    "message": "Assistente Prompt IA - Impostazioni"
+  },
+  "sidebarHeader": {
+    "message": "Assistente Prompt"
+  },
+  "navPrompts": {
+    "message": "Libreria Prompt"
+  },
+  "navSettings": {
+    "message": "Preferenze"
+  },
+  "promptsTitle": {
+    "message": "Libreria Prompt"
+  },
+  "promptsSubtitle": {
+    "message": "Gestisci i tuoi prompt frequenti per un accesso rapido."
+  },
+  "newPromptLabel": {
+    "message": "Nuovo Prompt"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Titolo (es: Traduci in inglese)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Inserisci il contenuto del prompt... Usa {{text}} come segnaposto per il testo selezionato"
+  },
+  "addPromptBtn": {
+    "message": "Aggiungi alla libreria"
+  },
+  "updatePromptBtn": {
+    "message": "Aggiorna prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Annulla modifica"
+  },
+  "editPrompt": {
+    "message": "Modifica prompt"
+  },
+  "myPromptsTitle": {
+    "message": "I miei Preferiti"
+  },
+  "emptyPrompts": {
+    "message": "Nessun prompt presente, aggiungine uno sopra."
+  },
+  "settingsTitle": {
+    "message": "Preferenze"
+  },
+  "settingsSubtitle": {
+    "message": "Gestisci l'ambito dell'estensione e gli interruttori globali."
+  },
+  "globalEnableLabel": {
+    "message": "Abilita globalmente"
+  },
+  "globalEnableDesc": {
+    "message": "Attiva o disattiva tutte le funzioni dell'estensione con un clic"
+  },
+  "languageLabel": {
+    "message": "Lingua interfaccia"
+  },
+  "languageDesc": {
+    "message": "Scegli la tua lingua di visualizzazione preferita"
+  },
+  "siteManagementTitle": {
+    "message": "Gestione siti"
+  },
+  "addSiteLabel": {
+    "message": "Aggiungi sito"
+  },
+  "domainPlaceholder": {
+    "message": "Inserisci dominio (es: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Aggiungi"
+  },
+  "addSiteHint": {
+    "message": "La finestra dell'assistente verrà mostrata solo sui siti in whitelist."
+  },
+  "configuredSitesTitle": {
+    "message": "Siti configurati"
+  },
+  "emptySites": {
+    "message": "Nessun sito configurato"
+  },
+  "alertFillTitleContent": {
+    "message": "Si prega di compilare titolo e contenuto"
+  },
+  "alertAdded": {
+    "message": "Aggiunto con successo"
+  },
+  "confirmDeletePrompt": {
+    "message": "Sei sicuro di voler eliminare questo prompt?"
+  },
+  "alertDomainExists": {
+    "message": "Questo dominio esiste già"
+  },
+  "confirmDeleteDomain": {
+    "message": "Sei sicuro di voler eliminare questo dominio?"
+  },
+  "overlayHeader": {
+    "message": "Corrispondenza prompt"
+  },
+  "modalCancel": {
+    "message": "Annulla"
+  },
+  "modalConfirm": {
+    "message": "Conferma e inserisci"
+  },
+  "modalInputPlaceholder": {
+    "message": "Si prega di inserire"
+  },
+  "popupUsage1": {
+    "message": "Inserisci parole chiave nel campo di input del sito configurato"
+  },
+  "popupUsage2": {
+    "message": "Seleziona il modello di prompt che appare"
+  },
+  "popupUsage3": {
+    "message": "Riempimento automatico e sostituzione dei segnaposto"
+  },
+  "managePromptsBtn": {
+    "message": "Gestisci prompt e impostazioni"
+  },
+  "popupSubtitle": {
+    "message": "Il tuo assistente di scrittura intelligente"
+  },
+  "saveAsPrompt": {
+    "message": "Salva come prompt"
+  },
+  "exportPrompts": {
+    "message": "Esporta prompt"
+  },
+  "importPrompts": {
+    "message": "Importa prompt"
+  },
+  "importFormatError": {
+    "message": "Importazione fallita: formato file non corretto. Usa il formato JSON corretto."
+  },
+  "importSuccess": {
+    "message": " prompt importati con successo"
+  },
+  "importTemplateHint": {
+    "message": "Esempio di formato corretto:\n[\n  {\n    \"title\": \"Titolo di esempio\",\n    \"content\": \"Contenuto di esempio {{text}}\"\n  }\n]"
+  }
+}

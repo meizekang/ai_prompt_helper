@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Assistente de Prompts de IA"
+  },
+  "extDesc": {
+    "message": "Melhore a eficiência da IA. Gestão inteligente da biblioteca de prompts, com suporte para correspondência de palavras-chave, preenchimento dinâmico de variáveis e chamada com um clique."
+  },
+  "optionsTitle": {
+    "message": "Assistente de Prompts de IA - Configurações"
+  },
+  "sidebarHeader": {
+    "message": "Assistente de Prompts"
+  },
+  "navPrompts": {
+    "message": "Biblioteca de Prompts"
+  },
+  "navSettings": {
+    "message": "Preferências"
+  },
+  "promptsTitle": {
+    "message": "Biblioteca de Prompts"
+  },
+  "promptsSubtitle": {
+    "message": "Gerencie seus prompts frequentes para acesso rápido."
+  },
+  "newPromptLabel": {
+    "message": "Novo Prompt"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Título (ex: Traduzir para inglês)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Insira o conteúdo do prompt... Use {{text}} como marcador de posição para o texto selecionado"
+  },
+  "addPromptBtn": {
+    "message": "Adicionar à biblioteca"
+  },
+  "updatePromptBtn": {
+    "message": "Atualizar prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Cancelar edição"
+  },
+  "editPrompt": {
+    "message": "Editar prompt"
+  },
+  "myPromptsTitle": {
+    "message": "Meus Favoritos"
+  },
+  "emptyPrompts": {
+    "message": "Nenhum prompt disponível, adicione um acima."
+  },
+  "settingsTitle": {
+    "message": "Preferências"
+  },
+  "settingsSubtitle": {
+    "message": "Gerencie o escopo da extensão e os interruptores globais."
+  },
+  "globalEnableLabel": {
+    "message": "Ativar globalmente"
+  },
+  "globalEnableDesc": {
+    "message": "Ative ou desative todas as funções da extensão com um clique"
+  },
+  "languageLabel": {
+    "message": "Idioma da interface"
+  },
+  "languageDesc": {
+    "message": "Escolha seu idioma de exibição preferido"
+  },
+  "siteManagementTitle": {
+    "message": "Gestão de sites"
+  },
+  "addSiteLabel": {
+    "message": "Adicionar site"
+  },
+  "domainPlaceholder": {
+    "message": "Insira o domínio (ex: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Adicionar"
+  },
+  "addSiteHint": {
+    "message": "A janela do assistente só será exibida em sites na lista branca."
+  },
+  "configuredSitesTitle": {
+    "message": "Sites configurados"
+  },
+  "emptySites": {
+    "message": "Nenhum site configurado"
+  },
+  "alertFillTitleContent": {
+    "message": "Por favor, preencha o título e o conteúdo"
+  },
+  "alertAdded": {
+    "message": "Adicionado com sucesso"
+  },
+  "confirmDeletePrompt": {
+    "message": "Tem certeza de que deseja excluir este prompt?"
+  },
+  "alertDomainExists": {
+    "message": "Este domínio já existe"
+  },
+  "confirmDeleteDomain": {
+    "message": "Tem certeza de que deseja excluir este domínio?"
+  },
+  "overlayHeader": {
+    "message": "Correspondência de prompt"
+  },
+  "modalCancel": {
+    "message": "Cancelar"
+  },
+  "modalConfirm": {
+    "message": "Confirmar e inserir"
+  },
+  "modalInputPlaceholder": {
+    "message": "Por favor, insira"
+  },
+  "popupUsage1": {
+    "message": "Insira palavras-chave no campo de entrada do site configurado"
+  },
+  "popupUsage2": {
+    "message": "Selecione o modelo de prompt que aparece"
+  },
+  "popupUsage3": {
+    "message": "Preenchimento automático e substituição de marcadores de posição"
+  },
+  "managePromptsBtn": {
+    "message": "Gerenciar prompts e configurações"
+  },
+  "popupSubtitle": {
+    "message": "Seu assistente de escrita inteligente"
+  },
+  "saveAsPrompt": {
+    "message": "Salvar como prompt"
+  },
+  "exportPrompts": {
+    "message": "Exportar prompts"
+  },
+  "importPrompts": {
+    "message": "Importar prompts"
+  },
+  "importFormatError": {
+    "message": "Falha na importação: formato de arquivo incorreto. Use o formato JSON correto."
+  },
+  "importSuccess": {
+    "message": " prompts importados com sucesso"
+  },
+  "importTemplateHint": {
+    "message": "Exemplo de formato correto:\n[\n  {\n    \"title\": \"Título de exemplo\",\n    \"content\": \"Conteúdo de exemplo {{text}}\"\n  }\n]"
+  }
+}

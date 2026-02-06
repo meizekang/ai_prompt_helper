@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Assistant de Prompts IA"
+  },
+  "extDesc": {
+    "message": "Améliorez l'efficacité de l'IA. Gestion intelligente de la bibliothèque de prompts, prise en charge de la correspondance par mots-clés, remplissage dynamique des variables et appel en un clic."
+  },
+  "optionsTitle": {
+    "message": "Assistant de Prompts IA - Paramètres"
+  },
+  "sidebarHeader": {
+    "message": "Assistant de Prompts"
+  },
+  "navPrompts": {
+    "message": "Bibliothèque de Prompts"
+  },
+  "navSettings": {
+    "message": "Préférences"
+  },
+  "promptsTitle": {
+    "message": "Bibliothèque de Prompts"
+  },
+  "promptsSubtitle": {
+    "message": "Gérez vos prompts fréquents pour un accès rapide."
+  },
+  "newPromptLabel": {
+    "message": "Nouveau Prompt"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Titre (ex : Traduire en anglais)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Entrez le contenu du prompt... Utilisez {{text}} comme espace réservé pour le texte sélectionné"
+  },
+  "addPromptBtn": {
+    "message": "Ajouter à la bibliothèque"
+  },
+  "updatePromptBtn": {
+    "message": "Mettre à jour le prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Annuler l'édition"
+  },
+  "editPrompt": {
+    "message": "Modifier le prompt"
+  },
+  "myPromptsTitle": {
+    "message": "Mes Favoris"
+  },
+  "emptyPrompts": {
+    "message": "Aucun prompt, veuillez en ajouter ci-dessus."
+  },
+  "settingsTitle": {
+    "message": "Préférences"
+  },
+  "settingsSubtitle": {
+    "message": "Gérez la portée de l'extension et les commutateurs globaux."
+  },
+  "globalEnableLabel": {
+    "message": "Activer globalement"
+  },
+  "globalEnableDesc": {
+    "message": "Activer ou désactiver toutes les fonctionnalités de l'extension en un clic"
+  },
+  "languageLabel": {
+    "message": "Langue de l'interface"
+  },
+  "languageDesc": {
+    "message": "Choisissez votre langue d'affichage préférée"
+  },
+  "siteManagementTitle": {
+    "message": "Gestion des sites"
+  },
+  "addSiteLabel": {
+    "message": "Ajouter un site"
+  },
+  "domainPlaceholder": {
+    "message": "Entrez le domaine (ex : chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Ajouter"
+  },
+  "addSiteHint": {
+    "message": "La fenêtre de l'assistant ne s'affichera que sur les sites de la liste blanche."
+  },
+  "configuredSitesTitle": {
+    "message": "Sites configurés"
+  },
+  "emptySites": {
+    "message": "Aucun site configuré"
+  },
+  "alertFillTitleContent": {
+    "message": "Veuillez remplir le titre et le contenu"
+  },
+  "alertAdded": {
+    "message": "Ajouté avec succès"
+  },
+  "confirmDeletePrompt": {
+    "message": "Êtes-vous sûr de vouloir supprimer ce prompt ?"
+  },
+  "alertDomainExists": {
+    "message": "Ce domaine existe déjà"
+  },
+  "confirmDeleteDomain": {
+    "message": "Êtes-vous sûr de vouloir supprimer ce domaine ?"
+  },
+  "overlayHeader": {
+    "message": "Correspondance de prompt"
+  },
+  "modalCancel": {
+    "message": "Annuler"
+  },
+  "modalConfirm": {
+    "message": "Confirmer et insérer"
+  },
+  "modalInputPlaceholder": {
+    "message": "Veuillez saisir"
+  },
+  "popupUsage1": {
+    "message": "Saisissez des mots-clés dans le champ de saisie du site configuré"
+  },
+  "popupUsage2": {
+    "message": "Sélectionnez le modèle de prompt qui apparaît"
+  },
+  "popupUsage3": {
+    "message": "Remplissage automatique et remplacement des espaces réservés"
+  },
+  "managePromptsBtn": {
+    "message": "Gérer les prompts et paramètres"
+  },
+  "popupSubtitle": {
+    "message": "Votre assistant d'écriture intelligent"
+  },
+  "saveAsPrompt": {
+    "message": "Enregistrer comme prompt"
+  },
+  "exportPrompts": {
+    "message": "Exporter les prompts"
+  },
+  "importPrompts": {
+    "message": "Importer les prompts"
+  },
+  "importFormatError": {
+    "message": "Échec de l'importation : format de fichier incorrect. Veuillez utiliser le format JSON correct."
+  },
+  "importSuccess": {
+    "message": " prompts importés avec succès"
+  },
+  "importTemplateHint": {
+    "message": "Exemple de format correct :\n[\n  {\n    \"title\": \"Titre d'exemple\",\n    \"content\": \"Contenu d'exemple {{text}}\"\n  }\n]"
+  }
+}

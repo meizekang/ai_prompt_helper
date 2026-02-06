@@ -434,15 +434,54 @@ if (autoSavePromptSwitch) {
 document.getElementById('languageSelect').addEventListener('change', (e) => {
   const newLang = e.target.value;
   
-  chrome.storage.local.get(['settings'], (result) => {
+  chrome.storage.local.get(['settings', 'prompts'], (result) => {
     const settings = result.settings || { domains: [] };
+    let prompts = result.prompts || [];
     settings.language = newLang;
-    chrome.storage.local.set({ settings }, () => {
-      I18n.setLocale(newLang);
-      updatePageText();
-      loadPrompts();
-      loadSettings();
-    });
+
+    // Check if the default prompt (id: '1') exists
+    const defaultPromptIndex = prompts.findIndex(p => p.id === '1');
+    if (defaultPromptIndex !== -1) {
+      // It exists, so we update it to the new language's version
+      // We need the data from background.js, but since we can't easily import it here,
+      // we'll send a message to background.js or just use a local copy of the data if it's small.
+      // Alternatively, we can request it from background.js.
+      chrome.runtime.sendMessage({ action: "get_default_prompts", locale: newLang }, (response) => {
+        if (response && response.prompts) {
+          const newDefaultPrompt = response.prompts.find(p => p.id === '1');
+          if (newDefaultPrompt) {
+            prompts[defaultPromptIndex] = { 
+              ...prompts[defaultPromptIndex], 
+              title: newDefaultPrompt.title,
+              content: newDefaultPrompt.content,
+              placeholders: newDefaultPrompt.placeholders
+            };
+            chrome.storage.local.set({ settings, prompts }, () => {
+              I18n.setLocale(newLang);
+              updatePageText();
+              loadPrompts();
+              loadSettings();
+            });
+          }
+        } else {
+          // Fallback if message fails
+          chrome.storage.local.set({ settings }, () => {
+            I18n.setLocale(newLang);
+            updatePageText();
+            loadPrompts();
+            loadSettings();
+          });
+        }
+      });
+    } else {
+      // User deleted the default prompt, so we don't replace it.
+      chrome.storage.local.set({ settings }, () => {
+        I18n.setLocale(newLang);
+        updatePageText();
+        loadPrompts();
+        loadSettings();
+      });
+    }
   });
 });
 

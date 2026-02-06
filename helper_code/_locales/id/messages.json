@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Asisten Prompt AI"
+  },
+  "extDesc": {
+    "message": "Tingkatkan efisiensi AI. Manajemen cerdas perpustakaan prompt, mendukung pencocokan kata kunci, pengisian variabel dinamis, dan pemanggilan satu klik."
+  },
+  "optionsTitle": {
+    "message": "Asisten Prompt AI - Pengaturan"
+  },
+  "sidebarHeader": {
+    "message": "Asisten Prompt"
+  },
+  "navPrompts": {
+    "message": "Perpustakaan Prompt"
+  },
+  "navSettings": {
+    "message": "Preferensi"
+  },
+  "promptsTitle": {
+    "message": "Perpustakaan Prompt"
+  },
+  "promptsSubtitle": {
+    "message": "Kelola prompt yang sering Anda gunakan untuk akses cepat."
+  },
+  "newPromptLabel": {
+    "message": "Prompt Baru"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Judul (misalnya: Terjemahkan ke Bahasa Inggris)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Masukkan konten prompt... Gunakan {{text}} sebagai placeholder untuk teks yang dipilih"
+  },
+  "addPromptBtn": {
+    "message": "Tambahkan ke Perpustakaan"
+  },
+  "updatePromptBtn": {
+    "message": "Perbarui Prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Batal Edit"
+  },
+  "editPrompt": {
+    "message": "Edit Prompt"
+  },
+  "myPromptsTitle": {
+    "message": "Favorit Saya"
+  },
+  "emptyPrompts": {
+    "message": "Belum ada prompt, silakan tambahkan di atas."
+  },
+  "settingsTitle": {
+    "message": "Preferensi"
+  },
+  "settingsSubtitle": {
+    "message": "Kelola cakupan ekstensi dan saklar global."
+  },
+  "globalEnableLabel": {
+    "message": "Aktifkan Secara Global"
+  },
+  "globalEnableDesc": {
+    "message": "Aktifkan atau nonaktifkan semua fitur ekstensi dengan satu klik"
+  },
+  "languageLabel": {
+    "message": "Bahasa Antarmuka"
+  },
+  "languageDesc": {
+    "message": "Pilih bahasa tampilan pilihan Anda"
+  },
+  "siteManagementTitle": {
+    "message": "Manajemen Situs"
+  },
+  "addSiteLabel": {
+    "message": "Tambah Situs"
+  },
+  "domainPlaceholder": {
+    "message": "Masukkan domain (misalnya: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Tambah"
+  },
+  "addSiteHint": {
+    "message": "Popup asisten prompt hanya akan muncul di situs yang ada dalam daftar putih."
+  },
+  "configuredSitesTitle": {
+    "message": "Situs yang Dikonfigurasi"
+  },
+  "emptySites": {
+    "message": "Belum ada situs yang dikonfigurasi"
+  },
+  "alertFillTitleContent": {
+    "message": "Silakan isi judul dan konten"
+  },
+  "alertAdded": {
+    "message": "Berhasil ditambahkan"
+  },
+  "confirmDeletePrompt": {
+    "message": "Apakah Anda yakin ingin menghapus prompt ini?"
+  },
+  "alertDomainExists": {
+    "message": "Domain ini sudah ada"
+  },
+  "confirmDeleteDomain": {
+    "message": "Apakah Anda yakin ingin menghapus domain ini?"
+  },
+  "overlayHeader": {
+    "message": "Pencocokan Prompt"
+  },
+  "modalCancel": {
+    "message": "Batal"
+  },
+  "modalConfirm": {
+    "message": "Konfirmasi dan Masukkan"
+  },
+  "modalInputPlaceholder": {
+    "message": "Silakan masukkan"
+  },
+  "popupUsage1": {
+    "message": "Masukkan kata kunci di kotak input situs yang dikonfigurasi"
+  },
+  "popupUsage2": {
+    "message": "Pilih templat prompt yang muncul"
+  },
+  "popupUsage3": {
+    "message": "Isi otomatis dan ganti placeholder"
+  },
+  "managePromptsBtn": {
+    "message": "Kelola Prompt & Pengaturan"
+  },
+  "popupSubtitle": {
+    "message": "Asisten penulisan cerdas Anda"
+  },
+  "saveAsPrompt": {
+    "message": "Simpan sebagai Prompt"
+  },
+  "exportPrompts": {
+    "message": "Ekspor Prompt"
+  },
+  "importPrompts": {
+    "message": "Impor Prompt"
+  },
+  "importFormatError": {
+    "message": "Gagal mengimpor: format file salah. Harap gunakan format JSON yang benar."
+  },
+  "importSuccess": {
+    "message": " prompt berhasil diimpor"
+  },
+  "importTemplateHint": {
+    "message": "Contoh format yang benar:\n[\n  {\n    \"title\": \"Contoh Judul\",\n    \"content\": \"Contoh Konten {{text}}\"\n  }\n]"
+  }
+}

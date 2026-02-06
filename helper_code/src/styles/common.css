@@ -263,15 +263,6 @@ input:checked + .slider:before { transform: translateX(20px); }
 .logo-icon {
   width: 28px;
   height: 28px;
-  background: linear-gradient(135deg, var(--accent-color), #5ac8fa);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 14px; /* Slightly smaller to fit "AI" */
-  font-weight: 700;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   user-select: none;
 }
 

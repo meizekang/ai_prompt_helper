@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "AI 프롬프트 도우미"
+  },
+  "extDesc": {
+    "message": "AI 효율성을 높입니다. 프롬프트 라이브러리를 스마트하게 관리하고 키워드 매칭, 동적 변수 채우기 및 원클릭 호출을 지원합니다."
+  },
+  "optionsTitle": {
+    "message": "AI 프롬프트 도우미 - 설정"
+  },
+  "sidebarHeader": {
+    "message": "프롬프트 도우미"
+  },
+  "navPrompts": {
+    "message": "프롬프트 라이브러리"
+  },
+  "navSettings": {
+    "message": "환경 설정"
+  },
+  "promptsTitle": {
+    "message": "프롬프트 라이브러리"
+  },
+  "promptsSubtitle": {
+    "message": "자주 사용하는 프롬프트를 관리하고 언제든지 빠르게 호출하세요."
+  },
+  "newPromptLabel": {
+    "message": "새 프롬프트"
+  },
+  "promptTitlePlaceholder": {
+    "message": "제목 (예: 영어로 번역)"
+  },
+  "promptContentPlaceholder": {
+    "message": "프롬프트 내용 입력... 선택한 텍스트의 자리 표시자로 {{text}}를 사용하세요"
+  },
+  "addPromptBtn": {
+    "message": "라이브러리에 추가"
+  },
+  "updatePromptBtn": {
+    "message": "프롬프트 업데이트"
+  },
+  "cancelEditBtn": {
+    "message": "편집 취소"
+  },
+  "editPrompt": {
+    "message": "프롬프트 편집"
+  },
+  "myPromptsTitle": {
+    "message": "내 즐겨찾기"
+  },
+  "emptyPrompts": {
+    "message": "프롬프트가 없습니다. 위에서 추가해 주세요."
+  },
+  "settingsTitle": {
+    "message": "환경 설정"
+  },
+  "settingsSubtitle": {
+    "message": "확장 프로그램의 적용 범위와 전역 스위치를 관리합니다."
+  },
+  "globalEnableLabel": {
+    "message": "전역 활성화"
+  },
+  "globalEnableDesc": {
+    "message": "클릭 한 번으로 확장 프로그램의 모든 기능을 켜거나 끕니다"
+  },
+  "languageLabel": {
+    "message": "인터페이스 언어"
+  },
+  "languageDesc": {
+    "message": "선호하는 표시 언어를 선택하세요"
+  },
+  "siteManagementTitle": {
+    "message": "사이트 관리"
+  },
+  "addSiteLabel": {
+    "message": "사이트 추가"
+  },
+  "domainPlaceholder": {
+    "message": "도메인 입력 (예: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "추가"
+  },
+  "addSiteHint": {
+    "message": "화이트리스트에 등록된 사이트에서만 프롬프트 도우미 팝업이 표시됩니다."
+  },
+  "configuredSitesTitle": {
+    "message": "설정된 사이트"
+  },
+  "emptySites": {
+    "message": "설정된 사이트가 없습니다"
+  },
+  "alertFillTitleContent": {
+    "message": "제목과 내용을 입력해 주세요"
+  },
+  "alertAdded": {
+    "message": "성공적으로 추가되었습니다"
+  },
+  "confirmDeletePrompt": {
+    "message": "이 프롬프트를 삭제하시겠습니까?"
+  },
+  "alertDomainExists": {
+    "message": "해당 도메인이 이미 존재합니다"
+  },
+  "confirmDeleteDomain": {
+    "message": "이 도메인을 삭제하시겠습니까?"
+  },
+  "overlayHeader": {
+    "message": "프롬프트 매칭"
+  },
+  "modalCancel": {
+    "message": "취소"
+  },
+  "modalConfirm": {
+    "message": "확인 및 삽입"
+  },
+  "modalInputPlaceholder": {
+    "message": "입력해 주세요"
+  },
+  "popupUsage1": {
+    "message": "설정된 사이트의 입력창에 키워드 입력"
+  },
+  "popupUsage2": {
+    "message": "나타나는 프롬프트 템플릿 선택"
+  },
+  "popupUsage3": {
+    "message": "자리 표시자 자동 채우기 및 교체"
+  },
+  "managePromptsBtn": {
+    "message": "프롬프트 및 설정 관리"
+  },
+  "popupSubtitle": {
+    "message": "당신의 스마트한 작문 도우미"
+  },
+  "saveAsPrompt": {
+    "message": "프롬프트로 저장"
+  },
+  "exportPrompts": {
+    "message": "프롬프트 내보내기"
+  },
+  "importPrompts": {
+    "message": "프롬프트 가져오기"
+  },
+  "importFormatError": {
+    "message": "가져오기 실패: 파일 형식이 올바르지 않습니다. 올바른 JSON 형식을 사용하세요."
+  },
+  "importSuccess": {
+    "message": "개의 프롬프트를 성공적으로 가져왔습니다"
+  },
+  "importTemplateHint": {
+    "message": "올바른 형식 예시:\n[\n  {\n    \"title\": \"예시 제목\",\n    \"content\": \"예시 내용 {{text}}\"\n  }\n]"
+  }
+}

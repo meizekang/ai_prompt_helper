@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "AI İpucu Yardımcısı"
+  },
+  "extDesc": {
+    "message": "AI verimliliğini artırın. İpucu kitaplığının akıllı yönetimi, anahtar kelime eşleştirme, dinamik değişken doldurma ve tek tıkla çağırma desteği."
+  },
+  "optionsTitle": {
+    "message": "AI İpucu Yardımcısı - Ayarlar"
+  },
+  "sidebarHeader": {
+    "message": "İpucu Yardımcısı"
+  },
+  "navPrompts": {
+    "message": "İpucu Kitaplığı"
+  },
+  "navSettings": {
+    "message": "Tercihler"
+  },
+  "promptsTitle": {
+    "message": "İpucu Kitaplığı"
+  },
+  "promptsSubtitle": {
+    "message": "Hızlı erişim için sık kullandığınız ipuçlarını yönetin."
+  },
+  "newPromptLabel": {
+    "message": "Yeni İpucu"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Başlık (örneğin: İngilizceye çevir)"
+  },
+  "promptContentPlaceholder": {
+    "message": "İpucu içeriğini girin... Seçili metin yer tutucusu olarak {{text}} kullanın"
+  },
+  "addPromptBtn": {
+    "message": "Kitaplığa Ekle"
+  },
+  "updatePromptBtn": {
+    "message": "İpucunu Güncelle"
+  },
+  "cancelEditBtn": {
+    "message": "Düzenlemeyi İptal Et"
+  },
+  "editPrompt": {
+    "message": "İpucunu Düzenle"
+  },
+  "myPromptsTitle": {
+    "message": "Favorilerim"
+  },
+  "emptyPrompts": {
+    "message": "Henüz ipucu yok, lütfen yukarıdan ekleyin."
+  },
+  "settingsTitle": {
+    "message": "Tercihler"
+  },
+  "settingsSubtitle": {
+    "message": "Uzantı kapsamını ve genel anahtarları yönetin."
+  },
+  "globalEnableLabel": {
+    "message": "Genel Olarak Etkinleştir"
+  },
+  "globalEnableDesc": {
+    "message": "Uzantının tüm özelliklerini tek tıkla açın veya kapatın"
+  },
+  "languageLabel": {
+    "message": "Arayüz Dili"
+  },
+  "languageDesc": {
+    "message": "Tercih ettiğiniz görüntüleme dilini seçin"
+  },
+  "siteManagementTitle": {
+    "message": "Site Yönetimi"
+  },
+  "addSiteLabel": {
+    "message": "Site Ekle"
+  },
+  "domainPlaceholder": {
+    "message": "Alan adını girin (örneğin: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Ekle"
+  },
+  "addSiteHint": {
+    "message": "İpucu yardımcısı penceresi yalnızca beyaz listedeki sitelerde gösterilecektir."
+  },
+  "configuredSitesTitle": {
+    "message": "Yapılandırılmış Siteler"
+  },
+  "emptySites": {
+    "message": "Yapılandırılmış site yok"
+  },
+  "alertFillTitleContent": {
+    "message": "Lütfen başlık ve içeriği doldurun"
+  },
+  "alertAdded": {
+    "message": "Başarıyla eklendi"
+  },
+  "confirmDeletePrompt": {
+    "message": "Bu ipucunu silmek istediğinizden emin misiniz?"
+  },
+  "alertDomainExists": {
+    "message": "Bu alan adı zaten mevcut"
+  },
+  "confirmDeleteDomain": {
+    "message": "Bu alan adını silmek istediğinizden emin misiniz?"
+  },
+  "overlayHeader": {
+    "message": "İpucu Eşleşmesi"
+  },
+  "modalCancel": {
+    "message": "İptal"
+  },
+  "modalConfirm": {
+    "message": "Onayla ve Ekle"
+  },
+  "modalInputPlaceholder": {
+    "message": "Lütfen girin"
+  },
+  "popupUsage1": {
+    "message": "Yapılandırılmış sitenin giriş kutusuna anahtar kelimeleri girin"
+  },
+  "popupUsage2": {
+    "message": "Görünen ipucu şablonunu seçin"
+  },
+  "popupUsage3": {
+    "message": "Yer tutucuları otomatik olarak doldur ve değiştir"
+  },
+  "managePromptsBtn": {
+    "message": "İpuçlarını ve Ayarları Yönet"
+  },
+  "popupSubtitle": {
+    "message": "Akıllı yazım yardımcınız"
+  },
+  "saveAsPrompt": {
+    "message": "İpucu olarak kaydet"
+  },
+  "exportPrompts": {
+    "message": "İpuçlarını Dışa Aktar"
+  },
+  "importPrompts": {
+    "message": "İpuçlarını İçe Aktar"
+  },
+  "importFormatError": {
+    "message": "İçe aktarma başarısız: geçersiz dosya biçimi. Lütfen doğru JSON biçimini kullanın."
+  },
+  "importSuccess": {
+    "message": " ipucu başarıyla içe aktarıldı"
+  },
+  "importTemplateHint": {
+    "message": "Doğru biçim örneği:\n[\n  {\n    \"title\": \"Örnek Başlık\",\n    \"content\": \"Örnek İçerik {{text}}\"\n  }\n]"
+  }
+}

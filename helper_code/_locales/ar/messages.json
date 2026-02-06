@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "مساعد أوامر الذكاء الاصطناعي"
+  },
+  "extDesc": {
+    "message": "تحسين كفاءة الذكاء الاصطناعي. إدارة ذكية لمكتبة الأوامر، ودعم مطابقة الكلمات الرئيسية، وملء المتغيرات الديناميكية، والاستدعاء بنقرة واحدة."
+  },
+  "optionsTitle": {
+    "message": "مساعد أوامر الذكاء الاصطناعي - الإعدادات"
+  },
+  "sidebarHeader": {
+    "message": "مساعد الأوامر"
+  },
+  "navPrompts": {
+    "message": "مكتبة الأوامر"
+  },
+  "navSettings": {
+    "message": "التفضيلات"
+  },
+  "promptsTitle": {
+    "message": "مكتبة الأوامر"
+  },
+  "promptsSubtitle": {
+    "message": "إدارة الأوامر المتكررة للوصول السريع."
+  },
+  "newPromptLabel": {
+    "message": "أمر جديد"
+  },
+  "promptTitlePlaceholder": {
+    "message": "العنوان (مثال: ترجمة إلى الإنجليزية)"
+  },
+  "promptContentPlaceholder": {
+    "message": "أدخل محتوى الأمر... استخدم {{text}} كعنصر نائب للنص المحدد"
+  },
+  "addPromptBtn": {
+    "message": "إضافة إلى المكتبة"
+  },
+  "updatePromptBtn": {
+    "message": "تحديث الأمر"
+  },
+  "cancelEditBtn": {
+    "message": "إلغاء التعديل"
+  },
+  "editPrompt": {
+    "message": "تعديل الأمر"
+  },
+  "myPromptsTitle": {
+    "message": "مفضلاتي"
+  },
+  "emptyPrompts": {
+    "message": "لا توجد أوامر، يرجى الإضافة أعلاه."
+  },
+  "settingsTitle": {
+    "message": "التفضيلات"
+  },
+  "settingsSubtitle": {
+    "message": "إدارة نطاق الامتداد والمفاتيح العالمية."
+  },
+  "globalEnableLabel": {
+    "message": "تمكين عالمي"
+  },
+  "globalEnableDesc": {
+    "message": "تشغيل أو إيقاف جميع ميزات الامتداد بنقرة واحدة"
+  },
+  "languageLabel": {
+    "message": "لغة الواجهة"
+  },
+  "languageDesc": {
+    "message": "اختر لغة العرض المفضلة لديك"
+  },
+  "siteManagementTitle": {
+    "message": "إدارة المواقع"
+  },
+  "addSiteLabel": {
+    "message": "إضافة موقع"
+  },
+  "domainPlaceholder": {
+    "message": "أدخل النطاق (مثال: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "إضافة"
+  },
+  "addSiteHint": {
+    "message": "ستظهر نافذة مساعد الأوامر فقط على المواقع الموجودة في القائمة البيضاء."
+  },
+  "configuredSitesTitle": {
+    "message": "المواقع المكونة"
+  },
+  "emptySites": {
+    "message": "لا توجد مواقع مكونة"
+  },
+  "alertFillTitleContent": {
+    "message": "يرجى ملء العنوان والمحتوى"
+  },
+  "alertAdded": {
+    "message": "تمت الإضافة بنجاح"
+  },
+  "confirmDeletePrompt": {
+    "message": "هل أنت متأكد أنك تريد حذف هذا الأمر؟"
+  },
+  "alertDomainExists": {
+    "message": "هذا النطاق موجود بالفعل"
+  },
+  "confirmDeleteDomain": {
+    "message": "هل أنت متأكد أنك تريد حذف هذا النطاق؟"
+  },
+  "overlayHeader": {
+    "message": "مطابقة الأمر"
+  },
+  "modalCancel": {
+    "message": "إلغاء"
+  },
+  "modalConfirm": {
+    "message": "تأكيد وإدراج"
+  },
+  "modalInputPlaceholder": {
+    "message": "يرجى الإدخال"
+  },
+  "popupUsage1": {
+    "message": "أدخل الكلمات الرئيسية في مربع الإدخال بالموقع المكون"
+  },
+  "popupUsage2": {
+    "message": "حدد قالب الأمر الذي يظهر"
+  },
+  "popupUsage3": {
+    "message": "ملء العناصر النائبة واستبدالها تلقائيًا"
+  },
+  "managePromptsBtn": {
+    "message": "إدارة الأوامر والإعدادات"
+  },
+  "popupSubtitle": {
+    "message": "مساعد الكتابة الذكي الخاص بك"
+  },
+  "saveAsPrompt": {
+    "message": "حفظ كأمر"
+  },
+  "exportPrompts": {
+    "message": "تصدير الأوامر"
+  },
+  "importPrompts": {
+    "message": "استيراد الأوامر"
+  },
+  "importFormatError": {
+    "message": "فشل الاستيراد: تنسيق ملف غير صحيح. يرجى استخدام تنسيق JSON الصحيح."
+  },
+  "importSuccess": {
+    "message": " تم استيراد الأوامر بنجاح"
+  },
+  "importTemplateHint": {
+    "message": "مثال على التنسيق الصحيح:\n[\n  {\n    \"title\": \"عنوان مثال\",\n    \"content\": \"محتوى مثال {{text}}\"\n  }\n]"
+  }
+}

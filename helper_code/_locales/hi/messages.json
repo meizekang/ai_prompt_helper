@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "AI प्रॉम्प्ट सहायक"
+  },
+  "extDesc": {
+    "message": "AI दक्षता बढ़ाएँ। प्रॉम्प्ट लाइब्रेरी का स्मार्ट प्रबंधन, कीवर्ड मिलान, गतिशील चर भरने और एक-क्लिक कॉल का समर्थन करता है।"
+  },
+  "optionsTitle": {
+    "message": "AI प्रॉम्प्ट सहायक - सेटिंग्स"
+  },
+  "sidebarHeader": {
+    "message": "प्रॉम्प्ट सहायक"
+  },
+  "navPrompts": {
+    "message": "प्रॉम्प्ट लाइब्रेरी"
+  },
+  "navSettings": {
+    "message": "प्राथमिकताएँ"
+  },
+  "promptsTitle": {
+    "message": "प्रॉम्प्ट लाइब्रेरी"
+  },
+  "promptsSubtitle": {
+    "message": "त्वरित पहुँच के लिए अपने अक्सर उपयोग किए जाने वाले प्रॉम्प्ट प्रबंधित करें।"
+  },
+  "newPromptLabel": {
+    "message": "नया प्रॉम्प्ट"
+  },
+  "promptTitlePlaceholder": {
+    "message": "शीर्षक (उदा: अंग्रेजी में अनुवाद करें)"
+  },
+  "promptContentPlaceholder": {
+    "message": "प्रॉम्प्ट सामग्री दर्ज करें... चयनित टेक्स्ट प्लेसहोल्डर के रूप में {{text}} का उपयोग करें"
+  },
+  "addPromptBtn": {
+    "message": "लाइब्रेरी में जोड़ें"
+  },
+  "updatePromptBtn": {
+    "message": "प्रॉम्प्ट अपडेट करें"
+  },
+  "cancelEditBtn": {
+    "message": "संपादन रद्द करें"
+  },
+  "editPrompt": {
+    "message": "प्रॉम्प्ट संपादित करें"
+  },
+  "myPromptsTitle": {
+    "message": "मेरी पसंद"
+  },
+  "emptyPrompts": {
+    "message": "कोई प्रॉम्प्ट नहीं है, कृपया ऊपर जोड़ें।"
+  },
+  "settingsTitle": {
+    "message": "प्राथमिकताएँ"
+  },
+  "settingsSubtitle": {
+    "message": "एक्सटेंशन के दायरे और वैश्विक स्विच प्रबंधित करें।"
+  },
+  "globalEnableLabel": {
+    "message": "वैश्विक रूप से सक्षम करें"
+  },
+  "globalEnableDesc": {
+    "message": "एक क्लिक के साथ एक्सटेंशन की सभी सुविधाओं को चालू या बंद करें"
+  },
+  "languageLabel": {
+    "message": "इंटरफ़ेस भाषा"
+  },
+  "languageDesc": {
+    "message": "अपनी पसंदीदा प्रदर्शन भाषा चुनें"
+  },
+  "siteManagementTitle": {
+    "message": "साइट प्रबंधन"
+  },
+  "addSiteLabel": {
+    "message": "साइट जोड़ें"
+  },
+  "domainPlaceholder": {
+    "message": "डोमेन दर्ज करें (उदा: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "जोड़ें"
+  },
+  "addSiteHint": {
+    "message": "प्रॉम्प्ट सहायक पॉपअप केवल श्वेतसूची वाली साइटों पर दिखाया जाएगा।"
+  },
+  "configuredSitesTitle": {
+    "message": "कॉन्फ़िगर की गई साइटें"
+  },
+  "emptySites": {
+    "message": "कोई कॉन्फ़िगर की गई साइट नहीं"
+  },
+  "alertFillTitleContent": {
+    "message": "कृपया शीर्षक और सामग्री भरें"
+  },
+  "alertAdded": {
+    "message": "सफलतापूर्वक जोड़ा गया"
+  },
+  "confirmDeletePrompt": {
+    "message": "क्या आप वाकई इस प्रॉम्प्ट को हटाना चाहते हैं?"
+  },
+  "alertDomainExists": {
+    "message": "यह डोमेन पहले से मौजूद है"
+  },
+  "confirmDeleteDomain": {
+    "message": "क्या आप वाकई इस डोमेन को हटाना चाहते हैं?"
+  },
+  "overlayHeader": {
+    "message": "प्रॉम्प्ट मिलान"
+  },
+  "modalCancel": {
+    "message": "रद्द करें"
+  },
+  "modalConfirm": {
+    "message": "पुष्टि करें और डालें"
+  },
+  "modalInputPlaceholder": {
+    "message": "कृपया दर्ज करें"
+  },
+  "popupUsage1": {
+    "message": "कॉन्फ़िगर की गई साइट के इनपुट बॉक्स में कीवर्ड दर्ज करें"
+  },
+  "popupUsage2": {
+    "message": "दिखाई देने वाले प्रॉम्प्ट टेम्पलेट का चयन करें"
+  },
+  "popupUsage3": {
+    "message": "प्लेसहोल्डर को स्वचालित रूप से भरें और बदलें"
+  },
+  "managePromptsBtn": {
+    "message": "प्रॉम्प्ट और सेटिंग्स प्रबंधित करें"
+  },
+  "popupSubtitle": {
+    "message": "आपका स्मार्ट लेखन सहायक"
+  },
+  "saveAsPrompt": {
+    "message": "प्रॉम्प्ट के रूप में सहेजें"
+  },
+  "exportPrompts": {
+    "message": "प्रॉम्प्ट निर्यात करें"
+  },
+  "importPrompts": {
+    "message": "प्रॉम्प्ट आयात करें"
+  },
+  "importFormatError": {
+    "message": "आयात विफल: गलत फ़ाइल स्वरूप। कृपया सही JSON स्वरूप का उपयोग करें।"
+  },
+  "importSuccess": {
+    "message": " प्रॉम्प्ट सफलतापूर्वक आयात किए गए"
+  },
+  "importTemplateHint": {
+    "message": "सही प्रारूप का उदाहरण:\n[\n  {\n    \"title\": \"उदाहरण शीर्षक\",\n    \"content\": \"उदाहरण सामग्री {{text}}\"\n  }\n]"
+  }
+}

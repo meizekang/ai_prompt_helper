@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Trợ lý Prompt AI"
+  },
+  "extDesc": {
+    "message": "Nâng cao hiệu quả AI. Quản lý thông minh kho prompt, hỗ trợ khớp từ khóa, điền biến động và gọi bằng một cú nhấp chuột."
+  },
+  "optionsTitle": {
+    "message": "Trợ lý Prompt AI - Cài đặt"
+  },
+  "sidebarHeader": {
+    "message": "Trợ lý Prompt"
+  },
+  "navPrompts": {
+    "message": "Kho Prompt"
+  },
+  "navSettings": {
+    "message": "Tùy chọn"
+  },
+  "promptsTitle": {
+    "message": "Kho Prompt"
+  },
+  "promptsSubtitle": {
+    "message": "Quản lý các prompt thường dùng để truy cập nhanh."
+  },
+  "newPromptLabel": {
+    "message": "Prompt Mới"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Tiêu đề (ví dụ: Dịch sang tiếng Anh)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Nhập nội dung prompt... Sử dụng {{text}} làm chỗ trống cho văn bản đã chọn"
+  },
+  "addPromptBtn": {
+    "message": "Thêm vào kho"
+  },
+  "updatePromptBtn": {
+    "message": "Cập nhật Prompt"
+  },
+  "cancelEditBtn": {
+    "message": "Hủy chỉnh sửa"
+  },
+  "editPrompt": {
+    "message": "Chỉnh sửa Prompt"
+  },
+  "myPromptsTitle": {
+    "message": "Yêu thích của tôi"
+  },
+  "emptyPrompts": {
+    "message": "Chưa có prompt nào, vui lòng thêm ở trên."
+  },
+  "settingsTitle": {
+    "message": "Tùy chọn"
+  },
+  "settingsSubtitle": {
+    "message": "Quản lý phạm vi của tiện ích và các công tắc chung."
+  },
+  "globalEnableLabel": {
+    "message": "Kích hoạt toàn cầu"
+  },
+  "globalEnableDesc": {
+    "message": "Bật hoặc tắt tất cả các tính năng của tiện ích bằng một cú nhấp chuột"
+  },
+  "languageLabel": {
+    "message": "Ngôn ngữ giao diện"
+  },
+  "languageDesc": {
+    "message": "Chọn ngôn ngữ hiển thị ưa thích của bạn"
+  },
+  "siteManagementTitle": {
+    "message": "Quản lý trang web"
+  },
+  "addSiteLabel": {
+    "message": "Thêm trang web"
+  },
+  "domainPlaceholder": {
+    "message": "Nhập tên miền (ví dụ: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Thêm"
+  },
+  "addSiteHint": {
+    "message": "Cửa sổ trợ lý prompt sẽ chỉ hiển thị trên các trang web trong danh sách trắng."
+  },
+  "configuredSitesTitle": {
+    "message": "Các trang web đã cấu hình"
+  },
+  "emptySites": {
+    "message": "Chưa có trang web nào được cấu hình"
+  },
+  "alertFillTitleContent": {
+    "message": "Vui lòng điền tiêu đề và nội dung"
+  },
+  "alertAdded": {
+    "message": "Đã thêm thành công"
+  },
+  "confirmDeletePrompt": {
+    "message": "Bạn có chắc chắn muốn xóa prompt này không?"
+  },
+  "alertDomainExists": {
+    "message": "Tên miền này đã tồn tại"
+  },
+  "confirmDeleteDomain": {
+    "message": "Bạn có chắc chắn muốn xóa tên miền này không?"
+  },
+  "overlayHeader": {
+    "message": "Khớp Prompt"
+  },
+  "modalCancel": {
+    "message": "Hủy"
+  },
+  "modalConfirm": {
+    "message": "Xác nhận và Chèn"
+  },
+  "modalInputPlaceholder": {
+    "message": "Vui lòng nhập"
+  },
+  "popupUsage1": {
+    "message": "Nhập từ khóa vào ô nhập liệu của trang web đã cấu hình"
+  },
+  "popupUsage2": {
+    "message": "Chọn mẫu prompt xuất hiện"
+  },
+  "popupUsage3": {
+    "message": "Tự động điền và thay thế các chỗ trống"
+  },
+  "managePromptsBtn": {
+    "message": "Quản lý Prompt & Cài đặt"
+  },
+  "popupSubtitle": {
+    "message": "Trợ lý viết lách thông minh của bạn"
+  },
+  "saveAsPrompt": {
+    "message": "Lưu thành Prompt"
+  },
+  "exportPrompts": {
+    "message": "Xuất Prompt"
+  },
+  "importPrompts": {
+    "message": "Nhập Prompt"
+  },
+  "importFormatError": {
+    "message": "Nhập thất bại: định dạng tệp không chính xác. Vui lòng sử dụng định dạng JSON chính xác."
+  },
+  "importSuccess": {
+    "message": " prompt đã được nhập thành công"
+  },
+  "importTemplateHint": {
+    "message": "Ví dụ định dạng đúng:\n[\n  {\n    \"title\": \"Tiêu đề ví dụ\",\n    \"content\": \"Nội dung ví dụ {{text}}\"\n  }\n]"
+  }
+}

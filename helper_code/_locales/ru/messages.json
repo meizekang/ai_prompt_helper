@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "Помощник по промптам ИИ"
+  },
+  "extDesc": {
+    "message": "Повышение эффективности ИИ. Интеллектуальное управление библиотекой промптов, поддержка сопоставления ключевых слов, динамическое заполнение переменных и вызов одним кликом."
+  },
+  "optionsTitle": {
+    "message": "Помощник по промптам ИИ - Настройки"
+  },
+  "sidebarHeader": {
+    "message": "Помощник по промптам"
+  },
+  "navPrompts": {
+    "message": "Библиотека промптов"
+  },
+  "navSettings": {
+    "message": "Настройки"
+  },
+  "promptsTitle": {
+    "message": "Библиотека промптов"
+  },
+  "promptsSubtitle": {
+    "message": "Управляйте часто используемыми промптами для быстрого доступа."
+  },
+  "newPromptLabel": {
+    "message": "Новый промпт"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Заголовок (например: Перевести на английский)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Введите содержание промпта... Используйте {{text}} как заполнитель для выделенного текста"
+  },
+  "addPromptBtn": {
+    "message": "Добавить в библиотеку"
+  },
+  "updatePromptBtn": {
+    "message": "Обновить промпт"
+  },
+  "cancelEditBtn": {
+    "message": "Отменить редактирование"
+  },
+  "editPrompt": {
+    "message": "Редактировать промпт"
+  },
+  "myPromptsTitle": {
+    "message": "Мое избранное"
+  },
+  "emptyPrompts": {
+    "message": "Промптов пока нет, добавьте их выше."
+  },
+  "settingsTitle": {
+    "message": "Настройки"
+  },
+  "settingsSubtitle": {
+    "message": "Управление областью действия расширения и глобальными переключателями."
+  },
+  "globalEnableLabel": {
+    "message": "Включить глобально"
+  },
+  "globalEnableDesc": {
+    "message": "Включение или выключение всех функций расширения одним кликом"
+  },
+  "languageLabel": {
+    "message": "Язык интерфейса"
+  },
+  "languageDesc": {
+    "message": "Выберите предпочтительный язык отображения"
+  },
+  "siteManagementTitle": {
+    "message": "Управление сайтами"
+  },
+  "addSiteLabel": {
+    "message": "Добавить сайт"
+  },
+  "domainPlaceholder": {
+    "message": "Введите домен (например: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Добавить"
+  },
+  "addSiteHint": {
+    "message": "Окно помощника будет отображаться только на сайтах из белого списка."
+  },
+  "configuredSitesTitle": {
+    "message": "Настроенные сайты"
+  },
+  "emptySites": {
+    "message": "Нет настроенных сайтов"
+  },
+  "alertFillTitleContent": {
+    "message": "Пожалуйста, заполните заголовок и содержание"
+  },
+  "alertAdded": {
+    "message": "Успешно добавлено"
+  },
+  "confirmDeletePrompt": {
+    "message": "Вы уверены, что хотите удалить этот промпт?"
+  },
+  "alertDomainExists": {
+    "message": "Этот домен уже существует"
+  },
+  "confirmDeleteDomain": {
+    "message": "Вы уверены, что хотите удалить этот домен?"
+  },
+  "overlayHeader": {
+    "message": "Совпадение промпта"
+  },
+  "modalCancel": {
+    "message": "Отмена"
+  },
+  "modalConfirm": {
+    "message": "Подтвердить и вставить"
+  },
+  "modalInputPlaceholder": {
+    "message": "Пожалуйста, введите"
+  },
+  "popupUsage1": {
+    "message": "Введите ключевые слова в поле ввода на настроенном сайте"
+  },
+  "popupUsage2": {
+    "message": "Выберите появившийся шаблон промпта"
+  },
+  "popupUsage3": {
+    "message": "Автоматическое заполнение и замена заполнителей"
+  },
+  "managePromptsBtn": {
+    "message": "Управление промптами и настройками"
+  },
+  "popupSubtitle": {
+    "message": "Ваш умный помощник по письму"
+  },
+  "saveAsPrompt": {
+    "message": "Сохранить как промпт"
+  },
+  "exportPrompts": {
+    "message": "Экспортировать промпты"
+  },
+  "importPrompts": {
+    "message": "Импортировать промпты"
+  },
+  "importFormatError": {
+    "message": "Ошибка импорта: неверный формат файла. Используйте правильный формат JSON."
+  },
+  "importSuccess": {
+    "message": " промптов успешно импортировано"
+  },
+  "importTemplateHint": {
+    "message": "Пример правильного формата:\n[\n  {\n    \"title\": \"Пример заголовка\",\n    \"content\": \"Пример содержания {{text}}\"\n  }\n]"
+  }
+}

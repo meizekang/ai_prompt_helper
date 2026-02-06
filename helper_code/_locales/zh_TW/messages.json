@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "AI 提示詞助手"
+  },
+  "extDesc": {
+    "message": "提升 AI 效率。智能管理提示詞庫，支持關鍵詞匹配、動態變量填充與一鍵調用。"
+  },
+  "optionsTitle": {
+    "message": "AI 提示詞助手 - 設置"
+  },
+  "sidebarHeader": {
+    "message": "提示詞助手"
+  },
+  "navPrompts": {
+    "message": "提示詞庫"
+  },
+  "navSettings": {
+    "message": "偏好設置"
+  },
+  "promptsTitle": {
+    "message": "提示詞庫"
+  },
+  "promptsSubtitle": {
+    "message": "管理您的常用提示詞，隨時快速調用。"
+  },
+  "newPromptLabel": {
+    "message": "新建提示詞"
+  },
+  "promptTitlePlaceholder": {
+    "message": "標題（例如：翻譯為英文）"
+  },
+  "promptContentPlaceholder": {
+    "message": "輸入提示詞內容... 使用 {{text}} 作為選中文本佔位符"
+  },
+  "addPromptBtn": {
+    "message": "添加至庫"
+  },
+  "updatePromptBtn": {
+    "message": "更新提示詞"
+  },
+  "cancelEditBtn": {
+    "message": "取消編輯"
+  },
+  "editPrompt": {
+    "message": "編輯提示詞"
+  },
+  "myPromptsTitle": {
+    "message": "我的收藏"
+  },
+  "emptyPrompts": {
+    "message": "暫無提示詞，請在上方添加"
+  },
+  "settingsTitle": {
+    "message": "偏好設置"
+  },
+  "settingsSubtitle": {
+    "message": "管理擴展的生效範圍和全局開關。"
+  },
+  "globalEnableLabel": {
+    "message": "全局啟用"
+  },
+  "globalEnableDesc": {
+    "message": "一鍵開啟或關閉擴展的所有功能"
+  },
+  "languageLabel": {
+    "message": "界面語言"
+  },
+  "languageDesc": {
+    "message": "選擇您偏好的顯示語言"
+  },
+  "siteManagementTitle": {
+    "message": "網站管理"
+  },
+  "addSiteLabel": {
+    "message": "添加生效網站"
+  },
+  "domainPlaceholder": {
+    "message": "輸入域名 (例如: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "添加"
+  },
+  "addSiteHint": {
+    "message": "僅在白名單列表中的網站顯示提示詞助手彈窗。"
+  },
+  "configuredSitesTitle": {
+    "message": "已配置網站"
+  },
+  "emptySites": {
+    "message": "暫無配置網站"
+  },
+  "alertFillTitleContent": {
+    "message": "請填寫標題和內容"
+  },
+  "alertAdded": {
+    "message": "添加成功"
+  },
+  "confirmDeletePrompt": {
+    "message": "確定要刪除這個提示詞嗎？"
+  },
+  "alertDomainExists": {
+    "message": "該域名已存在"
+  },
+  "confirmDeleteDomain": {
+    "message": "確定要刪除這個域名嗎？"
+  },
+  "overlayHeader": {
+    "message": "提示詞匹配"
+  },
+  "modalCancel": {
+    "message": "取消"
+  },
+  "modalConfirm": {
+    "message": "確定並插入"
+  },
+  "modalInputPlaceholder": {
+    "message": "請輸入"
+  },
+  "popupUsage1": {
+    "message": "在已配置的網站輸入框中輸入關鍵詞"
+  },
+  "popupUsage2": {
+    "message": "選擇彈出的提示詞模板"
+  },
+  "popupUsage3": {
+    "message": "自動填充並替換佔位符"
+  },
+  "managePromptsBtn": {
+    "message": "管理提示詞 & 設置"
+  },
+  "popupSubtitle": {
+    "message": "您的智能寫作助手"
+  },
+  "saveAsPrompt": {
+    "message": "保存為提示詞"
+  },
+  "exportPrompts": {
+    "message": "導出提示詞"
+  },
+  "importPrompts": {
+    "message": "導入提示詞"
+  },
+  "importFormatError": {
+    "message": "導入失敗：文件格式不正確。請使用正確的 JSON 格式。"
+  },
+  "importSuccess": {
+    "message": "成功導入條提示詞"
+  },
+  "importTemplateHint": {
+    "message": "正確的格式示例：\n[\n  {\n    \"title\": \"示例標題\",\n    \"content\": \"示例內容 {{text}}\"\n  }\n]"
+  }
+}

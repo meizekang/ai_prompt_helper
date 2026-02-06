@@ -1,0 +1,152 @@
+{
+  "extName": {
+    "message": "AI-Prompt-Assistent"
+  },
+  "extDesc": {
+    "message": "Verbessern Sie die KI-Effizienz. Intelligente Verwaltung der Prompt-Bibliothek, unterstützt Keyword-Matching, dynamisches Ausfüllen von Variablen und Ein-Klick-Aufruf."
+  },
+  "optionsTitle": {
+    "message": "AI-Prompt-Assistent - Einstellungen"
+  },
+  "sidebarHeader": {
+    "message": "Prompt-Assistent"
+  },
+  "navPrompts": {
+    "message": "Prompt-Bibliothek"
+  },
+  "navSettings": {
+    "message": "Einstellungen"
+  },
+  "promptsTitle": {
+    "message": "Prompt-Bibliothek"
+  },
+  "promptsSubtitle": {
+    "message": "Verwalten Sie Ihre häufig verwendeten Prompts für den schnellen Zugriff."
+  },
+  "newPromptLabel": {
+    "message": "Neuer Prompt"
+  },
+  "promptTitlePlaceholder": {
+    "message": "Titel (z. B.: In Englisch übersetzen)"
+  },
+  "promptContentPlaceholder": {
+    "message": "Prompt-Inhalt eingeben... Verwenden Sie {{text}} als Platzhalter für markierten Text"
+  },
+  "addPromptBtn": {
+    "message": "Zur Bibliothek hinzufügen"
+  },
+  "updatePromptBtn": {
+    "message": "Prompt aktualisieren"
+  },
+  "cancelEditBtn": {
+    "message": "Bearbeiten abbrechen"
+  },
+  "editPrompt": {
+    "message": "Prompt bearbeiten"
+  },
+  "myPromptsTitle": {
+    "message": "Meine Favoriten"
+  },
+  "emptyPrompts": {
+    "message": "Keine Prompts vorhanden, bitte oben hinzufügen."
+  },
+  "settingsTitle": {
+    "message": "Einstellungen"
+  },
+  "settingsSubtitle": {
+    "message": "Verwalten Sie den Geltungsbereich und die globalen Schalter der Erweiterung."
+  },
+  "globalEnableLabel": {
+    "message": "Global aktivieren"
+  },
+  "globalEnableDesc": {
+    "message": "Alle Funktionen der Erweiterung mit einem Klick ein- oder ausschalten"
+  },
+  "languageLabel": {
+    "message": "Anzeigesprache"
+  },
+  "languageDesc": {
+    "message": "Wählen Sie Ihre bevorzugte Anzeigesprache"
+  },
+  "siteManagementTitle": {
+    "message": "Website-Verwaltung"
+  },
+  "addSiteLabel": {
+    "message": "Website hinzufügen"
+  },
+  "domainPlaceholder": {
+    "message": "Domain eingeben (z. B.: chatgpt.com)"
+  },
+  "addSiteBtn": {
+    "message": "Hinzufügen"
+  },
+  "addSiteHint": {
+    "message": "Das Prompt-Assistent-Popup wird nur auf Websites in der Whitelist angezeigt."
+  },
+  "configuredSitesTitle": {
+    "message": "Konfigurierte Websites"
+  },
+  "emptySites": {
+    "message": "Keine Websites konfiguriert"
+  },
+  "alertFillTitleContent": {
+    "message": "Bitte Titel und Inhalt ausfüllen"
+  },
+  "alertAdded": {
+    "message": "Erfolgreich hinzugefügt"
+  },
+  "confirmDeletePrompt": {
+    "message": "Möchten Sie diesen Prompt wirklich löschen?"
+  },
+  "alertDomainExists": {
+    "message": "Diese Domain existiert bereits"
+  },
+  "confirmDeleteDomain": {
+    "message": "Möchten Sie diese Domain wirklich löschen?"
+  },
+  "overlayHeader": {
+    "message": "Prompt-Übereinstimmung"
+  },
+  "modalCancel": {
+    "message": "Abbrechen"
+  },
+  "modalConfirm": {
+    "message": "Bestätigen und einfügen"
+  },
+  "modalInputPlaceholder": {
+    "message": "Bitte eingeben"
+  },
+  "popupUsage1": {
+    "message": "Geben Sie Keywords in das Eingabefeld der konfigurierten Website ein"
+  },
+  "popupUsage2": {
+    "message": "Wählen Sie die passende Prompt-Vorlage aus"
+  },
+  "popupUsage3": {
+    "message": "Platzhalter automatisch ausfüllen und ersetzen"
+  },
+  "managePromptsBtn": {
+    "message": "Prompts & Einstellungen verwalten"
+  },
+  "popupSubtitle": {
+    "message": "Ihr intelligenter Schreibassistent"
+  },
+  "saveAsPrompt": {
+    "message": "Als Prompt speichern"
+  },
+  "exportPrompts": {
+    "message": "Prompts exportieren"
+  },
+  "importPrompts": {
+    "message": "Prompts importieren"
+  },
+  "importFormatError": {
+    "message": "Import fehlgeschlagen: Ungültiges Dateiformat. Bitte verwenden Sie das korrekte JSON-Format."
+  },
+  "importSuccess": {
+    "message": "Prompts erfolgreich importiert"
+  },
+  "importTemplateHint": {
+    "message": "Beispiel für das korrekte Format:\n[\n  {\n    \"title\": \"Beispieltitel\",\n    \"content\": \"Beispielinhalt {{text}}\"\n  }\n]"
+  }
+}
