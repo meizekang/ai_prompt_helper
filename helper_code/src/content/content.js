@@ -186,6 +186,13 @@ function handleKeyDown(e) {
 
   // Simple validation: must have content
   if (value && value.trim().length > 0) {
+    // Prevent prompt matching dialog from appearing after enter
+    if (inputTimer) {
+      clearTimeout(inputTimer);
+      inputTimer = null;
+    }
+    removeOverlay();
+
     // Show confirmation
     showSaveConfirmation(value.trim(), target);
   }
