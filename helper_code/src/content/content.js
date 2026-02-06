@@ -530,6 +530,7 @@ function insertText(text) {
   if (root && (root.tagName === 'INPUT' || root.tagName === 'TEXTAREA')) {
     setNativeValue(root, text);
     dispatchTextInputEvents(root, text);
+    root.focus(); // Refocus after insertion
     isInserting = false;
     return;
   }
@@ -542,6 +543,7 @@ function insertText(text) {
     } else {
       replaceContentEditableText(root, text);
     }
+    root.focus(); // Refocus after insertion
     isInserting = false;
     return;
   }
